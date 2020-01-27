@@ -1,5 +1,5 @@
 <?php
-class Concreteorder
+class Concreteordermeasurement
 {
     //DB Stuff
     private $conn;
@@ -10,62 +10,45 @@ class Concreteorder
     }
 
     //Add user
+
     public function add(
-       $OrderId,
-       $UserId,
-       $ProjectCode,
-       $OrderNumber,
-       $OrderDate,
-       $DeliveryDate,
-       $TruckArrivalTime,
-       $Directions,
-       $SpecialInstructions,
-       $CategoryId,
-       $CreateUserId,
-       $ModifyUserId,
-       $StatusId
+        $Id,
+        $OrderId,
+        $MeasurementId,
+        $Value,
+        $CreateUserId,
+        $ModifyUserId,
+        $StatusId
 
     ) {
 
 
         $query = "
-        INSERT INTO concreteorder(
+        INSERT INTO concreteordermeasurement(
+            Id,
             OrderId,
-            UserId,
-            ProjectCode,
-            OrderNumber,
-            OrderDate,
-            DeliveryDate,
-            TruckArrivalTime,
-            Directions,
-            SpecialInstructions,
-            CategoryId,
+            MeasurementId,
+            Value,
             CreateUserId,
             ModifyUserId,
             StatusId
         )
         VALUES(
-        ?,?,?,?,?,?,?,?,?,?,?,?,?
+        ?,?,?,?,?,?,?
          )
 ";
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
+                $Id,
                 $OrderId,
-                $UserId,
-                $ProjectCode,
-                $OrderNumber,
-                $OrderDate,
-                $DeliveryDate,
-                $TruckArrivalTime,
-                $Directions,
-                $SpecialInstructions,
-                $CategoryId,
+                $MeasurementId,
+                $Value,
                 $CreateUserId,
                 $ModifyUserId,
                 $StatusId
             ))) {
-                return $this->getById($OrderId);
+                return $this->getById($Id);
             }
         } catch (Exception $e) {
             return array("ERROR", $e);
@@ -75,8 +58,8 @@ class Concreteorder
 
 
 
-    public function updateconcreteorder(
-        $ConcreteorderId,
+    public function updateconcreteordermeasurement(
+        $Id,
         $CompanyId,
         $Name,
         $CreateUserId,
@@ -84,7 +67,7 @@ class Concreteorder
         $StatusId
     ) {
         $query = "UPDATE
-        concreteorder
+        concreteordermeasurement
     SET
         CompanyId = ?,
         Name = ?,
@@ -93,30 +76,41 @@ class Concreteorder
         StatusId = ?,
         ModifyDate = NOW()
         WHERE
-        ConcreteorderId = ?
+        Id = ?
          ";
 
         try {
             $stmt = $this->conn->prepare($query);
-            if ($stmt->execute(array(               
+            if ($stmt->execute(array(
                 $CompanyId,
                 $Name,
                 $CreateUserId,
                 $ModifyUserId,
                 $StatusId,
-                $ConcreteorderId
+                $Id
 
             ))) {
-                return $this->getById($ConcreteorderId);
+                return $this->getById($Id);
             }
         } catch (Exception $e) {
             return array("ERROR", $e);
         }
     }
 
-    public function getById($OrderId)
+    public function getById($Id)
     {
-        $query = "SELECT * FROM concreteorder WHERE OrderId =?";
+        $query = "SELECT * FROM concreteordermeasurement WHERE Id =?";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array($Id));
+
+        if ($stmt->rowCount()) {
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+    }
+    public function getByOrderId($OrderId)
+    {
+        $query = "SELECT * FROM concreteordermeasurement WHERE OrderId =?";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($OrderId));
@@ -131,7 +125,7 @@ class Concreteorder
         $query = "SELECT
       *
         FROM
-            concreteorder WHERE 1";
+            concreteordermeasurement WHERE 1";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array());

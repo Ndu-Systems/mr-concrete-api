@@ -1,5 +1,5 @@
 <?php
-class Concreteorder
+class Measurement
 {
     //DB Stuff
     private $conn;
@@ -11,16 +11,9 @@ class Concreteorder
 
     //Add user
     public function add(
-       $OrderId,
-       $UserId,
-       $ProjectCode,
-       $OrderNumber,
-       $OrderDate,
-       $DeliveryDate,
-       $TruckArrivalTime,
-       $Directions,
-       $SpecialInstructions,
-       $CategoryId,
+       $MeasurementId,
+       $Name,
+       $UnitOfMeasurement,
        $CreateUserId,
        $ModifyUserId,
        $StatusId
@@ -29,43 +22,29 @@ class Concreteorder
 
 
         $query = "
-        INSERT INTO concreteorder(
-            OrderId,
-            UserId,
-            ProjectCode,
-            OrderNumber,
-            OrderDate,
-            DeliveryDate,
-            TruckArrivalTime,
-            Directions,
-            SpecialInstructions,
-            CategoryId,
+        INSERT INTO measurement(
+            MeasurementId,
+            Name,
+            UnitOfMeasurement,
             CreateUserId,
             ModifyUserId,
             StatusId
         )
         VALUES(
-        ?,?,?,?,?,?,?,?,?,?,?,?,?
+        ?,?,?,?,?,?
          )
 ";
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
-                $OrderId,
-                $UserId,
-                $ProjectCode,
-                $OrderNumber,
-                $OrderDate,
-                $DeliveryDate,
-                $TruckArrivalTime,
-                $Directions,
-                $SpecialInstructions,
-                $CategoryId,
+                $MeasurementId,
+                $Name,
+                $UnitOfMeasurement,
                 $CreateUserId,
                 $ModifyUserId,
                 $StatusId
             ))) {
-                return $this->getById($OrderId);
+                return $this->getById($this->conn->lastInsertId());
             }
         } catch (Exception $e) {
             return array("ERROR", $e);
@@ -75,8 +54,8 @@ class Concreteorder
 
 
 
-    public function updateconcreteorder(
-        $ConcreteorderId,
+    public function updatemeasurement(
+        $measurementId,
         $CompanyId,
         $Name,
         $CreateUserId,
@@ -84,7 +63,7 @@ class Concreteorder
         $StatusId
     ) {
         $query = "UPDATE
-        concreteorder
+        measurement
     SET
         CompanyId = ?,
         Name = ?,
@@ -93,7 +72,7 @@ class Concreteorder
         StatusId = ?,
         ModifyDate = NOW()
         WHERE
-        ConcreteorderId = ?
+        measurementId = ?
          ";
 
         try {
@@ -104,22 +83,22 @@ class Concreteorder
                 $CreateUserId,
                 $ModifyUserId,
                 $StatusId,
-                $ConcreteorderId
+                $measurementId
 
             ))) {
-                return $this->getById($ConcreteorderId);
+                return $this->getById($measurementId);
             }
         } catch (Exception $e) {
             return array("ERROR", $e);
         }
     }
 
-    public function getById($OrderId)
+    public function getById($MeasurementId)
     {
-        $query = "SELECT * FROM concreteorder WHERE OrderId =?";
+        $query = "SELECT * FROM measurement WHERE MeasurementId =?";
 
         $stmt = $this->conn->prepare($query);
-        $stmt->execute(array($OrderId));
+        $stmt->execute(array($MeasurementId));
 
         if ($stmt->rowCount()) {
             return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -131,7 +110,7 @@ class Concreteorder
         $query = "SELECT
       *
         FROM
-            concreteorder WHERE 1";
+            measurement WHERE 1";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array());

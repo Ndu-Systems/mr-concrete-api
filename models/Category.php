@@ -1,5 +1,5 @@
 <?php
-class Concreteorder
+class Category
 {
     //DB Stuff
     private $conn;
@@ -11,16 +11,8 @@ class Concreteorder
 
     //Add user
     public function add(
-       $OrderId,
-       $UserId,
-       $ProjectCode,
-       $OrderNumber,
-       $OrderDate,
-       $DeliveryDate,
-       $TruckArrivalTime,
-       $Directions,
-       $SpecialInstructions,
        $CategoryId,
+       $CategoryName,
        $CreateUserId,
        $ModifyUserId,
        $StatusId
@@ -29,43 +21,27 @@ class Concreteorder
 
 
         $query = "
-        INSERT INTO concreteorder(
-            OrderId,
-            UserId,
-            ProjectCode,
-            OrderNumber,
-            OrderDate,
-            DeliveryDate,
-            TruckArrivalTime,
-            Directions,
-            SpecialInstructions,
+        INSERT INTO category(
             CategoryId,
+            CategoryName,
             CreateUserId,
             ModifyUserId,
             StatusId
         )
         VALUES(
-        ?,?,?,?,?,?,?,?,?,?,?,?,?
+        ?,?,?,?,?
          )
 ";
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
-                $OrderId,
-                $UserId,
-                $ProjectCode,
-                $OrderNumber,
-                $OrderDate,
-                $DeliveryDate,
-                $TruckArrivalTime,
-                $Directions,
-                $SpecialInstructions,
                 $CategoryId,
+                $CategoryName,
                 $CreateUserId,
                 $ModifyUserId,
                 $StatusId
             ))) {
-                return $this->getById($OrderId);
+                return $this->getById($this->conn->lastInsertId());
             }
         } catch (Exception $e) {
             return array("ERROR", $e);
@@ -75,8 +51,8 @@ class Concreteorder
 
 
 
-    public function updateconcreteorder(
-        $ConcreteorderId,
+    public function updatecategory(
+        $categoryId,
         $CompanyId,
         $Name,
         $CreateUserId,
@@ -84,7 +60,7 @@ class Concreteorder
         $StatusId
     ) {
         $query = "UPDATE
-        concreteorder
+        category
     SET
         CompanyId = ?,
         Name = ?,
@@ -93,7 +69,7 @@ class Concreteorder
         StatusId = ?,
         ModifyDate = NOW()
         WHERE
-        ConcreteorderId = ?
+        categoryId = ?
          ";
 
         try {
@@ -104,22 +80,22 @@ class Concreteorder
                 $CreateUserId,
                 $ModifyUserId,
                 $StatusId,
-                $ConcreteorderId
+                $categoryId
 
             ))) {
-                return $this->getById($ConcreteorderId);
+                return $this->getById($categoryId);
             }
         } catch (Exception $e) {
             return array("ERROR", $e);
         }
     }
 
-    public function getById($OrderId)
+    public function getById($categoryId)
     {
-        $query = "SELECT * FROM concreteorder WHERE OrderId =?";
+        $query = "SELECT * FROM category WHERE categoryId =?";
 
         $stmt = $this->conn->prepare($query);
-        $stmt->execute(array($OrderId));
+        $stmt->execute(array($categoryId));
 
         if ($stmt->rowCount()) {
             return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -131,7 +107,7 @@ class Concreteorder
         $query = "SELECT
       *
         FROM
-            concreteorder WHERE 1";
+            category WHERE 1";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array());
