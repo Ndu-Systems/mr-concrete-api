@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2020 at 08:59 PM
--- Server version: 10.1.35-MariaDB
--- PHP Version: 7.2.9
+-- Generation Time: Jan 30, 2020 at 09:49 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -36,9 +36,9 @@ CREATE TABLE `address` (
   `AddressLine3` varchar(50) NOT NULL,
   `City` varchar(50) NOT NULL,
   `PostalCode` varchar(20) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CrateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -52,12 +52,24 @@ CREATE TABLE `address` (
 CREATE TABLE `category` (
   `CategoryId` int(11) NOT NULL,
   `CategoryName` varchar(50) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`CategoryId`, `CategoryName`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+(2, 'residential', '2020-01-27 23:29:56', 'residential', '2020-01-27 23:29:56', 'test', 1),
+(20, 'Commercial and institutional', '2020-01-27 23:29:41', 'test', '2020-01-27 23:29:41', 'test', 1),
+(21, 'Industrial', '2020-01-27 23:29:42', 'test', '2020-01-27 23:29:42', 'test', 1),
+(22, 'Highway', '2020-01-27 23:29:44', 'test', '2020-01-27 23:29:44', 'test', 1),
+(23, 'Building', '2020-01-27 23:29:46', 'test', '2020-01-27 23:29:46', 'test', 1),
+(25, 'Heavy', '2020-01-27 23:29:49', 'test', '2020-01-27 23:29:49', 'test', 1);
 
 -- --------------------------------------------------------
 
@@ -71,9 +83,9 @@ CREATE TABLE `company` (
   `CompanyAddress` varchar(225) NOT NULL,
   `City` varchar(50) NOT NULL,
   `PostalCode` varchar(10) NOT NULL,
-  `CreateDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` timestamp NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -89,18 +101,28 @@ CREATE TABLE `concreteorder` (
   `UserId` varchar(225) NOT NULL,
   `ProjectCode` varchar(50) NOT NULL,
   `OrderNumber` varchar(50) NOT NULL,
-  `OrderDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `OrderDate` datetime NOT NULL DEFAULT current_timestamp(),
   `DeliveryDate` datetime NOT NULL,
   `TruckArrivalTime` varchar(11) NOT NULL,
   `Directions` varchar(225) NOT NULL,
   `SpecialInstructions` varchar(225) NOT NULL,
   `CategoryId` int(11) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `concreteorder`
+--
+
+INSERT INTO `concreteorder` (`OrderId`, `UserId`, `ProjectCode`, `OrderNumber`, `OrderDate`, `DeliveryDate`, `TruckArrivalTime`, `Directions`, `SpecialInstructions`, `CategoryId`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+('1c41c7d7-4140-11ea-abf7-48f17f8d4d88', 'test', 'test', 'test', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'test', 'test', 'test', 0, '2020-01-27 22:03:39', 'test', '2020-01-27 22:03:39', 'test', 1),
+('42c707cc-413f-11ea-abf7-48f17f8d4d88', 'test', 'test', 'test', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'test', 'test', 'test', 0, '2020-01-27 21:57:34', 'test', '2020-01-27 21:57:34', 'test', 1),
+('589b8956-4140-11ea-abf7-48f17f8d4d88', 'test', 'test', 'test', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'test', 'test', 'test', 0, '2020-01-27 22:05:20', 'test', '2020-01-27 22:05:20', 'test', 1),
+('f4bca3b0-413f-11ea-abf7-48f17f8d4d88', 'test', 'test', 'test', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'test', 'test', 'test', 0, '2020-01-27 22:02:33', 'test', '2020-01-27 22:02:33', 'test', 1);
 
 -- --------------------------------------------------------
 
@@ -112,13 +134,26 @@ CREATE TABLE `concreteordermeasurement` (
   `Id` varchar(225) NOT NULL,
   `OrderId` varchar(225) NOT NULL,
   `MeasurementId` int(11) NOT NULL,
-  `value` int(11) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Value` int(11) NOT NULL,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `concreteordermeasurement`
+--
+
+INSERT INTO `concreteordermeasurement` (`Id`, `OrderId`, `MeasurementId`, `Value`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+('f798fdf4-414a-11ea-abf7-48f17f8d4d88', 'test', 0, 0, '2020-01-27 23:21:22', 'test', '2020-01-27 23:21:22', 'test', 1),
+('f9d5cd76-414a-11ea-abf7-48f17f8d4d88', 'test', 0, 0, '2020-01-27 23:21:26', 'test', '2020-01-27 23:21:26', 'test', 1),
+('fa5b454f-414a-11ea-abf7-48f17f8d4d88', 'test', 0, 0, '2020-01-27 23:21:27', 'test', '2020-01-27 23:21:27', 'test', 1),
+('fae9d2bf-414a-11ea-abf7-48f17f8d4d88', 'test', 0, 0, '2020-01-27 23:21:28', 'test', '2020-01-27 23:21:28', 'test', 1),
+('fb304dc7-414a-11ea-abf7-48f17f8d4d88', 'test', 0, 0, '2020-01-27 23:21:28', 'test', '2020-01-27 23:21:28', 'test', 1),
+('fc29c8df-414a-11ea-abf7-48f17f8d4d88', 'test', 0, 0, '2020-01-27 23:21:30', 'test', '2020-01-27 23:21:30', 'test', 1),
+('fc85d42a-414a-11ea-abf7-48f17f8d4d88', 'test', 0, 0, '2020-01-27 23:21:30', 'test', '2020-01-27 23:21:30', 'test', 1);
 
 -- --------------------------------------------------------
 
@@ -130,12 +165,28 @@ CREATE TABLE `measurement` (
   `MeasurementId` int(11) NOT NULL,
   `Name` varchar(50) NOT NULL,
   `UnitOfMeasurement` varchar(20) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `measurement`
+--
+
+INSERT INTO `measurement` (`MeasurementId`, `Name`, `UnitOfMeasurement`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+(1, 'test', 'test', '2020-01-27 23:00:04', 'test', '2020-01-27 23:00:04', 'test', 1),
+(2, 'test', 'test', '2020-01-27 23:00:48', 'test', '2020-01-27 23:00:48', 'test', 1),
+(3, 'test', 'test', '2020-01-27 23:00:55', 'test', '2020-01-27 23:00:55', 'test', 1),
+(4, 'test', 'test', '2020-01-27 23:02:03', 'test', '2020-01-27 23:02:03', 'test', 1),
+(5, 'test', 'test', '2020-01-27 23:02:31', 'test', '2020-01-27 23:02:31', 'test', 1),
+(6, 'test', 'test', '2020-01-27 23:02:54', 'test', '2020-01-27 23:02:54', 'test', 1),
+(7, 'test', 'test', '2020-01-27 23:04:24', 'test', '2020-01-27 23:04:24', 'test', 1),
+(8, 'test', 'test', '2020-01-27 23:04:25', 'test', '2020-01-27 23:04:25', 'test', 1),
+(9, 'test', 'test', '2020-01-27 23:04:26', 'test', '2020-01-27 23:04:26', 'test', 1),
+(10, 'test', 'test', '2020-01-27 23:04:26', 'test', '2020-01-27 23:04:26', 'test', 1);
 
 -- --------------------------------------------------------
 
@@ -146,9 +197,9 @@ CREATE TABLE `measurement` (
 CREATE TABLE `role` (
   `Id` int(5) NOT NULL,
   `RoleName` varchar(50) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -176,12 +227,20 @@ CREATE TABLE `supplier` (
   `SupplierAddress` varchar(225) NOT NULL,
   `City` varchar(50) NOT NULL,
   `PostalCode` varchar(10) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `supplier`
+--
+
+INSERT INTO `supplier` (`SupplierId`, `SupplierName`, `ContactNumber`, `EmailAddress`, `ContactPerson`, `SupplierAddress`, `City`, `PostalCode`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+('8c8fe2df-43a1-11ea-8908-48f17f8d4d88', 'Mr JJ ', '0114557878', 'mrjj@mail.com', 'Mr JJ Sales', 'na', 'Durban', '8745', '2020-01-30 22:46:11', 'postman', '2020-01-30 22:46:11', 'postman', 1),
+('b57897bb-43a1-11ea-8908-48f17f8d4d88', 'Wolies Home', '0114557878', 'wolls@mail.com', 'Zandi', 'na', 'Durban', '8745', '2020-01-30 22:47:20', 'postman', '2020-01-30 22:47:20', 'postman', 1);
 
 -- --------------------------------------------------------
 
@@ -193,9 +252,9 @@ CREATE TABLE `suppliercategory` (
   `Id` int(11) NOT NULL,
   `SupplierId` varchar(225) NOT NULL,
   `CategoryId` int(11) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -214,9 +273,9 @@ CREATE TABLE `user` (
   `Password` varchar(50) NOT NULL,
   `Cellphone` varchar(15) NOT NULL,
   `RoleId` int(10) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -291,6 +350,22 @@ ALTER TABLE `suppliercategory`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`UserId`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `CategoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29479979;
+
+--
+-- AUTO_INCREMENT for table `measurement`
+--
+ALTER TABLE `measurement`
+  MODIFY `MeasurementId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
