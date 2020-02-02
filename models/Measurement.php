@@ -19,8 +19,6 @@ class Measurement
        $StatusId
 
     ) {
-
-
         $query = "
         INSERT INTO measurement(
             MeasurementId,
