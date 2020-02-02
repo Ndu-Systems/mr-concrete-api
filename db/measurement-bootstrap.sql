@@ -1,4 +1,5 @@
 
+TRUNCATE measurement;
 INSERT INTO `measurement` (`MeasurementId`, `Name`, `UnitOfMeasurement`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
 (1, 'Compressive strength', 'test', '2020-01-27 23:00:04', 'test', '2020-01-27 23:00:04', 'test', 1),
 (2, 'Casting date', 'test', '2020-01-27 23:00:48', 'test', '2020-01-27 23:00:48', 'test', 1),
