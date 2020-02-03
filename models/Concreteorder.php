@@ -15,6 +15,7 @@ class Concreteorder
        $UserId,
        $ProjectCode,
        $OrderNumber,
+       $SupplierId,
        $OrderDate,
        $DeliveryDate,
        $TruckArrivalTime,
@@ -34,6 +35,7 @@ class Concreteorder
             UserId,
             ProjectCode,
             OrderNumber,
+            SupplierId,
             OrderDate,
             DeliveryDate,
             TruckArrivalTime,
@@ -45,7 +47,7 @@ class Concreteorder
             StatusId
         )
         VALUES(
-        ?,?,?,?,?,?,?,?,?,?,?,?,?
+        ?,?,?,?,?,?,?,?,?,?,?,?,?,?
          )
 ";
         try {
@@ -55,6 +57,7 @@ class Concreteorder
                 $UserId,
                 $ProjectCode,
                 $OrderNumber,
+                $SupplierId,
                 $OrderDate,
                 $DeliveryDate,
                 $TruckArrivalTime,

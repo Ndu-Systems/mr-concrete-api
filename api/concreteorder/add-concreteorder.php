@@ -33,6 +33,7 @@ $result = $concreteorder->add(
     $UserId,
     $ProjectCode,
     $OrderNumber,
+    $SupplierId,
     $OrderDate,
     $DeliveryDate,
     $TruckArrivalTime,
