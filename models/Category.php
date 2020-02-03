@@ -18,8 +18,7 @@ class Category
        $StatusId
 
     ) {
-
-
+          
         $query = "
         INSERT INTO category(
             CategoryId,

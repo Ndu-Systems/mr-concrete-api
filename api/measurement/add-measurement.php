@@ -3,9 +3,7 @@ include_once '../../config/Database.php';
 include_once '../../models/Measurement.php';
 
 $data = json_decode(file_get_contents("php://input"));
-
-
-$MeasurementId = $data->MeasurementId;
+ 
 $Name = $data->Name;
 $UnitOfMeasurement = $data->UnitOfMeasurement;
 $CreateUserId = $data->CreateUserId;
@@ -18,6 +16,7 @@ $database = new Database();
 $db = $database->connect();
 $OrderId = $database->getGuid($db);
 
+$MeasurementId = $database->getGuid($db);
 
 // create user first to get UserId
 $measurement = new Measurement($db);
