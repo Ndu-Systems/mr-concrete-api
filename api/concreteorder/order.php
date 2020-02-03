@@ -5,8 +5,9 @@ include_once '../../models/Concreteordermeasurement.php';
 
 
 $data = json_decode(file_get_contents("php://input"));
-$concreteorder = $data->concreteorder;
-$concreteordermeasurements = $data->concreteordermeasurements;
+$concreteorder = json_decode($data->concreteorder);
+$concreteordermeasurements = json_decode($data->concreteordermeasurements);
+// echo json_encode($concreteorder);
 
 //connect to db
 $database = new Database();
@@ -18,8 +19,8 @@ $OrderId = $database->getGuid($db);
 $concreteorder = new Concreteorder($db);
 
 $result = $concreteorder->add(
-    $concreteorder->OrderId,
-    $concreteorder->UserId,
+    $OrderId,
+    $concreteorder->CreateUserId,
     $concreteorder->ProjectCode,
     $concreteorder->OrderNumber,
     $concreteorder->SupplierId,
@@ -34,26 +35,26 @@ $result = $concreteorder->add(
     $concreteorder->StatusId
 );
 
-
-$OrderId =  $result['OrderId'];
-
-foreach ($concreteordermeasurements as $measurement) {
-    $order_measurement = new Concreteordermeasurement($db);
-
-    $result = $order_measurement->add(
-        $measurement->Id,
-        $measurement->OrderId,
-        $measurement->MeasurementId,
-        $measurement->Value,
-        $measurement->CreateUserId,
-        $measurement->ModifyUserId,
-        $measurement->StatusId
-    );
+if( $result['OrderId']){
+    foreach ($concreteordermeasurements as $measurement) {
+        $order_measurement = new Concreteordermeasurement($db);
+    
+        $result = $order_measurement->add(
+            $measurement->Id,
+            $measurement->OrderId,
+            $measurement->MeasurementId,
+            $measurement->Value,
+            $measurement->CreateUserId,
+            $measurement->ModifyUserId,
+            $measurement->StatusId
+        );
+    }
+    echo json_encode('true');
+    
 }
 
-
-$allorders = $orders->getDetailedCampanyById($order->CompanyId);
-echo json_encode($allorders);
+// $allorders = $orders->getDetailedCampanyById($order->CompanyId);
+// echo json_encode($allorders);
 
  
  
