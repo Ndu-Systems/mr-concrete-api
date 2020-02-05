@@ -5,9 +5,21 @@ include_once '../../models/Concreteordermeasurement.php';
 
 
 $data = json_decode(file_get_contents("php://input"));
-$concreteorder = json_decode($data->concreteorder);
-$concreteordermeasurements = json_decode($data->concreteordermeasurements);
-// echo json_encode($concreteorder);
+$concreteorder =$data->concreteorder;
+$concreteordermeasurements = $data->concreteordermeasurements;
+
+$CreateUserId = $concreteorder->CreateUserId;
+$ProjectCode= $concreteorder->ProjectCode;
+$OrderNumber= $concreteorder->OrderNumber;
+$SupplierId= $concreteorder->SupplierId;
+$OrderDate= $concreteorder->OrderDate;
+$DeliveryDate= $concreteorder->DeliveryDate;
+$TruckArrivalTime= $concreteorder->TruckArrivalTime;
+$Directions= $concreteorder->Directions;
+$SpecialInstructions= $concreteorder->SpecialInstructions;
+$CategoryId= $concreteorder->CategoryId;
+$ModifyUserId= $concreteorder->ModifyUserId;
+$StatusId= $concreteorder->StatusId;
 
 //connect to db
 $database = new Database();
@@ -20,28 +32,29 @@ $concreteorder = new Concreteorder($db);
 
 $result = $concreteorder->add(
     $OrderId,
-    $concreteorder->CreateUserId,
-    $concreteorder->ProjectCode,
-    $concreteorder->OrderNumber,
-    $concreteorder->SupplierId,
-    $concreteorder->OrderDate,
-    $concreteorder->DeliveryDate,
-    $concreteorder->TruckArrivalTime,
-    $concreteorder->Directions,
-    $concreteorder->SpecialInstructions,
-    $concreteorder->CategoryId,
-    $concreteorder->CreateUserId,
-    $concreteorder->ModifyUserId,
-    $concreteorder->StatusId
+    $CreateUserId,
+    $ProjectCode,
+    $OrderNumber,
+    $SupplierId,
+    $OrderDate,
+    $DeliveryDate,
+    $TruckArrivalTime,
+    $Directions,
+    $SpecialInstructions,
+    $CategoryId,
+    $CreateUserId,
+    $ModifyUserId,
+    $StatusId
 );
 
 if( $result['OrderId']){
     foreach ($concreteordermeasurements as $measurement) {
         $order_measurement = new Concreteordermeasurement($db);
-    
+        $measurementId = $database->getGuid($db);
+
         $result = $order_measurement->add(
-            $measurement->Id,
-            $measurement->OrderId,
+            $measurementId,
+            $OrderId,
             $measurement->MeasurementId,
             $measurement->Value,
             $measurement->CreateUserId,
