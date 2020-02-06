@@ -5,21 +5,21 @@ include_once '../../models/Concreteordermeasurement.php';
 
 
 $data = json_decode(file_get_contents("php://input"));
-$concreteorder =$data->concreteorder;
+$concreteorder = $data->concreteorder;
 $concreteordermeasurements = $data->concreteordermeasurements;
 
 $CreateUserId = $concreteorder->CreateUserId;
-$ProjectCode= $concreteorder->ProjectCode;
-$OrderNumber= $concreteorder->OrderNumber;
-$SupplierId= $concreteorder->SupplierId;
-$OrderDate= $concreteorder->OrderDate;
-$DeliveryDate= $concreteorder->DeliveryDate;
-$TruckArrivalTime= $concreteorder->TruckArrivalTime;
-$Directions= $concreteorder->Directions;
-$SpecialInstructions= $concreteorder->SpecialInstructions;
-$CategoryId= $concreteorder->CategoryId;
-$ModifyUserId= $concreteorder->ModifyUserId;
-$StatusId= $concreteorder->StatusId;
+$ProjectCode = $concreteorder->ProjectCode;
+$OrderNumber = $concreteorder->OrderNumber;
+$SupplierId = $concreteorder->SupplierId;
+$OrderDate = $concreteorder->OrderDate;
+$DeliveryDate = $concreteorder->DeliveryDate;
+$TruckArrivalTime = $concreteorder->TruckArrivalTime;
+$Directions = $concreteorder->Directions;
+$SpecialInstructions = $concreteorder->SpecialInstructions;
+$CategoryId = $concreteorder->CategoryId;
+$ModifyUserId = $concreteorder->ModifyUserId;
+$StatusId = $concreteorder->StatusId;
 
 //connect to db
 $database = new Database();
@@ -47,7 +47,7 @@ $result = $concreteorder->add(
     $StatusId
 );
 
-if( $result['OrderId']){
+if ($result['OrderId']) {
     foreach ($concreteordermeasurements as $measurement) {
         $order_measurement = new Concreteordermeasurement($db);
         $measurementId = $database->getGuid($db);
@@ -62,14 +62,6 @@ if( $result['OrderId']){
             $measurement->StatusId
         );
     }
-    echo json_encode('true');
-    
+    $order = $concreteorder->getOneById($OrderId);
+    echo json_encode($order);
 }
-
-// $allorders = $orders->getDetailedCampanyById($order->CompanyId);
-// echo json_encode($allorders);
-
- 
- 
-
-

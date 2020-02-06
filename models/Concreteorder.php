@@ -1,4 +1,6 @@
 <?php
+include_once 'Concreteordermeasurement.php';
+
 class Concreteorder
 {
     //DB Stuff
@@ -11,20 +13,20 @@ class Concreteorder
 
     //Add user
     public function add(
-       $OrderId,
-       $UserId,
-       $ProjectCode,
-       $OrderNumber,
-       $SupplierId,
-       $OrderDate,
-       $DeliveryDate,
-       $TruckArrivalTime,
-       $Directions,
-       $SpecialInstructions,
-       $CategoryId,
-       $CreateUserId,
-       $ModifyUserId,
-       $StatusId
+        $OrderId,
+        $UserId,
+        $ProjectCode,
+        $OrderNumber,
+        $SupplierId,
+        $OrderDate,
+        $DeliveryDate,
+        $TruckArrivalTime,
+        $Directions,
+        $SpecialInstructions,
+        $CategoryId,
+        $CreateUserId,
+        $ModifyUserId,
+        $StatusId
 
     ) {
 
@@ -101,7 +103,7 @@ class Concreteorder
 
         try {
             $stmt = $this->conn->prepare($query);
-            if ($stmt->execute(array(               
+            if ($stmt->execute(array(
                 $CompanyId,
                 $Name,
                 $CreateUserId,
@@ -129,18 +131,46 @@ class Concreteorder
         }
     }
 
-    public function getCampanyById($CompanyId)
+    public function getUserById($UserId)
     {
         $query = "SELECT
       *
         FROM
-            concreteorder WHERE 1";
+            concreteorder WHERE UserId=?";
 
         $stmt = $this->conn->prepare($query);
-        $stmt->execute(array());
+        $stmt->execute(array($UserId));
+        $detailedOrders = Array();
 
         if ($stmt->rowCount()) {
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($data as $item) {
+                $concreteordermeasurement = new Concreteordermeasurement($this->conn);
+                $item['measurements'] = $concreteordermeasurement->getByOrderId(($item['OrderId']));
+                array_push($detailedOrders, $item);
+
+            }
         }
+        return $detailedOrders;
+    }
+
+    public function getOneById($OrderId)
+    {
+        $query = "SELECT
+      *
+        FROM
+            concreteorder WHERE OrderId=?";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array($OrderId));
+        if ($stmt->rowCount()) {
+            $item = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                $concreteordermeasurement = new Concreteordermeasurement($this->conn);
+                $item['measurements'] = $concreteordermeasurement->getByOrderId(($item['OrderId']));
+               return  $item;
+        }
+        return null;
     }
 }
