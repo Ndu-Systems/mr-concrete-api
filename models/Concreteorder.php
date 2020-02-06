@@ -1,5 +1,7 @@
 <?php
 include_once 'Concreteordermeasurement.php';
+include_once 'Category.php';
+include_once 'Supplier.php';
 
 class Concreteorder
 {
@@ -147,7 +149,13 @@ class Concreteorder
 
             foreach ($data as $item) {
                 $concreteordermeasurement = new Concreteordermeasurement($this->conn);
+                $category = new Category($this->conn);
+                $supplier = new Supplier($this->conn);
+
                 $item['measurements'] = $concreteordermeasurement->getByOrderId(($item['OrderId']));
+                $item['category'] = $category->getById(($item['CategoryId']));
+                $item['supplier'] = $supplier->getById(($item['SupplierId']));
+
                 array_push($detailedOrders, $item);
 
             }
@@ -168,7 +176,11 @@ class Concreteorder
             $item = $stmt->fetch(PDO::FETCH_ASSOC);
 
                 $concreteordermeasurement = new Concreteordermeasurement($this->conn);
+                $category = new Category($this->conn);
+                $supplier = new Supplier($this->conn);
                 $item['measurements'] = $concreteordermeasurement->getByOrderId(($item['OrderId']));
+                $item['category'] = $category->getById(($item['CategoryId']));
+                $item['supplier'] = $supplier->getById(($item['SupplierId']));
                return  $item;
         }
         return null;

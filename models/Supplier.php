@@ -110,7 +110,7 @@ class Supplier
 
     public function getById($supplierId)
     {
-        $query = "SELECT * FROM supplier WHERE supplierId =?";
+        $query = "SELECT * FROM supplier WHERE SupplierId =?";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($supplierId));

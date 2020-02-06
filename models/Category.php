@@ -91,7 +91,7 @@ class Category
 
     public function getById($categoryId)
     {
-        $query = "SELECT * FROM category WHERE categoryId =?";
+        $query = "SELECT * FROM category WHERE CategoryId =?";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($categoryId));
