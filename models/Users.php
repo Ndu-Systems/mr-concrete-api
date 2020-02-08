@@ -50,6 +50,7 @@ class Users
 
 
     public function AddUser(
+        $UserId,
         $FirstName,
         $LastName,
         $Email,
@@ -62,9 +63,7 @@ class Users
     ) {
         if ($this->getUserByEmail($Email) > 0) {
             return "user already exists";
-        }
-
-        $UserId = getGuid($this->conn);
+        }    
 
         $query = "INSERT INTO  user(        
             UserId ,  
