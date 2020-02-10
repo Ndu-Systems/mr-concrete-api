@@ -142,7 +142,7 @@ class Concreteorder
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($UserId));
-        $detailedOrders = Array();
+        $detailedOrders = array();
 
         if ($stmt->rowCount()) {
             $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -157,7 +157,6 @@ class Concreteorder
                 $item['supplier'] = $supplier->getById(($item['SupplierId']));
 
                 array_push($detailedOrders, $item);
-
             }
         }
         return $detailedOrders;
@@ -175,14 +174,25 @@ class Concreteorder
         if ($stmt->rowCount()) {
             $item = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                $concreteordermeasurement = new Concreteordermeasurement($this->conn);
-                $category = new Category($this->conn);
-                $supplier = new Supplier($this->conn);
-                $item['measurements'] = $concreteordermeasurement->getByOrderId(($item['OrderId']));
-                $item['category'] = $category->getById(($item['CategoryId']));
-                $item['supplier'] = $supplier->getById(($item['SupplierId']));
-               return  $item;
+            $concreteordermeasurement = new Concreteordermeasurement($this->conn);
+            $category = new Category($this->conn);
+            $supplier = new Supplier($this->conn);
+            $item['measurements'] = $concreteordermeasurement->getByOrderId(($item['OrderId']));
+            $item['category'] = $category->getById(($item['CategoryId']));
+            $item['supplier'] = $supplier->getById(($item['SupplierId']));
+            return  $item;
         }
         return null;
+    }
+
+    public function getOrdersForSupplier($SupplierId)
+    {
+        $query = "SELECT * FROM `concreteorder` WHERE SupplierId= ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array($SupplierId));
+        if ($stmt->rowCount()) {
+            $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $data;
+        }
     }
 }

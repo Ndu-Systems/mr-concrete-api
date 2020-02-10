@@ -34,11 +34,11 @@ class Roles
         }
     }
 
-    public function getRoleById($RoleId)
+    public function getRoleById($Id)
     {
-        $query = "SELECT * FROM role WHERE RoleId =?";
+        $query = "SELECT * FROM role WHERE Id =?";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute(array($RoleId));
+        $stmt->execute(array($Id));
 
         if ($stmt->rowCount()) {
             return $stmt->fetch(PDO::FETCH_ASSOC);

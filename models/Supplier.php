@@ -120,6 +120,16 @@ class Supplier
         }
     }
 
+    public function getSpecificSupplier($supplierId, $email) 
+    {   
+        $query = "SELECT * FROM supplier WHERE SupplierId =? AND EmailAddress = ?";        
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array($supplierId, $email));
+        if ($stmt->rowCount()) {
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+    }
+
     public function getCampanyById($CompanyId)
     {
         $query = "SELECT
