@@ -132,8 +132,7 @@ class Supplier
 
     public function getCampanyById($CompanyId)
     {
-        $query = "SELECT
-      *
+        $query = "SELECT *, 'no' as 'Selected'
         FROM
             supplier WHERE 1";
 
