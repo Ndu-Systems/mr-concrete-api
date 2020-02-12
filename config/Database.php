@@ -13,7 +13,7 @@ class Database
             if ($this->isLocal) {
                 $conn = new PDO('mysql:host=localhost;dbname=mrconcretedb', 'root', '');
             } else {
-                // $conn = new PDO('mysql:host=127.0.0.1;dbname=mnqmryug_prod', 'mnqmryug_prod', 'Harder01!');  
+                 $conn = new PDO('mysql:host=127.0.0.1;dbname=ndusys0_mrconcretedb', 'ndusys0_mrconcretedb', 'ndusys0_mrconcretedb');  
             }
 
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

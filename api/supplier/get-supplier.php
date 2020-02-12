@@ -1,6 +1,6 @@
 <?php
 include_once '../../config/Database.php';
-include_once '../../models/supplier.php';
+include_once '../../models/Supplier.php';
 
 $data = json_decode(file_get_contents("php://input"));
 
