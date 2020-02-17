@@ -50,9 +50,8 @@ class Category
 
 
 
-    public function updatecategory(
+    public function updateCategory(
         $categoryId,
-        $CompanyId,
         $Name,
         $CreateUserId,
         $ModifyUserId,
@@ -61,8 +60,7 @@ class Category
         $query = "UPDATE
         category
     SET
-        CompanyId = ?,
-        Name = ?,
+        CategoryName = ?,
         CreateUserId = ?,
         ModifyUserId = ?,
         StatusId = ?,
@@ -74,7 +72,6 @@ class Category
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(               
-                $CompanyId,
                 $Name,
                 $CreateUserId,
                 $ModifyUserId,
