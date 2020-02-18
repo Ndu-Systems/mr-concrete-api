@@ -5,21 +5,20 @@ include_once '../../models/Concreteordermeasurement.php';
 
 
 $data = json_decode(file_get_contents("php://input"));
-$concreteorder = $data->concreteorder;
-$concreteordermeasurements = $data->concreteordermeasurements;
+$concreteordermeasurements = $data->measurements;
 
-$CreateUserId = $concreteorder->CreateUserId;
-$ProjectCode = $concreteorder->ProjectCode;
-$OrderNumber = $concreteorder->OrderNumber;
-$SupplierId = $concreteorder->SupplierId;
-$OrderDate = $concreteorder->OrderDate;
-$DeliveryDate = $concreteorder->DeliveryDate;
-$TruckArrivalTime = $concreteorder->TruckArrivalTime;
-$Directions = $concreteorder->Directions;
-$SpecialInstructions = $concreteorder->SpecialInstructions;
-$CategoryId = $concreteorder->CategoryId;
-$ModifyUserId = $concreteorder->ModifyUserId;
-$StatusId = $concreteorder->StatusId;
+$CreateUserId = $data->CreateUserId;
+$ProjectCode = $data->ProjectCode;
+$OrderNumber = $data->OrderNumber;
+$SupplierId = $data->SupplierId;
+$OrderDate = $data->OrderDate;
+$DeliveryDate = $data->DeliveryDate;
+$TruckArrivalTime = $data->TruckArrivalTime;
+$Directions = $data->Directions;
+$SpecialInstructions = $data->SpecialInstructions;
+$CategoryId = $data->CategoryId;
+$ModifyUserId = $data->ModifyUserId;
+$StatusId = $data->StatusId;
 
 //connect to db
 $database = new Database();
