@@ -69,10 +69,15 @@ class Supplier
 
 
 
-    public function updatesupplier(
-        $supplierId,
-        $CompanyId,
-        $Name,
+    public function updateSupplier(
+        $SupplierId,
+        $SupplierName,
+        $ContactNumber,
+        $EmailAddress,
+        $ContactPerson,
+        $SupplierAddress,
+        $City,
+        $PostalCode,
         $CreateUserId,
         $ModifyUserId,
         $StatusId
@@ -80,28 +85,38 @@ class Supplier
         $query = "UPDATE
         supplier
     SET
-        CompanyId = ?,
-        Name = ?,
+        SupplierName = ?,
+        ContactNumber = ?,
+        EmailAddress = ?,
+        ContactPerson = ?,
+        SupplierAddress = ?,
+        City=?,
+        PostalCode=?,
         CreateUserId = ?,
         ModifyUserId = ?,
         StatusId = ?,
         ModifyDate = NOW()
         WHERE
-        supplierId = ?
+        SupplierId = ?
          ";
 
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
-                $CompanyId,
-                $Name,
+                $SupplierName,
+                $ContactNumber,
+                $EmailAddress,
+                $ContactPerson,
+                $SupplierAddress,
+                $City,
+                $PostalCode,
                 $CreateUserId,
                 $ModifyUserId,
                 $StatusId,
-                $supplierId
+                $SupplierId
 
             ))) {
-                return $this->getById($supplierId);
+                return $this->getById($SupplierId);
             }
         } catch (Exception $e) {
             return array("ERROR", $e);
@@ -120,9 +135,9 @@ class Supplier
         }
     }
 
-    public function getSpecificSupplier($supplierId, $email) 
-    {   
-        $query = "SELECT * FROM supplier WHERE SupplierId =? AND EmailAddress = ?";        
+    public function getSpecificSupplier($supplierId, $email)
+    {
+        $query = "SELECT * FROM supplier WHERE SupplierId =? AND EmailAddress = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($supplierId, $email));
         if ($stmt->rowCount()) {
@@ -130,14 +145,14 @@ class Supplier
         }
     }
 
-    public function getCampanyById($CompanyId)
+    public function getAllOrders($StatusId)
     {
         $query = "SELECT *, 'no' as 'Selected'
         FROM
-            supplier WHERE 1";
+        supplier WHERE StatusId = ?";
 
         $stmt = $this->conn->prepare($query);
-        $stmt->execute(array());
+        $stmt->execute(array($StatusId));
 
         if ($stmt->rowCount()) {
             return $stmt->fetchAll(PDO::FETCH_ASSOC);

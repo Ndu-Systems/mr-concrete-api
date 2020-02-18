@@ -11,12 +11,12 @@ class Measurement
 
     //Add user
     public function add(
-       $MeasurementId,
-       $Name,
-       $UnitOfMeasurement,
-       $CreateUserId,
-       $ModifyUserId,
-       $StatusId
+        $MeasurementId,
+        $Name,
+        $UnitOfMeasurement,
+        $CreateUserId,
+        $ModifyUserId,
+        $StatusId
 
     ) {
         $query = "
@@ -52,10 +52,10 @@ class Measurement
 
 
 
-    public function updatemeasurement(
-        $measurementId,
-        $CompanyId,
+    public function updateMeasurement(
+        $measurementId,       
         $Name,
+        $UnitOfMeasurement,
         $CreateUserId,
         $ModifyUserId,
         $StatusId
@@ -63,8 +63,8 @@ class Measurement
         $query = "UPDATE
         measurement
     SET
-        CompanyId = ?,
         Name = ?,
+        UnitOfMeasurement =?,
         CreateUserId = ?,
         ModifyUserId = ?,
         StatusId = ?,
@@ -75,9 +75,9 @@ class Measurement
 
         try {
             $stmt = $this->conn->prepare($query);
-            if ($stmt->execute(array(               
-                $CompanyId,
+            if ($stmt->execute(array(
                 $Name,
+                $UnitOfMeasurement,
                 $CreateUserId,
                 $ModifyUserId,
                 $StatusId,
