@@ -83,38 +83,63 @@ class Concreteorder
 
 
     public function updateconcreteorder(
-        $ConcreteorderId,
-        $CompanyId,
-        $Name,
+        $OrderId,
+        $UserId,
+        $ProjectCode,
+        $OrderNumber,
+        $SupplierId,
+        $OrderDate,
+        $DeliveryDate,
+        $TruckArrivalTime,
+        $Directions,
+        $SpecialInstructions,
+        $CategoryId,
         $CreateUserId,
         $ModifyUserId,
         $StatusId
+
     ) {
         $query = "UPDATE
         concreteorder
     SET
-        CompanyId = ?,
-        Name = ?,
-        CreateUserId = ?,
-        ModifyUserId = ?,
-        StatusId = ?,
+        UserId= ?,
+        ProjectCode= ?,
+        OrderNumber= ?,
+        SupplierId= ?,
+        OrderDate= ?,
+        DeliveryDate= ?,
+        TruckArrivalTime= ?,
+        Directions= ?,
+        SpecialInstructions= ?,
+        CategoryId= ?,
+        CreateUserId= ?,
+        ModifyUserId= ?,
+        StatusId= ?,
         ModifyDate = NOW()
+
         WHERE
-        ConcreteorderId = ?
+        OrderId = ?
          ";
 
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
-                $CompanyId,
-                $Name,
+                $UserId,
+                $ProjectCode,
+                $OrderNumber,
+                $SupplierId,
+                $OrderDate,
+                $DeliveryDate,
+                $TruckArrivalTime,
+                $Directions,
+                $SpecialInstructions,
+                $CategoryId,
                 $CreateUserId,
                 $ModifyUserId,
                 $StatusId,
-                $ConcreteorderId
-
+                $OrderId
             ))) {
-                return $this->getById($ConcreteorderId);
+                return $this->getById($OrderId);
             }
         } catch (Exception $e) {
             return array("ERROR", $e);
