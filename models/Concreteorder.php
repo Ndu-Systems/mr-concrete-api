@@ -83,38 +83,28 @@ class Concreteorder
 
 
     public function updateconcreteorder(
-        $ConcreteorderId,
-        $CompanyId,
-        $Name,
-        $CreateUserId,
+        $OrderId,
         $ModifyUserId,
         $StatusId
     ) {
         $query = "UPDATE
         concreteorder
     SET
-        CompanyId = ?,
-        Name = ?,
-        CreateUserId = ?,
         ModifyUserId = ?,
         StatusId = ?,
         ModifyDate = NOW()
         WHERE
-        ConcreteorderId = ?
+        OrderId = ?
          ";
 
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
-                $CompanyId,
-                $Name,
-                $CreateUserId,
                 $ModifyUserId,
                 $StatusId,
-                $ConcreteorderId
-
+                $OrderId
             ))) {
-                return $this->getById($ConcreteorderId);
+                return $this->getById($OrderId);
             }
         } catch (Exception $e) {
             return array("ERROR", $e);

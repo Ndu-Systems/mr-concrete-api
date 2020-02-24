@@ -372,17 +372,7 @@ CREATE TABLE `supplier` (
 INSERT INTO `supplier` (`SupplierId`, `SupplierName`, `ContactNumber`, `EmailAddress`, `ContactPerson`, `SupplierAddress`, `City`, `PostalCode`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
 ('0f84d16d-45cf-11ea-bfe3-c8f7501047dc', 'Bronders', '0133245244', 'bronders@sa.co.za', 'Graig', 'not-set', 'Cape Town', '10001', '2020-02-02 17:17:00', '8217b572-3c7d-11ea-8876-c8f7501047dc', '2020-02-02 17:17:00', '8217b572-3c7d-11ea-8876-c8f7501047dc', 1),
 ('15c1d82b-4935-11ea-b7e8-c8f7501047dc', 'Becker', 'na', 'becker@mail.com', 'Becker', 'na', 'na', 'na', '2020-02-08 22:39:24', 'sys', '2020-02-08 22:39:24', 'sys', 1),
-('1784bee6-4aaf-11ea-b387-c8f7501047dc', 'Test supplier', 'na', 'signup@mail.com', 'test', 'na', 'na', 'na', '2020-02-08 22:10:40', 'sys', '2020-02-08 22:10:40', 'sys', 1),
-('26d927af-45db-11ea-bfe3-c8f7501047dc', 'Stoner Supplies', '0144521142', 'stoner@mail.com', 'Jimmy', 'not-set', 'Bank Street', '500', '2020-02-02 18:43:34', '8217b572-3c7d-11ea-8876-c8f7501047dc', '2020-02-02 18:43:34', '8217b572-3c7d-11ea-8876-c8f7501047dc', 1),
-('5ceb325e-4aaf-11ea-b387-c8f7501047dc', 'Test supplier', 'na', 'signup@mail.com', 'test', 'na', 'na', 'na', '2020-02-08 22:12:36', 'sys', '2020-02-08 22:12:36', 'sys', 1),
-('811a48b1-4b3d-11ea-ad8f-c8f7501047dc', 'Home bakers', 'na', 'mini@mail.com', 'minister', 'na', 'na', 'na', '2020-02-09 15:10:11', 'sys', '2020-02-09 15:10:11', 'sys', 1),
-('8c8fe2df-43a1-11ea-8908-48f17f8d4d88', 'Mr JJ ', '0114557878', 'mrjj@mail.com', 'Mr JJ Sales', 'na', 'Durban', '8745', '2020-01-30 22:46:11', 'postman', '2020-01-30 22:46:11', 'postman', 1),
-('ac3d6ace-4aae-11ea-b387-c8f7501047dc', 'Test supplier', 'na', 'test@mail.com', '0', 'na', 'na', 'na', '2020-02-08 22:07:40', 'sys', '2020-02-08 22:07:40', 'sys', 1),
-('b2d0a02b-4932-11ea-b7e8-c8f7501047dc', 'Bheka ', '07465556421', 'Phakathi@mail.com', 'Newman Now', '76 CARLISLE STREET, GREYVILLE', 'DURBAN', '4001', '2020-02-07 00:47:48', '8217b572-3c7d-11ea-8876-c8f7501047dc', '2020-02-07 00:47:48', '8217b572-3c7d-11ea-8876-c8f7501047dc', 1),
-('b57897bb-43a1-11ea-8908-48f17f8d4d88', 'Wolies Home', '0114557878', 'wolls@mail.com', 'Zandi', 'na', 'Durban', '8745', '2020-01-30 22:47:20', 'postman', '2020-01-30 22:47:20', 'postman', 1),
-('c4f537c9-4aae-11ea-b387-c8f7501047dc', 'Test supplier', 'na', 'test@mail.com', '0', 'na', 'na', 'na', '2020-02-08 22:08:21', 'sys', '2020-02-08 22:08:21', 'sys', 1),
-('d688a9d3-45ce-11ea-bfe3-c8f7501047dc', 'Bricks and Stones', '0744522145', 'services@bands.co.za', 'Stone Gumede', 'not-set', 'Durban', '30001', '2020-02-02 17:15:25', '8217b572-3c7d-11ea-8876-c8f7501047dc', '2020-02-02 17:15:25', '8217b572-3c7d-11ea-8876-c8f7501047dc', 1),
-('ef493d51-4aae-11ea-b387-c8f7501047dc', 'Test supplier', 'na', 'test@mail.com', '0', 'na', 'na', 'na', '2020-02-08 22:09:32', 'sys', '2020-02-08 22:09:32', 'sys', 1);
+('26d927af-45db-11ea-bfe3-c8f7501047dc', 'Stoner Supplies', '0144521142', 'stoner@mail.com', 'Jimmy', 'not-set', 'Bank Street', '500', '2020-02-02 18:43:34', '8217b572-3c7d-11ea-8876-c8f7501047dc', '2020-02-02 18:43:34', '8217b572-3c7d-11ea-8876-c8f7501047dc', 1);
 
 -- --------------------------------------------------------
 
