@@ -84,15 +84,39 @@ class Concreteorder
 
     public function updateconcreteorder(
         $OrderId,
+        $UserId,
+        $ProjectCode,
+        $OrderNumber,
+        $SupplierId,
+        $OrderDate,
+        $DeliveryDate,
+        $TruckArrivalTime,
+        $Directions,
+        $SpecialInstructions,
+        $CategoryId,
+        $CreateUserId,
         $ModifyUserId,
         $StatusId
+
     ) {
         $query = "UPDATE
         concreteorder
     SET
-        ModifyUserId = ?,
-        StatusId = ?,
+        UserId= ?,
+        ProjectCode= ?,
+        OrderNumber= ?,
+        SupplierId= ?,
+        OrderDate= ?,
+        DeliveryDate= ?,
+        TruckArrivalTime= ?,
+        Directions= ?,
+        SpecialInstructions= ?,
+        CategoryId= ?,
+        CreateUserId= ?,
+        ModifyUserId= ?,
+        StatusId= ?,
         ModifyDate = NOW()
+
         WHERE
         OrderId = ?
          ";
@@ -100,6 +124,17 @@ class Concreteorder
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
+                $UserId,
+                $ProjectCode,
+                $OrderNumber,
+                $SupplierId,
+                $OrderDate,
+                $DeliveryDate,
+                $TruckArrivalTime,
+                $Directions,
+                $SpecialInstructions,
+                $CategoryId,
+                $CreateUserId,
                 $ModifyUserId,
                 $StatusId,
                 $OrderId

@@ -60,8 +60,9 @@ class Concreteordermeasurement
 
     public function updateconcreteordermeasurement(
         $Id,
-        $CompanyId,
-        $Name,
+        $OrderId,
+        $MeasurementId,
+        $Value,
         $CreateUserId,
         $ModifyUserId,
         $StatusId
@@ -69,8 +70,9 @@ class Concreteordermeasurement
         $query = "UPDATE
         concreteordermeasurement
     SET
-        CompanyId = ?,
-        Name = ?,
+        OrderId = ?,
+        MeasurementId = ?,
+        Value = ?,
         CreateUserId = ?,
         ModifyUserId = ?,
         StatusId = ?,
@@ -82,13 +84,13 @@ class Concreteordermeasurement
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
-                $CompanyId,
-                $Name,
+                $OrderId,
+                $MeasurementId,
+                $Value,
                 $CreateUserId,
                 $ModifyUserId,
                 $StatusId,
                 $Id
-
             ))) {
                 return $this->getById($Id);
             }
