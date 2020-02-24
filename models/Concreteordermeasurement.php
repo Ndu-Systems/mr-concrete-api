@@ -75,7 +75,7 @@ class Concreteordermeasurement
         Value = ?,
         CreateUserId = ?,
         ModifyUserId = ?,
-        StatusId = ?
+        StatusId = ?,
         ModifyDate = NOW()
         WHERE
         Id = ?
@@ -84,13 +84,13 @@ class Concreteordermeasurement
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
-                $Id,
                 $OrderId,
                 $MeasurementId,
                 $Value,
                 $CreateUserId,
                 $ModifyUserId,
-                $StatusId
+                $StatusId,
+                $Id
             ))) {
                 return $this->getById($Id);
             }
