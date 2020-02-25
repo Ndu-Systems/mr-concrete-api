@@ -52,7 +52,7 @@ if ($result['OrderId']) {
         $measurementId = $database->getGuid($db);
 
         $result = $order_measurement->updateconcreteordermeasurement(
-            $measurement->Id,
+            $measurementId,
             $OrderId,
             $measurement->MeasurementId,
             $measurement->Value,

@@ -2,6 +2,7 @@
 include_once '../../config/Database.php';
 include_once '../../models/Concreteorder.php';
 include_once '../../models/Supplier.php';
+include_once '../../models/Category.php';
 
 $data = json_decode(file_get_contents("php://input"));
 
@@ -17,7 +18,6 @@ $supplier = new Supplier($db);
 
 $supplierResult = $supplier->getById($SupplierId);
 $result["Orders"] = $concreteorder->getOrdersForSupplier($SupplierId);
-
-
 $result['supplier'] = $supplierResult;
+ 
 echo json_encode($result);
