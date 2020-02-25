@@ -6,6 +6,7 @@ $data = json_decode(file_get_contents("php://input"));
  
 $Name = $data->Name;
 $UnitOfMeasurement = $data->UnitOfMeasurement;
+$Type = $data->Type;
 $CreateUserId = $data->CreateUserId;
 $ModifyUserId = $data->ModifyUserId;
 $StatusId = $data->StatusId;
@@ -25,6 +26,7 @@ $result = $measurement->add(
     $MeasurementId,
     $Name,
     $UnitOfMeasurement,
+    $Type,
     $CreateUserId,
     $ModifyUserId,
     $StatusId
