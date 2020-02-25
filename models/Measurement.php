@@ -14,6 +14,7 @@ class Measurement
         $MeasurementId,
         $Name,
         $UnitOfMeasurement,
+        $Type,
         $CreateUserId,
         $ModifyUserId,
         $StatusId
@@ -24,12 +25,13 @@ class Measurement
             MeasurementId,
             Name,
             UnitOfMeasurement,
+            Type,
             CreateUserId,
             ModifyUserId,
             StatusId
         )
         VALUES(
-        ?,?,?,?,?,?
+        ?,?,?,?,?,?,?
          )
 ";
         try {
@@ -38,6 +40,7 @@ class Measurement
                 $MeasurementId,
                 $Name,
                 $UnitOfMeasurement,
+                $Type,
                 $CreateUserId,
                 $ModifyUserId,
                 $StatusId
@@ -56,6 +59,7 @@ class Measurement
         $measurementId,       
         $Name,
         $UnitOfMeasurement,
+        $Type,
         $CreateUserId,
         $ModifyUserId,
         $StatusId
@@ -65,6 +69,7 @@ class Measurement
     SET
         Name = ?,
         UnitOfMeasurement =?,
+        Type =?,
         CreateUserId = ?,
         ModifyUserId = ?,
         StatusId = ?,
@@ -78,6 +83,7 @@ class Measurement
             if ($stmt->execute(array(
                 $Name,
                 $UnitOfMeasurement,
+                $Type,
                 $CreateUserId,
                 $ModifyUserId,
                 $StatusId,
