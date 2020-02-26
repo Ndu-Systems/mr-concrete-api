@@ -212,12 +212,31 @@ class Concreteorder
 
     public function getOrdersForSupplier($SupplierId)
     {
-        $query = "SELECT * FROM `concreteorder` WHERE SupplierId= ?";
+        $query = "SELECT * FROM `concreteorder` WHERE SupplierId= ? order by CreateDate desc";
+
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($SupplierId));
+
+        $detailedOrders = array();
         if ($stmt->rowCount()) {
+
             $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $data;
+
+            foreach ($data as $item) {
+
+                $concreteordermeasurement = new Concreteordermeasurement($this->conn); 
+                $category = new Category($this->conn);
+                $supplier = new Supplier($this->conn);
+
+                $item['measurements'] = $concreteordermeasurement->getByOrderId(($item['OrderId']));
+                $item['category'] = $category->getById(($item['CategoryId']));
+                $item['supplier'] = $supplier->getById(($item['SupplierId']));
+
+                array_push($detailedOrders, $item);
+
+            }            
         }
+
+        return  $detailedOrders;
     }
 }

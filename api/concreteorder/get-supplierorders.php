@@ -17,7 +17,7 @@ $concreteorder = new Concreteorder($db);
 $supplier = new Supplier($db);
 
 $supplierResult = $supplier->getById($SupplierId);
-$result["Orders"] = $concreteorder->getOrdersForSupplier($SupplierId);
-$result['supplier'] = $supplierResult;
+$result = $concreteorder->getOrdersForSupplier($SupplierId);
+ 
  
 echo json_encode($result);
