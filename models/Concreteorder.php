@@ -180,7 +180,6 @@ class Concreteorder
                 $item['measurements'] = $concreteordermeasurement->getByOrderId(($item['OrderId']));
                 $item['category'] = $category->getById(($item['CategoryId']));
                 $item['supplier'] = $supplier->getById(($item['SupplierId']));
-
                 array_push($detailedOrders, $item);
             }
         }
@@ -238,5 +237,23 @@ class Concreteorder
         }
 
         return  $detailedOrders;
+    }
+
+    public function getOrderCounters()
+    {
+        $allCounters = array();
+        $item["pending"] =  $this->getCount(1);
+        $item["inProgress"] =  $this->getCount(3);
+        $item["completed"] =  $this->getCount(5);
+        $item["cancelled"] =  $this->getCount(6); 
+        return $item;
+     }
+
+    public function getCount($StatusId)
+    {
+       $query = "SELECT COUNT(o.OrderId) As Count FROM concreteorder o WHERE o.StatusId = ?";
+       $stmt = $this->conn->prepare($query);
+       $stmt->execute(array($StatusId));
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
