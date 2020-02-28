@@ -241,7 +241,6 @@ class Concreteorder
 
     public function getOrderCounters()
     {
-        $allCounters = array();
         $item["pending"] =  $this->getCount(1);
         $item["inProgress"] =  $this->getCount(3);
         $item["completed"] =  $this->getCount(5);
