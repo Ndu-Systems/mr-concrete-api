@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2020 at 09:19 PM
--- Server version: 10.1.35-MariaDB
--- PHP Version: 7.2.9
+-- Generation Time: May 23, 2020 at 12:05 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -36,12 +36,19 @@ CREATE TABLE `address` (
   `AddressLine3` varchar(50) NOT NULL,
   `City` varchar(50) NOT NULL,
   `PostalCode` varchar(20) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CrateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `address`
+--
+
+INSERT INTO `address` (`AddressId`, `UserId`, `AddressLine1`, `AddressLine2`, `AddressLine3`, `City`, `PostalCode`, `CreateDate`, `CrateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+('4df9f570-9cd5-11ea-809b-48f17f8d4d88', 'de662467-9c4a-11ea-84a4-48f17f8d4d88', 'sddsadsa', 'sddsadsa', 'sddsadsa', 'sddsadsa', '1245', '2020-05-23 11:10:53', 'sddsadsa', '2020-05-23 11:10:53', 'sddsadsa', 0);
 
 -- --------------------------------------------------------
 
@@ -53,9 +60,9 @@ CREATE TABLE `attachments` (
   `Id` int(11) NOT NULL,
   `url` varchar(225) DEFAULT NULL,
   `OtherId` varchar(225) DEFAULT NULL,
-  `CreateDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) DEFAULT NULL,
-  `ModifyDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) DEFAULT NULL,
   `StatusId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -69,9 +76,9 @@ CREATE TABLE `attachments` (
 CREATE TABLE `category` (
   `CategoryId` int(11) NOT NULL,
   `CategoryName` varchar(50) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -100,9 +107,9 @@ CREATE TABLE `comments` (
   `Id` int(11) NOT NULL,
   `Comment` int(11) NOT NULL,
   `OtherId` varchar(225) NOT NULL,
-  `CreateDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) DEFAULT NULL,
-  `ModifyDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) DEFAULT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -121,9 +128,9 @@ CREATE TABLE `company` (
   `CompanyAddress` varchar(225) NOT NULL,
   `City` varchar(50) NOT NULL,
   `PostalCode` varchar(10) NOT NULL,
-  `CreateDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` timestamp NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -139,9 +146,9 @@ CREATE TABLE `measurement` (
   `Name` varchar(50) NOT NULL,
   `UnitOfMeasurement` varchar(20) NOT NULL,
   `Type` varchar(30) DEFAULT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -195,7 +202,7 @@ CREATE TABLE `orderitem` (
   `Directions` varchar(225) DEFAULT NULL,
   `SpecialInstructions` varchar(225) DEFAULT NULL,
   `CategoryId` int(11) DEFAULT NULL,
-  `CreateDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) DEFAULT NULL,
   `ModifyDate` int(11) DEFAULT NULL,
   `ModifyUserId` varchar(225) DEFAULT NULL,
@@ -212,9 +219,9 @@ CREATE TABLE `ordermeasurement` (
   `OrderId` int(11) NOT NULL,
   `MeasurementId` int(11) NOT NULL,
   `value` int(11) NOT NULL,
-  `CreateDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) DEFAULT NULL,
-  `ModifyDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) DEFAULT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -231,9 +238,9 @@ CREATE TABLE `orderproduct` (
   `ProductId` varchar(225) NOT NULL,
   `Quantity` int(10) NOT NULL,
   `TotalPrice` decimal(10,0) NOT NULL,
-  `CreateDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) DEFAULT NULL,
-  `ModifyDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) DEFAULT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -247,9 +254,9 @@ CREATE TABLE `orderproduct` (
 CREATE TABLE `orderstatus` (
   `StatusId` int(11) NOT NULL,
   `Description` int(11) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `IsActive` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -266,9 +273,9 @@ CREATE TABLE `product` (
   `ProductCode` varchar(225) NOT NULL,
   `Price` decimal(10,0) NOT NULL,
   `CategoryId` varchar(225) DEFAULT NULL,
-  `CreateDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) DEFAULT NULL,
-  `ModifyDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) DEFAULT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -284,9 +291,9 @@ CREATE TABLE `productmeasurements` (
   `MeasurementId` int(11) NOT NULL,
   `ProductId` varchar(225) NOT NULL,
   `Value` varchar(10) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) DEFAULT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -302,9 +309,9 @@ CREATE TABLE `ratings` (
   `value` int(11) NOT NULL,
   `comment` varchar(50) NOT NULL,
   `OtherId` varchar(225) DEFAULT NULL,
-  `CreateDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) DEFAULT NULL,
-  `ModifyDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) DEFAULT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -318,9 +325,9 @@ CREATE TABLE `ratings` (
 CREATE TABLE `role` (
   `Id` int(5) NOT NULL,
   `RoleName` varchar(50) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -344,9 +351,9 @@ INSERT INTO `role` (`Id`, `RoleName`, `CreateDate`, `CreateUserId`, `ModifyDate`
 CREATE TABLE `statuses` (
   `StatusId` int(11) NOT NULL,
   `Description` varchar(25) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `IsActive` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -378,10 +385,13 @@ CREATE TABLE `user` (
   `Email` varchar(50) NOT NULL,
   `Password` varchar(50) NOT NULL,
   `Cellphone` varchar(15) NOT NULL,
+  `Gender` varchar(15) DEFAULT NULL,
+  `DOB` datetime DEFAULT NULL,
   `RoleId` int(10) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `UserType` varchar(30) DEFAULT NULL,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -390,14 +400,16 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`UserId`, `FirstName`, `LastName`, `Email`, `Password`, `Cellphone`, `RoleId`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
-('0d9678af-4ab0-11ea-b387-c8f7501047dc', 'test', 'user', 'Engineer@mail.com', '12345', 'na', 2, '2020-02-08 22:17:32', 'sys', '2020-02-08 22:17:32', 'sys', 1),
-('1b5b7944-4ab3-11ea-b387-c8f7501047dc', 'Becker', 'News', 'becker@mail.com', '12345', 'na', 3, '2020-02-08 22:39:24', 'sys', '2020-02-08 22:39:24', 'sys', 1),
-('36e8d88f-4ab3-11ea-b387-c8f7501047dc', 'Steve', 'Nkosi', 'steven@mail.com', '12345', 'na', 2, '2020-02-08 22:40:10', 'sys', '2020-02-08 22:40:10', 'sys', 1),
-('5cea9755-4aaf-11ea-b387-c8f7501047dc', 'test', 'user', 'signup@mail.com', '12345', 'na', 3, '2020-02-08 22:12:36', 'sys', '2020-02-08 22:12:36', 'sys', 1),
-('8118d997-4b3d-11ea-ad8f-c8f7501047dc', 'minister', 'Government', 'mini@mail.com', '12345', 'na', 3, '2020-02-09 15:10:11', 'sys', '2020-02-09 15:10:11', 'sys', 1),
-('8217b572-3c7d-11ea-8876-c8f7501047dc', 'test', 'user', 'test@mail.com', '12345', '071455588774', 1, '2020-01-21 20:40:33', 'sys', '2020-01-21 20:40:33', 'sys', 1),
-('b579c478-4b3d-11ea-ad8f-c8f7501047dc', 'Sir', 'Mngadi', 'sir@mail.com', '12345', 'na', 2, '2020-02-09 15:11:39', 'sys', '2020-02-09 15:11:39', 'sys', 1);
+INSERT INTO `user` (`UserId`, `FirstName`, `LastName`, `Email`, `Password`, `Cellphone`, `Gender`, `DOB`, `RoleId`, `UserType`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+('0d9678af-4ab0-11ea-b387-c8f7501047dc', 'test', 'user', 'Engineer@mail.com', '12345', 'na', NULL, NULL, 2, NULL, '2020-02-08 22:17:32', 'sys', '2020-02-08 22:17:32', 'sys', 1),
+('1b5b7944-4ab3-11ea-b387-c8f7501047dc', 'Becker', 'News', 'becker@mail.com', '12345', 'na', NULL, NULL, 3, NULL, '2020-02-08 22:39:24', 'sys', '2020-02-08 22:39:24', 'sys', 1),
+('36e8d88f-4ab3-11ea-b387-c8f7501047dc', 'Steve', 'Nkosi', 'steven@mail.com', '12345', 'na', NULL, NULL, 2, NULL, '2020-02-08 22:40:10', 'sys', '2020-02-08 22:40:10', 'sys', 1),
+('5cea9755-4aaf-11ea-b387-c8f7501047dc', 'test', 'user', 'signup@mail.com', '12345', 'na', NULL, NULL, 3, NULL, '2020-02-08 22:12:36', 'sys', '2020-02-08 22:12:36', 'sys', 1),
+('5f544790-9cdc-11ea-809b-48f17f8d4d88', 'Jane', 'Smith', 'Jane.Engineer@mail.com', '12345', 'na', NULL, NULL, 2, 'Engineer', '2020-05-23 12:01:29', 'sys', '2020-05-23 12:01:29', 'sys', 1),
+('8118d997-4b3d-11ea-ad8f-c8f7501047dc', 'minister', 'Government', 'mini@mail.com', '12345', 'na', NULL, NULL, 3, NULL, '2020-02-09 15:10:11', 'sys', '2020-02-09 15:10:11', 'sys', 1),
+('8217b572-3c7d-11ea-8876-c8f7501047dc', 'test', 'user', 'test@mail.com', '12345', '071455588774', NULL, NULL, 1, NULL, '2020-01-21 20:40:33', 'sys', '2020-01-21 20:40:33', 'sys', 1),
+('b579c478-4b3d-11ea-ad8f-c8f7501047dc', 'Sir', 'Mngadi', 'sir@mail.com', '12345', 'n55', NULL, NULL, 2, NULL, '2020-02-09 15:11:39', 'sys', '2020-02-09 15:11:39', 'sys', 1),
+('de662467-9c4a-11ea-84a4-48f17f8d4d88', 'sipho', 'thule', 'sipho@mail.com', 'newpass', 'na', 'Male', '1992-06-22 18:39:56', 3, 'Customer', '2020-05-22 18:39:56', 'sys', '2020-05-23 11:29:27', 'sys', 1);
 
 --
 -- Indexes for dumped tables
