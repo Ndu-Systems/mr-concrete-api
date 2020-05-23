@@ -1,36 +1,34 @@
 <?php
 include_once '../../config/Database.php';
-include_once '../../models/Users.php';
+include_once '../../models/Address.php';
+
 
 $data = json_decode(file_get_contents("php://input"));
 
-$UserId = $data->UserId;
-$FirstName = $data->FirstName;
-$LastName = $data->LastName;
-$Email = $data->Email;
-$Cellphone = $data->Cellphone;
-$Gender = $data->Gender;
-$DOB = $data->DOB;
-$RoleId = $data->RoleId;
-$CreateUserId = $data->CreateUserId;
-$ModifyUserId = $data->ModifyUserId;
-$StatusId = $data->StatusId;
+$AddressId= $data->AddressId;
+$UserId= $data->UserId;
+$AddressLine1= $data->AddressLine1;
+$AddressLine2= $data->AddressLine2;
+$AddressLine3= $data->AddressLine3;
+$City= $data->City;
+$PostalCode= $data->PostalCode;
+$CrateUserId= $data->CrateUserId;
+$ModifyUserId= $data->ModifyUserId;
+$StatusId= $data->StatusId;
 
 $database = new Database();
 $db = $database->connect();
 
-$users = new Users($db);
-$result = $users->UpdateUser(
+$address = new Address($db);
+$result = $address->UpdateAddress(
+    $AddressId,
     $UserId,
-    $FirstName,
-    $LastName,
-    $Email,
-    $Cellphone,
-    $Gender,
-    $DOB,
-    $RoleId,
-    $UserType,
-    $CreateUserId,
+    $AddressLine1,
+    $AddressLine2,
+    $AddressLine3,
+    $City,
+    $PostalCode,
+    $CrateUserId,
     $ModifyUserId,
     $StatusId
 );

@@ -47,7 +47,7 @@ class Address
         $ModifyUserId,
         $StatusId
     ) {
-     
+
         $query = "INSERT INTO  address(        
           AddressId,
           UserId,
@@ -82,32 +82,30 @@ class Address
             return array("ERROR", $e);
         }
     }
-    public function Updateaddress(
+    public function UpdateAddress(
         $AddressId,
-        $FirstName,
-        $LastName,
-        $Email,
-        $Cellphone,
-        $Gender,
-        $DOB,
-        $RoleId,
-        $CreateAddressId,
-        $ModifyAddressId,
+        $UserId,
+        $AddressLine1,
+        $AddressLine2,
+        $AddressLine3,
+        $City,
+        $PostalCode,
+        $CrateUserId,
+        $ModifyUserId,
         $StatusId
     ) {
-     
+
         $query = "UPDATE  address      
            SET 
-            FirstName = ?,
-            LastName = ?,
-            Email = ?,
-            Cellphone = ?,
-            Gender = ?,
-            DOB = ?,
-            RoleId = ?,
+           UserId = ?,
+           AddressLine1 = ?,
+           AddressLine2 = ?,
+           AddressLine3 = ?,
+           City = ?,
+           PostalCode = ?,
+           CrateUserId = ?,
             ModifyDate = now(),
-            CreateAddressId = ?,
-            ModifyAddressId = ?,
+            ModifyUserId = ?,
             StatusId = ?
             WHERE 
             AddressId = ?
@@ -116,15 +114,14 @@ class Address
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
-                $FirstName,
-                $LastName,
-                $Email,
-                $Cellphone,
-                $Gender,
-                $DOB,
-                $RoleId,
-                $CreateAddressId,
-                $ModifyAddressId,
+                $UserId,
+                $AddressLine1,
+                $AddressLine2,
+                $AddressLine3,
+                $City,
+                $PostalCode,
+                $CrateUserId,
+                $ModifyUserId,
                 $StatusId,
                 $AddressId
             ))) {
@@ -134,5 +131,4 @@ class Address
             return array("ERROR", $e);
         }
     }
-
 }
