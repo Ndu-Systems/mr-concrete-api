@@ -10,7 +10,7 @@ $Email = $data->Email;
 $Password = $data->Password;
 $FirstName = $data->FirstName;
 $LastName = $data->LastName;
-$TypeOfUser = $data->TypeOfUser;
+$UserType = $data->TypeOfUser;
 $SupplierName = $data->SupplierName;
 $CreateUserId = $data->CreateUserId;
 $ModifyUserId = $data->ModifyUserId;
@@ -23,8 +23,8 @@ $db = $database->connect();
 $users = new Users($db);
 $roles = new Roles($db);
 
-if ($TypeOfUser == 'Supplier') {
-    $roleResult = $roles->getByRoleName($TypeOfUser);
+if ($UserType == 'Supplier') {
+    $roleResult = $roles->getByRoleName($UserType);
     $RoleId = $roleResult['Id'];
     $UserId = $database->getGuid($db);
     $result = $users->AddUser(
@@ -35,6 +35,7 @@ if ($TypeOfUser == 'Supplier') {
         $Password,
         $Cellphone,
         $RoleId,
+        $UserType,
         $CreateUserId,
         $ModifyUserId,
         $StatusId
@@ -68,9 +69,9 @@ if ($TypeOfUser == 'Supplier') {
             echo json_encode($result);
         }
     }
-} else if ($TypeOfUser == 'Engineer') {
+} else if ($UserType == 'Engineer') {
 
-    $roleResult = $roles->getByRoleName($TypeOfUser);
+    $roleResult = $roles->getByRoleName($UserType);
     $RoleId = $roleResult['Id'];
 
     $UserId = $database->getGuid($db);
@@ -82,6 +83,7 @@ if ($TypeOfUser == 'Supplier') {
         $Password,
         $Cellphone,
         $RoleId,
+        $UserType,
         $CreateUserId,
         $ModifyUserId,
         $StatusId
