@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2020 at 12:05 PM
+-- Generation Time: May 24, 2020 at 10:24 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -48,7 +48,7 @@ CREATE TABLE `address` (
 --
 
 INSERT INTO `address` (`AddressId`, `UserId`, `AddressLine1`, `AddressLine2`, `AddressLine3`, `City`, `PostalCode`, `CreateDate`, `CrateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
-('4df9f570-9cd5-11ea-809b-48f17f8d4d88', 'de662467-9c4a-11ea-84a4-48f17f8d4d88', 'sddsadsa', 'sddsadsa', 'sddsadsa', 'sddsadsa', '1245', '2020-05-23 11:10:53', 'sddsadsa', '2020-05-23 11:10:53', 'sddsadsa', 0);
+('4df9f570-9cd5-11ea-809b-48f17f8d4d88', 'de662467-9c4a-11ea-84a4-48f17f8d4d88', 'The Willaim', 'Unit 510', 'Black 56', 'Fourways', '1245', '2020-05-23 11:10:53', 'de662467-9c4a-11ea-84a4-48f17f8d4d88', '2020-05-23 12:11:52', 'de662467-9c4a-11ea-84a4-48f17f8d4d88', 1);
 
 -- --------------------------------------------------------
 
@@ -134,6 +134,31 @@ CREATE TABLE `company` (
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `image`
+--
+
+CREATE TABLE `image` (
+  `ImageId` varchar(225) NOT NULL,
+  `CompanyId` varchar(225) NOT NULL,
+  `OtherId` varchar(225) NOT NULL,
+  `Url` text NOT NULL,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `CreateUserId` varchar(225) NOT NULL,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `ModifyUserId` varchar(225) NOT NULL,
+  `StatusId` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `image`
+--
+
+INSERT INTO `image` (`ImageId`, `CompanyId`, `OtherId`, `Url`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+('0055e2ef-3e08-11ea-820f-48f17f8d4d88', '94c5b3cf-d170-11e9-b97c-48f17f8d4d88', 'de662467-9c4a-11ea-84a4-48f17f8d4d88', 'http://localhost:8200/inventoryio-api/api/upload/uploads/1579801467iio.jpg', '2020-01-23 19:44:27', '81de5b36-d170-11e9-b97c-48f17f8d4d88', '2020-03-22 19:05:21', '81de5b36-d170-11e9-b97c-48f17f8d4d88', 1);
 
 -- --------------------------------------------------------
 
@@ -248,6 +273,30 @@ CREATE TABLE `orderproduct` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `OrdersId` varchar(225) NOT NULL,
+  `OrderId` int(10) NOT NULL,
+  `CompanyId` varchar(225) NOT NULL,
+  `ParntersId` varchar(225) DEFAULT NULL,
+  `OrderType` varchar(100) NOT NULL,
+  `Total` varchar(10) NOT NULL,
+  `Paid` varchar(10) DEFAULT '0.00',
+  `Due` varchar(10) DEFAULT NULL,
+  `ExpectedDate` text DEFAULT NULL,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `CreateUserId` varchar(225) NOT NULL,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `ModifyUserId` varchar(225) NOT NULL,
+  `Status` varchar(50) DEFAULT NULL,
+  `StatusId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `orderstatus`
 --
 
@@ -259,6 +308,53 @@ CREATE TABLE `orderstatus` (
   `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `IsActive` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_options`
+--
+
+CREATE TABLE `order_options` (
+  `Id` int(10) NOT NULL,
+  `OrderId` varchar(225) NOT NULL,
+  `ProductId` varchar(225) DEFAULT NULL,
+  `OrderProductId` varchar(225) NOT NULL,
+  `OptionId` varchar(225) NOT NULL,
+  `ValueId` int(10) NOT NULL,
+  `OptionValue` varchar(300) NOT NULL,
+  `OptionName` varchar(200) DEFAULT NULL,
+  `ValuePrice` decimal(10,0) NOT NULL,
+  `ValueIdQty` int(10) NOT NULL,
+  `CompanyId` varchar(225) NOT NULL,
+  `CreateDate` datetime DEFAULT current_timestamp(),
+  `CreateUserId` varchar(225) NOT NULL,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `ModifyUserId` varchar(225) NOT NULL,
+  `StatusId` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_products`
+--
+
+CREATE TABLE `order_products` (
+  `Id` varchar(225) NOT NULL,
+  `OrderId` varchar(225) NOT NULL,
+  `ProductId` varchar(225) NOT NULL,
+  `CompanyId` varchar(225) DEFAULT NULL,
+  `ProductName` text DEFAULT NULL,
+  `UnitPrice` varchar(10) DEFAULT NULL,
+  `Quantity` varchar(225) NOT NULL,
+  `subTotal` varchar(10) NOT NULL,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `CreateUserId` varchar(225) NOT NULL,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `ModifyUserId` varchar(225) NOT NULL,
+  `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -432,6 +528,12 @@ ALTER TABLE `category`
 --
 ALTER TABLE `company`
   ADD PRIMARY KEY (`CompanyId`);
+
+--
+-- Indexes for table `image`
+--
+ALTER TABLE `image`
+  ADD PRIMARY KEY (`ImageId`);
 
 --
 -- Indexes for table `measurement`
