@@ -1,5 +1,6 @@
 <?php
 include_once 'Address.php';
+include_once 'Image.php';
 
 class Users
 {
@@ -34,7 +35,9 @@ class Users
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($user) {
                 $address = new Address($this->conn);
+                $image = new Image($this->conn);
                 $user["Address"] = $address->getUserByUserId($user["UserId"]);
+                $user["Images"] = $image->getParentIdById($user["UserId"]);
                 return $user;
             }
             return null;
