@@ -13,6 +13,39 @@ class Users
         $this->conn = $db;
     }
 
+    public function getAllUsers($RoleId, $StatusId)
+    {
+        if ($RoleId > 0) {
+            return $this->getUsersByRole($RoleId, $StatusId);
+        } else {
+            return $this-> getUsersByStatus($StatusId);
+        }
+    }
+    private function getUsersByStatus($StatusId)
+    {
+        $query = "SELECT * FROM user WHERE StatusId =?";
+
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->execute(array($StatusId));
+
+        if ($stmt->rowCount()) {
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+    }
+    private function getUsersByRole($RoleId, $StatusId)
+    {
+        $query = "SELECT * FROM user WHERE RoleId =? AND StatusId =?";
+
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->execute(array($RoleId, $StatusId));
+
+        if ($stmt->rowCount()) {
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+    }
+
     public function getUserByUserId($UserId)
     {
         $query = "SELECT * FROM user WHERE UserId =?";
@@ -56,6 +89,20 @@ class Users
         }
     }
 
+    public function getUserByEmailAndToken($Email, $Token)
+    {
+        $query = "SELECT * FROM user WHERE Email =? AND Token =? ";
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->execute(array($Email, $Token));
+
+        if ($stmt->rowCount()) {
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+    }
+
+    
+
     public function getUserByEmailAndPassword(
         $Email,
         $Password
@@ -94,12 +141,11 @@ class Users
             Email ,  
             Password ,  
             Cellphone ,  
-            RoleId , 
-            UserType , 
+            RoleId ,          
             CreateUserId , 
             ModifyUserId ,  
             StatusId ) 
-            VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            VALUES (?,?,?,?,?,?,?,?,?,?)";
 
         try {
             $stmt = $this->conn->prepare($query);
@@ -111,7 +157,6 @@ class Users
                 $Password,
                 $Cellphone,
                 $RoleId,
-                $UserType,
                 $CreateUserId,
                 $ModifyUserId,
                 $StatusId
@@ -142,11 +187,8 @@ class Users
             FirstName = ?,
             LastName = ?,
             Email = ?,
-            Cellphone = ?,
-            Gender = ?,
-            DOB = ?,
-            RoleId = ?,
-            UserType = ?,
+            Cellphone = ?,         
+            RoleId = ?,  
             ModifyDate = now(),
             CreateUserId = ?,
             ModifyUserId = ?,
@@ -162,10 +204,7 @@ class Users
                 $LastName,
                 $Email,
                 $Cellphone,
-                $Gender,
-                $DOB,
                 $RoleId,
-                $UserType,
                 $CreateUserId,
                 $ModifyUserId,
                 $StatusId,

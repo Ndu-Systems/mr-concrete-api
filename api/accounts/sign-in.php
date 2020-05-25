@@ -15,8 +15,12 @@ $user = new Users($db);
 $role = new Roles($db);
 
 $result = $user->getUserByEmailAndPassword($Email,$Password);
-$Id = $result["RoleId"];
-$roleResult = $role->getRoleById($Id);
-$result['Password'] = null;
-$result['Role'] = $roleResult;
-echo json_encode($result);
+if($result) {
+    $Id = $result["RoleId"];
+    $roleResult = $role->getRoleById($Id);
+    $result['Password'] = null;
+    $result['Role'] = $roleResult;
+    echo json_encode($result);
+}else {
+    echo json_encode("the email/password entered is invalid");
+}

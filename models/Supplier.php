@@ -25,7 +25,6 @@ class Supplier
 
     ) {
 
-
         $query = "
         INSERT INTO supplier(
             SupplierId,
