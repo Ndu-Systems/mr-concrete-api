@@ -1,35 +1,37 @@
 <?php
 include_once '../../config/Database.php';
-include_once '../../models/Concreteordermeasurement.php';
+include_once '../../models/Productproperty.php';
 
 $data = json_decode(file_get_contents("php://input"));
-
-
-$OrderId = $data->OrderId;
-$MeasurementId = $data->MeasurementId;
+$ProductId = $data->ProductId;
+$Name = $data->Name;
+$Code = $data->Code;
 $Value = $data->Value;
-$CreateUserId = $data->CreateUserId;
+$CrateUserId = $data->CrateUserId;
 $ModifyUserId = $data->ModifyUserId;
 $StatusId = $data->StatusId;
-
 
 //connect to db
 $database = new Database();
 $db = $database->connect();
-$Id = $database->getGuid($db);
-
+$ProductpropertyId = $database->getGuid($db);
 
 // create user first to get UserId
-$concreteordermeasurement = new Concreteordermeasurement($db);
+$productproperty = new Productproperty($db);
 
-$result = $concreteordermeasurement->add(
-    $Id,
-    $OrderId,
-    $MeasurementId,
+$result = $productproperty->add(
+    $ProductpropertyId,
+    $ProductId,
+    $Name,
+    $Code,
     $Value,
-    $CreateUserId,
+    $CrateUserId,
     $ModifyUserId,
     $StatusId
 );
-
 echo json_encode($result);
+
+ 
+ 
+
+

@@ -1,6 +1,6 @@
 <?php
 include_once '../../config/Database.php';
-include_once '../../models/Orders.php';
+include_once '../../models/Order.php';
 
 $data = json_decode(file_get_contents("php://input"));
 
@@ -13,13 +13,13 @@ $database = new Database();
 $db = $database->connect();
 
 // create user first to get UserId
-$orders = new Orders($db);
+$Order = new Order($db);
 
-$result = $orders->getDetailedSingleCampanyById(
+$result = $Order->getById(
     $OrderId
 );
  
-    echo json_encode($result);
+echo json_encode($result);
 
  
  
