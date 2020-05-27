@@ -10,20 +10,20 @@ class Account
         $this->conn = $db;
     }
     // Activates the users new account
-    public function ActivateUserAccount($Email, $Token)
+    public function ActivateUserAccount($Token)
     {
         $user  = new Users($this->conn);   
 
-        if ($user->getUserByEmailAndToken($Email, $Token) > 0) {
-
+        if ($user->getUserByToken($Token) > 0) {
+            $result =  $user->getUserByToken($Token);
             $query = "UPDATE user SET StatusId = ? where Email = ?";
             // do the magic
             try {
                 $stmt = $this->conn->prepare($query);
                 if ($stmt->execute(array(
                     1,
-                    $Email
-                ))) {
+                    $result["Email"]
+                 ))) {
                     return 1;
                 } else {
                     return "server error, contact system admin.";

@@ -1,6 +1,7 @@
 <?php
 include_once 'Address.php';
 include_once 'Image.php';
+include_once 'Account.php';
 
 class Users
 {
@@ -89,12 +90,12 @@ class Users
         }
     }
 
-    public function getUserByEmailAndToken($Email, $Token)
+    public function getUserByToken($Token)
     {
-        $query = "SELECT * FROM user WHERE Email =? AND Token =? ";
+        $query = "SELECT * FROM user WHERE Token =? ";
         $stmt = $this->conn->prepare($query);
 
-        $stmt->execute(array($Email, $Token));
+        $stmt->execute(array($Token));
 
         if ($stmt->rowCount()) {
             return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -130,6 +131,8 @@ class Users
         $ModifyUserId,
         $StatusId
     ) {
+        $account = new Account($this->conn);
+
         if ($this->getUserByEmail($Email) > 0) {
             return "user already exists";
         }
@@ -161,7 +164,8 @@ class Users
                 $ModifyUserId,
                 $StatusId
             ))) {
-                return $this->getUserByUserId($UserId);
+
+                return $account->GenerateToken($Email);
             }
         } catch (Exception $e) {
             return array("ERROR", $e);
