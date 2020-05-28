@@ -153,16 +153,16 @@ class Product
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($UserId));
-        $DetailedProducts = array();
+        $detailedProducts = array();
         if ($stmt->rowCount()) {
             $products =  $stmt->fetchAll(PDO::FETCH_ASSOC);
             $productproperty = new Productproperty($this->conn);
 
             foreach ($products as $product) {
                 $product["Properties"] =  $productproperty->getByProductId($product["ProductId"]);
-                array_push($DetailedProducts, $product);
+                array_push($detailedProducts, $product);
             }
         }
-        return $DetailedProducts;
+        return $detailedProducts;
     }
 }
