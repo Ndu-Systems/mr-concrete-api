@@ -14,6 +14,8 @@ class Product
         $ProductId,
         $UserId,
         $ProductName,
+        $ShortDescription,
+        $Description,
         $ProductCode,
         $Price,
         $Quantity,
@@ -30,6 +32,8 @@ class Product
             ProductId,
             UserId,
             ProductName,
+            ShortDescription,
+            Description,
             ProductCode,
             Price,
             Quantity,
@@ -40,7 +44,7 @@ class Product
             StatusId
         )
         VALUES(
-        ?,?,?,?,?,?,?,?,?,?
+        ?,?,?,?,?,?,?,?,?,?,?,?,?
          )
 ";
         try {
@@ -49,6 +53,8 @@ class Product
                 $ProductId,
                 $UserId,
                 $ProductName,
+                $ShortDescription,
+                $Description,
                 $ProductCode,
                 $Price,
                 $Quantity,
@@ -72,6 +78,8 @@ class Product
         $ProductId,
         $UserId,
         $ProductName,
+        $ShortDescription,
+        $Description,
         $ProductCode,
         $Price,
         $Quantity,
@@ -86,6 +94,8 @@ class Product
                         SET
                         UserId =  ? ,
                         ProductName =  ? ,
+                        ShortDescription=?,
+                        Description=?,
                         ProductCode =  ? ,
                         Price =  ? ,
                         Quantity =  ? ,
@@ -104,6 +114,8 @@ class Product
             if ($stmt->execute(array(
                 $UserId,
                 $ProductName,
+                $ShortDescription,
+                $Description,
                 $ProductCode,
                 $Price,
                 $Quantity,
@@ -142,7 +154,7 @@ class Product
         $stmt->execute(array($UserId));
 
         if ($stmt->rowCount()) {
-            return $stmt->fetch(PDO::FETCH_ASSOC);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
     }
 }

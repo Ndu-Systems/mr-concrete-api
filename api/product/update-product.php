@@ -6,6 +6,8 @@ $data = json_decode(file_get_contents("php://input"));
 
 $UserId = $data->UserId;
 $ProductName = $data->ProductName;
+$ShortDescription = $data->ShortDescription;
+$Description = $data->Description;
 $ProductCode = $data->ProductCode;
 $Price = $data->Price;
 $Quantity = $data->Quantity;
@@ -26,6 +28,8 @@ $result = $product->update(
     $ProductId,
     $UserId,
     $ProductName,
+    $ShortDescription,
+    $Description,
     $ProductCode,
     $Price,
     $Quantity,
