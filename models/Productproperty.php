@@ -16,6 +16,7 @@ class Productproperty
         $Name,
         $Code,
         $Value,
+        $Units,
         $CrateUserId,
         $ModifyUserId,
         $StatusId
@@ -29,12 +30,13 @@ class Productproperty
             Name,
             Code,
             Value,
+            Units,
             CrateUserId,
             ModifyUserId,
             StatusId
         )
         VALUES(
-        ?,?,?,?,?,?,?,?
+        ?,?,?,?,?,?,?,?,?
          )
 ";
         try {
@@ -45,6 +47,7 @@ class Productproperty
                 $Name,
                 $Code,
                 $Value,
+                $Units,
                 $CrateUserId,
                 $ModifyUserId,
                 $StatusId
@@ -65,6 +68,7 @@ class Productproperty
         $Name,
         $Code,
         $Value,
+        $Units,
         $CrateUserId,
         $ModifyUserId,
         $StatusId
@@ -77,6 +81,7 @@ class Productproperty
                         Name =  ? ,
                         Code =  ? ,
                         Value =  ? ,
+                        Units =  ? ,
                         CreateDate =  ? ,
                         CrateUserId =  ? ,
                         ModifyDate =  ? ,
@@ -94,6 +99,7 @@ class Productproperty
                 $Name,
                 $Code,
                 $Value,
+                $Units,
                 $CrateUserId,
                 $ModifyUserId,
                 $StatusId,

@@ -1,6 +1,7 @@
 <?php
 
 include_once 'Productproperty.php';
+include_once 'Image.php';
 
 class Product
 {
@@ -157,9 +158,11 @@ class Product
         if ($stmt->rowCount()) {
             $products =  $stmt->fetchAll(PDO::FETCH_ASSOC);
             $productproperty = new Productproperty($this->conn);
+            $image = new Image($this->conn);
 
             foreach ($products as $product) {
                 $product["Properties"] =  $productproperty->getByProductId($product["ProductId"]);
+                $product["Images"] =  $image->getParentIdById($product["ProductId"]);
                 array_push($detailedProducts, $product);
             }
         }

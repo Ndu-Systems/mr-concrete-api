@@ -7,6 +7,7 @@ $ProductId = $data->ProductId;
 $Name = $data->Name;
 $Code = $data->Code;
 $Value = $data->Value;
+$Units = $data->Units;
 $CrateUserId = $data->CrateUserId;
 $ModifyUserId = $data->ModifyUserId;
 $StatusId = $data->StatusId;
@@ -25,6 +26,7 @@ $result = $productproperty->add(
     $Name,
     $Code,
     $Value,
+    $Units,
     $CrateUserId,
     $ModifyUserId,
     $StatusId

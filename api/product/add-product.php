@@ -2,6 +2,7 @@
 include_once '../../config/Database.php';
 include_once '../../models/Product.php';
 include_once '../../models/Productproperty.php';
+include_once '../../models/Image.php';
 
 
 $data = json_decode(file_get_contents("php://input"));
@@ -19,6 +20,7 @@ $CreateUserId = $data->CreateUserId;
 $ModifyUserId = $data->ModifyUserId;
 $StatusId = $data->StatusId;
 $Properties = $data->Properties;
+$Images = $data->Images;
 
 //connect to db
 $database = new Database();
@@ -28,6 +30,7 @@ $ProductId = $database->getGuid($db);
 // create user first to get UserId
 $product = new Product($db);
 $productproperty = new Productproperty($db);
+$image = new Image($db);
 
 $result = $product->add(
     $ProductId,
@@ -55,12 +58,31 @@ if (isset($Properties)) {
             $property->Name,
             $property->Code,
             $property->Value,
+            $property->Units,
             $CreateUserId,
             $ModifyUserId,
             $StatusId
         );
         array_push($productpropertyResults, $productpropertyResult);
     }
-    $result["result"] = $productpropertyResults;
+    $result["Properties"] = $productpropertyResults;
+}
+
+if (isset($Images)) {
+    $imagesResults = array();
+    foreach ($Images as $Url) {
+        $ImageId = $database->getGuid($db);
+        $productpropertyResult = $image->add(
+            $ImageId,
+            $CreateUserId,
+            $ProductId,
+            $Url,
+            $CreateUserId,
+            $ModifyUserId,
+            $StatusId
+        );
+        array_push($imagesResults, $productpropertyResult);
+    }
+    $result["Images"] = $imagesResults;
 }
 echo json_encode($result);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2020 at 08:32 PM
+-- Generation Time: May 28, 2020 at 06:53 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -153,6 +153,14 @@ CREATE TABLE `image` (
   `StatusId` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `image`
+--
+
+INSERT INTO `image` (`ImageId`, `CompanyId`, `OtherId`, `Url`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+('ecb84b0c-a0f4-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590678434mrk.jpg', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('ecb89922-a0f4-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590678437mrk.jpg', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -233,8 +241,10 @@ CREATE TABLE `product` (
   `ProductId` varchar(225) NOT NULL,
   `UserId` varchar(225) NOT NULL,
   `ProductName` varchar(50) NOT NULL,
+  `ShortDescription` varchar(300) NOT NULL,
+  `Description` text NOT NULL,
   `ProductCode` varchar(225) NOT NULL,
-  `Price` decimal(10,0) NOT NULL,
+  `Price` varchar(10) NOT NULL,
   `Quantity` decimal(10,0) NOT NULL DEFAULT 0,
   `Units` varchar(100) NOT NULL DEFAULT 'each',
   `CategoryId` varchar(225) DEFAULT NULL,
@@ -244,6 +254,29 @@ CREATE TABLE `product` (
   `ModifyUserId` varchar(225) DEFAULT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`ProductId`, `UserId`, `ProductName`, `ShortDescription`, `Description`, `ProductCode`, `Price`, `Quantity`, `Units`, `CategoryId`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+('012a43a4-a0e5-11ea-9dc0-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Cement 50kg', '', '', 'CN55', '100.50', '500', 'meter', '1', '2020-05-28 15:13:21', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 15:13:21', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
+('1fe9cfc2-a0d9-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'cement  50kg', '', '', '', '100', '100', '', '', '2020-05-28 13:48:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 13:48:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Nails', '', '', '', '12', '100', '', '', '2020-05-28 13:49:33', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 13:49:33', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('50c4d519-a0f4-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'stephens22@icloud.com', '', '', '', '2323', '323', '', '', '2020-05-28 17:02:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 17:02:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('50f4054b-a098-11ea-94de-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Ceiling board', '', '', 'CN55', '12.50', '150', 'meter', '1', '2020-05-28 06:04:24', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 06:04:24', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
+('5e5db9cf-a097-11ea-94de-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Ceiling board', '', '', 'CN55', '12.50', '150', 'meter', '1', '2020-05-28 05:57:37', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 05:57:37', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
+('63db9d4f-a0b9-11ea-b662-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Cement 50kg', '', '', 'CN55', '100.50', '500', 'meter', '1', '2020-05-28 10:01:09', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 10:01:09', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
+('71ba246f-a096-11ea-94de-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Ceiling board', 'Ceiling board', '', 'CN55', '12.50', '150', 'meter', '1', '2020-05-28 05:51:00', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 05:51:00', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
+('804f69cc-a0d9-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Ceillin board', '', '', '', '12.2', '5000', 'Metre', '', '2020-05-28 13:51:00', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 13:51:00', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('87b44a62-a096-11ea-94de-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Ceiling board', '', '', 'CN55', '12.50', '150', 'meter', '1', '2020-05-28 05:51:37', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 05:51:37', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
+('b58f9ee2-a095-11ea-94de-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Ceiling board', '', '', 'CN55', '12.50', '150', 'meter', '1', '2020-05-28 05:45:44', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 05:45:44', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
+('c6d0a57e-a0ed-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Wooded board', '', '', '', '120', '100000', 'M', '', '2020-05-28 16:16:08', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 16:16:08', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('d77f199a-a0e7-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'ee', 'ew', '', '', '232', '323', '', '', '2020-05-28 15:33:40', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 15:33:40', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('ea5fd052-a0f0-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'test', '', '', '', '122', '21', '', '', '2020-05-28 16:38:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 16:38:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'sa', '', '', '', '213', '3213', '', '', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('f532d991-a0e4-11ea-9dc0-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Cement 50kg', '', '', 'CN55', '100.50', '500', 'meter', '1', '2020-05-28 15:13:01', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 15:13:01', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
+('fc64a281-a0e4-11ea-9dc0-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Cement 50kg', '', '', 'CN55', '100.50', '500', 'meter', '1', '2020-05-28 15:13:13', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 15:13:13', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1);
 
 -- --------------------------------------------------------
 
@@ -257,12 +290,33 @@ CREATE TABLE `productproperty` (
   `Name` varchar(250) NOT NULL,
   `Code` varchar(250) NOT NULL,
   `Value` varchar(500) NOT NULL,
+  `Units` varchar(100) NOT NULL,
   `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CrateUserId` varchar(225) NOT NULL,
   `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `productproperty`
+--
+
+INSERT INTO `productproperty` (`ProductpropertyId`, `ProductId`, `Name`, `Code`, `Value`, `Units`, `CreateDate`, `CrateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+('012ad0a1-a0e5-11ea-9dc0-48f17f8d4d88', '012a43a4-a0e5-11ea-9dc0-48f17f8d4d88', 'Strength', 'WT', 'AA5TT6', 'kph', '2020-05-28 15:13:21', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 15:13:21', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
+('50c57f54-a0f4-11ea-9dc0-48f17f8d4d88', '50c4d519-a0f4-11ea-9dc0-48f17f8d4d88', 'Property 1', '', '', '', '2020-05-28 17:02:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 17:02:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('50c5cebd-a0f4-11ea-9dc0-48f17f8d4d88', '50c4d519-a0f4-11ea-9dc0-48f17f8d4d88', 'Property 2', '', '', '', '2020-05-28 17:02:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 17:02:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('50f45914-a098-11ea-94de-48f17f8d4d88', '50f4054b-a098-11ea-94de-48f17f8d4d88', 'Wood Type', 'WT', 'AA5TT6', '', '2020-05-28 06:04:24', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 06:04:24', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
+('50f4a768-a098-11ea-94de-48f17f8d4d88', '50f4054b-a098-11ea-94de-48f17f8d4d88', 'Wood Type', 'WT', 'AA5TT6', '', '2020-05-28 06:04:24', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 06:04:24', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
+('c6d10559-a0ed-11ea-9dc0-48f17f8d4d88', 'c6d0a57e-a0ed-11ea-9dc0-48f17f8d4d88', 'Weigth', 'WT', '200kg', '', '2020-05-28 16:16:09', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 16:16:09', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('c6d15161-a0ed-11ea-9dc0-48f17f8d4d88', 'c6d0a57e-a0ed-11ea-9dc0-48f17f8d4d88', 'Width', 'WT', '1000m', '', '2020-05-28 16:16:09', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 16:16:09', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('d77fca94-a0e7-11ea-9dc0-48f17f8d4d88', 'd77f199a-a0e7-11ea-9dc0-48f17f8d4d88', 'Wood Type', 'WT', 'AA5TT6', '', '2020-05-28 15:33:40', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 15:33:40', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('ea604a5f-a0f0-11ea-9dc0-48f17f8d4d88', 'ea5fd052-a0f0-11ea-9dc0-48f17f8d4d88', 'Property 1', '', '2094', '', '2020-05-28 16:38:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 16:38:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('ea60beaf-a0f0-11ea-9dc0-48f17f8d4d88', 'ea5fd052-a0f0-11ea-9dc0-48f17f8d4d88', 'Property 2', '', 'Nails', '', '2020-05-28 16:38:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 16:38:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('ecb7cb17-a0f4-11ea-9dc0-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'Property 1', '', '', '', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('ecb81179-a0f4-11ea-9dc0-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'Property 2', '', '', '', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('f5339f80-a0e4-11ea-9dc0-48f17f8d4d88', 'f532d991-a0e4-11ea-9dc0-48f17f8d4d88', 'Strength', 'WT', 'AA5TT6', 'kg', '2020-05-28 15:13:01', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 15:13:01', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
+('fc65247d-a0e4-11ea-9dc0-48f17f8d4d88', 'fc64a281-a0e4-11ea-9dc0-48f17f8d4d88', 'Strength', 'WT', 'AA5TT6', 'kg', '2020-05-28 15:13:13', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 15:13:13', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1);
 
 -- --------------------------------------------------------
 
@@ -374,7 +428,8 @@ INSERT INTO `user` (`UserId`, `FirstName`, `LastName`, `Email`, `Password`, `Cel
 ('53702e1e-9eb3-11ea-88a2-c8f7501047dc', 'Ember', 'Doe', 'ember@mail.com', '12345', '07455221122', 5, NULL, NULL, '2020-05-25 20:12:42', 'sys', '2020-05-25 20:12:42', 'sys', 9),
 ('69da8ac3-9eab-11ea-88a2-c8f7501047dc', 'Themba', 'Driver', 'driver@mail.com', '12345', '07455221122', 6, NULL, NULL, '2020-05-25 19:16:03', 'sys', '2020-05-25 19:16:03', 'sys', 9),
 ('7896a757-9eab-11ea-88a2-c8f7501047dc', 'Randol', 'Customer', 'customer@mail.com', '12345', '07455221122', 5, NULL, NULL, '2020-05-25 19:16:28', 'sys', '2020-05-25 19:16:28', 'sys', 9),
-('8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'John', 'Doe', 'test@mail.com', '12345', '07455221122', 1, NULL, 'f65087b948b4a79baa80b1470b809dea', '2020-05-25 19:16:58', 'sys', '2020-05-25 19:16:58', 'sys', 1),
+('8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'John', 'Doe', 'test@mail.com', '12345', '07455221122', 3, NULL, 'f65087b948b4a79baa80b1470b809dea', '2020-05-25 19:16:58', 'sys', '2020-05-25 19:16:58', 'sys', 1),
+('98bfc418-a099-11ea-94de-48f17f8d4d88', 'Ndumiso', 'Mthembu', 'mrnnmth3mu@gmail.com', '12345', '842529472', 5, NULL, 'a78af979672532bb4a40f70d5fdd19ac', '2020-05-28 06:13:34', 'sys', '2020-05-28 06:13:34', 'sys', 1),
 ('f14d63f5-9eb7-11ea-88a2-c8f7501047dc', 'Bernard', 'Parker', 'bparker@mail.com', '12345', '07455221122', 5, NULL, '8df666792a0e2c5956bc3cff4585813d', '2020-05-25 20:45:45', 'sys', '2020-05-25 20:45:45', 'sys', 1),
 ('f24670e7-9ec6-11ea-88a2-c8f7501047dc', 'Bernard', 'Parker', 'bpark@mail.com', '12345', '07455221122', 5, NULL, '720d11a15dd346dc10deb04cac4854dd', '2020-05-25 22:33:09', 'sys', '2020-05-25 22:33:09', 'sys', 1);
 
@@ -423,6 +478,12 @@ ALTER TABLE `orderproduct`
 --
 ALTER TABLE `orderstatus`
   ADD PRIMARY KEY (`StatusId`);
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`ProductId`);
 
 --
 -- Indexes for table `productproperty`
