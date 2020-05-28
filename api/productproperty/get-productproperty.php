@@ -1,11 +1,11 @@
 <?php
 include_once '../../config/Database.php';
-include_once '../../models/Order_products.php';
+include_once '../../models/Productproperty.php';
 
 $data = json_decode(file_get_contents("php://input"));
 
 // create user data only
-$OrderId =$_GET['OrderId'];
+$ProductpropertyId =$_GET['ProductpropertyId'];
 
 
 //connect to db
@@ -13,12 +13,12 @@ $database = new Database();
 $db = $database->connect();
 
 // create user first to get UserId
-$order_products = new Order_products($db);
+$productproperty = new Productproperty($db);
 
-$result = $order_products->getBOrderIdId(
-    $OrderId
+$result = $productproperty->getById(
+    $ProductpropertyId
 );
-  echo json_encode($result);
+ echo json_encode($result);
 
  
  

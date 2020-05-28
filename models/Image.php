@@ -13,6 +13,7 @@ class Image
 
     //Add user
     public function add(
+        $ImageId,
         $CompanyId,
         $OtherId,
         $Url,
@@ -21,8 +22,6 @@ class Image
         $StatusId
 
     ) {
-
-        $ImageId = getUuid($this->conn);
 
         $query = "
         INSERT INTO image(

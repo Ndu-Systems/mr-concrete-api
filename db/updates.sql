@@ -1,0 +1,1 @@
+ALTER TABLE `product` ADD `Quantity` DECIMAL NOT NULL DEFAULT '0' AFTER `Price`, ADD `Units` VARCHAR(100) NOT NULL DEFAULT 'each' AFTER `Quantity`;

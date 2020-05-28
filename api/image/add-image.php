@@ -14,11 +14,13 @@ $StatusId = $data->StatusId;
 //connect to db
 $database = new Database();
 $db = $database->connect();
+$UserId = $database->getGuid($db);
 
 // create user first to get UserId
 $image = new Image($db);
 
 $result = $image->add(
+    $ImageId,
     $CompanyId,
     $OtherId,
     $Url,
@@ -26,9 +28,7 @@ $result = $image->add(
     $ModifyUserId,
     $StatusId
 );
-
-    
-    echo json_encode($result);
+echo json_encode($result);
 
  
  
