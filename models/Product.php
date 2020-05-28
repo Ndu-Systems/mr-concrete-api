@@ -1,5 +1,6 @@
 <?php
 
+include_once 'Productproperty.php';
 
 class Product
 {
@@ -152,9 +153,16 @@ class Product
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($UserId));
-
+        $DetailedProducts = array();
         if ($stmt->rowCount()) {
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $products =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $productproperty = new Productproperty($this->conn);
+
+            foreach ($products as $product) {
+                $product["Properties"] =  $productproperty->getByProductId($product["ProductId"]);
+                array_push($DetailedProducts, $product);
+            }
         }
+        return $DetailedProducts;
     }
 }

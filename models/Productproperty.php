@@ -127,7 +127,7 @@ class Productproperty
         $stmt->execute(array($ProductId));
 
         if ($stmt->rowCount()) {
-            return $stmt->fetch(PDO::FETCH_ASSOC);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
     }
 }
