@@ -76,17 +76,14 @@ class Productproperty
         $query = "UPDATE
                     productproperty
                         SET
-                        ProductpropertyId =  ? ,
                         ProductId =  ? ,
                         Name =  ? ,
                         Code =  ? ,
                         Value =  ? ,
                         Units =  ? ,
-                        CreateDate =  ? ,
                         CrateUserId =  ? ,
-                        ModifyDate =  ? ,
                         ModifyUserId =  ? ,
-                        StatusId =  ?
+                        StatusId =  ?,
                         ModifyDate = NOW()
                         WHERE
                         ProductpropertyId = ?
@@ -127,10 +124,10 @@ class Productproperty
     }
     public function getByProductId($ProductId)
     {
-        $query = "SELECT * FROM productproperty WHERE ProductId =?";
+        $query = "SELECT * FROM productproperty WHERE ProductId =? and StatusId = ?";
 
         $stmt = $this->conn->prepare($query);
-        $stmt->execute(array($ProductId));
+        $stmt->execute(array($ProductId, 1));
 
         if ($stmt->rowCount()) {
             return $stmt->fetchAll(PDO::FETCH_ASSOC);

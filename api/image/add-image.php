@@ -14,7 +14,7 @@ $StatusId = $data->StatusId;
 //connect to db
 $database = new Database();
 $db = $database->connect();
-$UserId = $database->getGuid($db);
+$ImageId = $database->getGuid($db);
 
 // create user first to get UserId
 $image = new Image($db);

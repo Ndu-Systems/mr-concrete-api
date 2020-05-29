@@ -4,10 +4,12 @@ include_once '../../models/Productproperty.php';
 
 $data = json_decode(file_get_contents("php://input"));
 
+$ProductpropertyId = $data->ProductpropertyId;
 $ProductId = $data->ProductId;
 $Name = $data->Name;
 $Code = $data->Code;
 $Value = $data->Value;
+$Units = $data->Units;
 $CrateUserId = $data->CrateUserId;
 $ModifyUserId = $data->ModifyUserId;
 $StatusId = $data->StatusId;
@@ -25,6 +27,7 @@ $result = $productproperty->update(
     $Name,
     $Code,
     $Value,
+    $Units,
     $CrateUserId,
     $ModifyUserId,
     $StatusId
