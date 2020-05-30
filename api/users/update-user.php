@@ -9,10 +9,8 @@ $FirstName = $data->FirstName;
 $LastName = $data->LastName;
 $Email = $data->Email;
 $Cellphone = $data->Cellphone;
-$Gender = $data->Gender;
-$DOB = $data->DOB;
+$CompanyId = $data->CompanyId;
 $RoleId = $data->RoleId;
-$UserType = $data->UserType;
 $CreateUserId = $data->CreateUserId;
 $ModifyUserId = $data->ModifyUserId;
 $StatusId = $data->StatusId;
@@ -26,11 +24,9 @@ $result = $users->UpdateUser(
     $FirstName,
     $LastName,
     $Email,
-    $Cellphone,
-    $Gender,
-    $DOB,
-    $RoleId,
-    $UserType,
+    $Cellphone,  
+    $CompanyId,  
+    $RoleId,   
     $CreateUserId,
     $ModifyUserId,
     $StatusId

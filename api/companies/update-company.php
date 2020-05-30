@@ -14,8 +14,8 @@ $CompanyType = $data->CompanyType;
 $CompanyAddress = $data->CompanyAddress;
 $City = $data->City;
 $PostalCode = $data->PostalCode;
-$CreateUserId = $data->UserId;
-$ModifyUserId = $data->UserId;
+$CreateUserId = $data->CreateUserId;
+$ModifyUserId = $data->ModifyUserId;
 $IsDeleted = $data->IsDeleted;
 $StatusId = $data->StatusId;
 
@@ -26,19 +26,17 @@ $db = $database->connect();
 $company = new Company($db);
 
 $result = $company->UpdateCompany(
-    $CompanyName,
-    $CompanyPhone,
-    $CompanyEmail,
-    $ParentId,
-    $CompanyType,
-    $CompanyAddress,
-    $City,
-    $PostalCode,
-    $CreateDate,
-    $CreateUserId,
-    $ModifyDate,
-    $ModifyUserId,
-    $IsDeleted,
+    $CompanyId,
+    $CompanyName, 
+    $CompanyPhone, 
+    $CompanyEmail, 
+    $ParentId, 
+    $CompanyType, 
+    $CompanyAddress, 
+    $City, 
+    $PostalCode,      
+    $ModifyUserId, 
+    $IsDeleted, 
     $StatusId
 );
 
