@@ -14,6 +14,7 @@ class Orderproduct
         $OrderProductId,
         $OrderId,
         $ProductId,
+        $ProductName,
         $Price,
         $Quantity,
         $Units,
@@ -28,6 +29,7 @@ class Orderproduct
             OrderProductId,
             OrderId,
             ProductId,
+            ProductName,
             Price,
             Quantity,
             Units,
@@ -36,7 +38,7 @@ class Orderproduct
             StatusId
         )
         VALUES(
-        ?,?,?,?,?,?,?,?,?
+        ?,?,?,?,?,?,?,?,?,?
          )
 ";
         try {
@@ -45,6 +47,7 @@ class Orderproduct
                 $OrderProductId,
                 $OrderId,
                 $ProductId,
+                $ProductName,
                 $Price,
                 $Quantity,
                 $Units,
@@ -66,6 +69,7 @@ class Orderproduct
         $OrderProductId,
         $OrderId,
         $ProductId,
+        $ProductName,
         $Price,
         $Quantity,
         $Units,
@@ -76,14 +80,16 @@ class Orderproduct
         $query = "UPDATE
                     orderproduct
                         SET
-                        OrderId =  ? ,
-                        ProductId =  ? ,
-                        Price =  ? ,
-                        Quantity =  ? ,
-                        Units =  ? ,
-                        CrateUserId =  ? ,
-                        ModifyUserId =  ? ,
-                        StatusId =  ? ,
+                            OrderProductId  = ? ,
+                            OrderId  = ? ,
+                            ProductId  = ? ,
+                            ProductName  = ? ,
+                            Price  = ? ,
+                            Quantity  = ? ,
+                            Units  = ? ,
+                            CrateUserId  = ? ,
+                            ModifyUserId  = ? ,
+                            StatusId = ? 
                         ModifyDate = NOW()
                         WHERE
                         OrderProductId = ?
@@ -92,9 +98,9 @@ class Orderproduct
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
-
                 $OrderId,
                 $ProductId,
+                $ProductName,
                 $Price,
                 $Quantity,
                 $Units,
