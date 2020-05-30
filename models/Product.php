@@ -151,7 +151,7 @@ class Product
     }
     public function getByUserId($UserId)
     {
-        $query = "SELECT * FROM product WHERE UserId =?";
+        $query = "SELECT * FROM product WHERE UserId =? ORDER BY CreateDate DESC";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($UserId));

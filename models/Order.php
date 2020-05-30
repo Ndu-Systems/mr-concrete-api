@@ -15,8 +15,12 @@ class Order
         $OrderId,
         $CustomerId,
         $SupplierId,
-        $Total,
+        $ProjectNumber,
         $DeliveryDate,
+        $DeliveryTime,
+        $DeliveryAddress,
+        $SpecialInstructions,
+        $Total,
         $CrateUserId,
         $ModifyUserId,
         $StatusId
@@ -24,28 +28,36 @@ class Order
     ) {
 
         $query = "
-        INSERT INTO order(
-            OrderId,
-            CustomerId,
-            SupplierId,
-            Total,
-            DeliveryDate,
-            CrateUserId,
-            ModifyUserId,
-            StatusId
-        )
-        VALUES(
-        ?,?,?,?,?,?,?,?
-         )
-";
+                INSERT INTO orders(
+                    OrderId,
+                    CustomerId,
+                    SupplierId,
+                    ProjectNumber,
+                    DeliveryDate,
+                    DeliveryTime,
+                    DeliveryAddress,
+                    SpecialInstructions,
+                    Total,
+                    CrateUserId,
+                    ModifyUserId,
+                    StatusId
+                    )
+                    VALUES(
+                    ?,?,?,?,?,?,?,?,?,?,?,?
+                    )
+                ";
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
                 $OrderId,
                 $CustomerId,
                 $SupplierId,
-                $Total,
+                $ProjectNumber,
                 $DeliveryDate,
+                $DeliveryTime,
+                $DeliveryAddress,
+                $SpecialInstructions,
+                $Total,
                 $CrateUserId,
                 $ModifyUserId,
                 $StatusId
@@ -64,26 +76,33 @@ class Order
         $OrderId,
         $CustomerId,
         $SupplierId,
-        $Total,
+        $ProjectNumber,
         $DeliveryDate,
+        $DeliveryTime,
+        $DeliveryAddress,
+        $SpecialInstructions,
+        $Total,
         $CrateUserId,
         $ModifyUserId,
         $StatusId
     ) {
         $query = "UPDATE
-                    order
+                    orders
                         SET
-                        OrderId =  ? ,
-                        CustomerId =  ? ,
-                        SupplierId =  ? ,
-                        Total =  ? ,
-                        DeliveryDate =  ? ,
-                        CrateUserId =  ? ,
-                        ModifyUserId =  ? ,
-                        StatusId =  ? ,
+                        CustomerId = ? ,
+                        SupplierId = ? ,
+                        ProjectNumber = ? ,
+                        DeliveryDate = ? ,
+                        DeliveryTime = ? ,
+                        DeliveryAddress = ? ,
+                        SpecialInstructions = ? ,
+                        Total = ? ,
+                        CrateUserId = ? ,
+                        ModifyUserId = ? ,
+                        StatusId = ? ,
                         ModifyDate = NOW()
                         WHERE
-                        orderId = ?
+                        OrderId = ?
          ";
 
         try {
@@ -91,8 +110,12 @@ class Order
             if ($stmt->execute(array(
                 $CustomerId,
                 $SupplierId,
-                $Total,
+                $ProjectNumber,
                 $DeliveryDate,
+                $DeliveryTime,
+                $DeliveryAddress,
+                $SpecialInstructions,
+                $Total,
                 $CrateUserId,
                 $ModifyUserId,
                 $StatusId,
@@ -109,7 +132,7 @@ class Order
 
     public function getById($OrderId)
     {
-        $query = "SELECT * FROM order WHERE OrderId =?";
+        $query = "SELECT * FROM orders WHERE OrderId =?";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($OrderId));
@@ -118,10 +141,10 @@ class Order
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }
     }
-    
+
     public function getBySupplierId($SupplierId)
     {
-        $query = "SELECT * FROM order WHERE SupplierId =?";
+        $query = "SELECT * FROM orders WHERE SupplierId =?";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($SupplierId));
@@ -133,7 +156,7 @@ class Order
 
     public function getByCustomerId($CustomerId)
     {
-        $query = "SELECT * FROM order WHERE CustomerId =?";
+        $query = "SELECT * FROM orders WHERE CustomerId =?";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($CustomerId));
