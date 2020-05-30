@@ -26,9 +26,7 @@ class Company
         $ModifyUserId,
         $IsDeleted,
         $StatusId
-    ) {
-        # code...
-        $database = new Database();
+    ) {   
         $query = "
         INSERT INTO company(
             CompanyId, 
@@ -71,31 +69,27 @@ class Company
                     $StatusId
                 );
             }
-        } catch (\Throwable $th) {
-            //throw $th;
+        }  catch (Exception $e) {
+            return array("ERROR", $e);
         }
     }
 
     public function UpdateCompany(
         $CompanyId,
-        $CompanyName,
-        $CompanyPhone,
-        $CompanyEmail,
-        $ParentId,
-        $CompanyType,
-        $CompanyAddress,
-        $City,
-        $PostalCode,
-        $ModifyDate,
-        $ModifyUserId,
-        $IsDeleted,
+        $CompanyName, 
+        $CompanyPhone, 
+        $CompanyEmail, 
+        $ParentId, 
+        $CompanyType, 
+        $CompanyAddress, 
+        $City, 
+        $PostalCode,      
+        $ModifyUserId, 
+        $IsDeleted, 
         $StatusId
     ) {
-        # code...
-        $database = new Database();
-        $CompanyId = $database->getGuid($this->conn);
-
-        $query = "  UPDATE
+    
+      $query = "  UPDATE
                     Company
                     SET
                     CompanyName = ?, 
@@ -106,7 +100,7 @@ class Company
                     CompanyAddress = ?, 
                     City = ?, 
                     PostalCode = ?,       
-                    ModifyDate = ?,       
+                    ModifyDate = NOW(),       
                     ModifyUserId = ?, 
                     IsDeleted = ?, 
                     StatusId = ?
@@ -117,29 +111,29 @@ class Company
             //code...
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
-                $CompanyName,
-                $CompanyPhone,
-                $CompanyEmail,
-                $ParentId,
-                $CompanyType,
-                $CompanyAddress,
-                $City,
-                $PostalCode,
-                $ModifyDate,
-                $ModifyUserId,
-                $IsDeleted,
+                $CompanyName, 
+                $CompanyPhone, 
+                $CompanyEmail, 
+                $ParentId, 
+                $CompanyType, 
+                $CompanyAddress, 
+                $City, 
+                $PostalCode,      
+                $ModifyUserId, 
+                $IsDeleted, 
                 $StatusId,
                 $CompanyId
             ))) {
                 // get by id
+
                 return $this->GetCompanyById(
                     $CompanyId,
                     $IsDeleted,
                     $StatusId
                 );
             }
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (Exception $e) {
+            return array("ERROR", $e);
         }
     }
 
@@ -166,7 +160,7 @@ class Company
         $IsDeleted,
         $StatusId
     ) {
-        $query = "SELECT * FROM company WHERE CompanyId =? AND IsDeleted=? AND StatusId = ?";
+        $query = "SELECT * FROM company WHERE CompanyId = ? AND IsDeleted= ? AND StatusId = ?";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array(
