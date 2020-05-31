@@ -2,6 +2,8 @@
 include_once 'Address.php';
 include_once 'Image.php';
 include_once 'Account.php';
+include_once 'Roles.php';
+include_once 'Company.php';
 
 class Users
 {
@@ -70,8 +72,14 @@ class Users
             if ($user) {
                 $address = new Address($this->conn);
                 $image = new Image($this->conn);
+                $role = new Roles($this->conn);
+                $company= new Company($this->conn);
+
+                $user["Company"] = $company->GetAllCompaniesForUser($user["UserId"], false, 1);
+                $user["Role"] = $role->getRoleById($user["RoleId"]);
                 $user["Address"] = $address->getUserByUserId($user["UserId"]);
                 $user["Images"] = $image->getParentIdById($user["UserId"]);
+               
                 return $user;
             }
             return null;
