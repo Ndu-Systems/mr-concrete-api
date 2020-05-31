@@ -148,10 +148,17 @@ class Order
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($SupplierId));
+        $orderproducts = new Orderproduct($this->conn);
+        $detailedOrders = array();
 
         if ($stmt->rowCount()) {
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($orders as $order) {
+                $order["Orderroducts"] =  $orderproducts->getByOrderId($order["OrderId"]);
+                array_push($detailedOrders, $order);
+            }
         }
+        return $detailedOrders;
     }
 
     public function getByCustomerId($CustomerId)
