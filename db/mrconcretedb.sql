@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2020 at 06:02 PM
+-- Generation Time: May 31, 2020 at 11:06 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -198,12 +198,16 @@ CREATE TABLE `image` (
 --
 
 INSERT INTO `image` (`ImageId`, `CompanyId`, `OtherId`, `Url`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
-('5bfa97f7-a1c8-11ea-bf54-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590769249iio.jpg', '2020-05-29 18:20:49', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 18:20:49', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
-('6d1105ce-a167-11ea-8012-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '6d1036c3-a167-11ea-8012-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590724264mrk.jpg', '2020-05-29 06:46:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 06:46:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('13e5efcb-a2be-11ea-a7b2-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '6d1036c3-a167-11ea-8012-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590874784iio.jpg', '2020-05-30 23:39:44', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:39:44', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('41ae8e42-a2a6-11ea-a7b2-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590864553iio.jpg', '2020-05-30 20:49:13', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 20:49:13', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('5bfa97f7-a1c8-11ea-bf54-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'removed-ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590769249iio.jpg', '2020-05-29 18:20:49', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:38:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 2),
+('6d1105ce-a167-11ea-8012-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'removed-6d1036c3-a167-11ea-8012-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590724264mrk.jpg', '2020-05-29 06:46:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:39:41', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 2),
 ('d5eff58a-a1d1-11ea-bf54-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590773319iio.jpg', '2020-05-29 19:28:39', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 19:28:39', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('ecb84b0c-a0f4-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'removed-removed-ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590678434mrk.jpg', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 18:28:52', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 2),
 ('ecb89922-a0f4-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'removed-removed-ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590678437mrk.jpg', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 18:28:49', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 2),
-('f1c057d4-a1c8-11ea-bf54-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590769500iio.jpg', '2020-05-29 18:25:00', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 18:25:00', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1);
+('ed5efcc5-a31a-11ea-8323-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'removed-cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590914663iio.jpg', '2020-05-31 10:44:23', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 10:44:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 2),
+('ee3140ac-a2bd-11ea-a7b2-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590874721iio.jpg', '2020-05-30 23:38:41', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:38:41', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('f1c057d4-a1c8-11ea-bf54-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'removed-ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590769500iio.jpg', '2020-05-29 18:25:00', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:38:39', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 2);
 
 -- --------------------------------------------------------
 
@@ -246,8 +250,64 @@ CREATE TABLE `orderproduct` (
 --
 
 INSERT INTO `orderproduct` (`OrderProductId`, `OrderId`, `ProductId`, `ProductName`, `Price`, `Quantity`, `Units`, `CreateDate`, `CrateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
-('3852e050-a28c-11ea-a7b2-48f17f8d4d88', '38524c8a-a28c-11ea-a7b2-48f17f8d4d88', '21312321', 'saSw', '3213213', '12', 'kg', '2020-05-30 17:42:51', '23232', '2020-05-30 17:42:51', '321312', 1),
-('50962df5-a28e-11ea-a7b2-48f17f8d4d88', '5095a4de-a28e-11ea-a7b2-48f17f8d4d88', '21312321', 'saSw', '3213213', '12', 'kg', '2020-05-30 17:57:50', '23232', '2020-05-30 17:57:50', '321312', 1);
+('0819d84d-a308-11ea-9ed4-48f17f8d4d88', '08194416-a308-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '1', 'each', '2020-05-31 08:29:07', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:29:07', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('0b2f5ef0-a30a-11ea-9ed4-48f17f8d4d88', '0b2e9bf3-a30a-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '3', 'each', '2020-05-31 08:43:32', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:43:32', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('0beb916f-a301-11ea-9ed4-48f17f8d4d88', '0beade1d-a301-11ea-9ed4-48f17f8d4d88', '6d1036c3-a167-11ea-8012-48f17f8d4d88', 'Hand Power Driller', '7.5', '2', 'each', '2020-05-31 07:39:07', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 07:39:07', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('0bebd505-a301-11ea-9ed4-48f17f8d4d88', '0beade1d-a301-11ea-9ed4-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'BOSCH Cordless Glue Gun', '850', '1', 'each', '2020-05-31 07:39:07', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 07:39:07', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('0fbb58a4-a30a-11ea-9ed4-48f17f8d4d88', '0fba9c48-a30a-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '3', 'each', '2020-05-31 08:43:39', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:43:39', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('1d670d54-a30a-11ea-9ed4-48f17f8d4d88', '1d6645f3-a30a-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '2', 'each', '2020-05-31 08:44:02', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:44:02', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('23d9c693-a2c3-11ea-a7b2-48f17f8d4d88', '23d903b0-a2c3-11ea-a7b2-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'BOSCH Cordless Glue Gun', '850', '3', 'each', '2020-05-31 00:15:59', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 00:15:59', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('23da0d18-a2c3-11ea-a7b2-48f17f8d4d88', '23d903b0-a2c3-11ea-a7b2-48f17f8d4d88', '6d1036c3-a167-11ea-8012-48f17f8d4d88', 'Hand Power Driller', '7.5', '3', 'each', '2020-05-31 00:15:59', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 00:15:59', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('23da50bf-a2c3-11ea-a7b2-48f17f8d4d88', '23d903b0-a2c3-11ea-a7b2-48f17f8d4d88', '4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', 'Tuftex Fluted Nails (25mm)', '48.2', '2', '', '2020-05-31 00:15:59', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 00:15:59', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('2baf4597-a2be-11ea-a7b2-48f17f8d4d88', '2baefb04-a2be-11ea-a7b2-48f17f8d4d88', '6d1036c3-a167-11ea-8012-48f17f8d4d88', 'Hand Power Driller', '7.5', '3', 'each', '2020-05-30 23:40:24', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:40:24', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('2baf9d46-a2be-11ea-a7b2-48f17f8d4d88', '2baefb04-a2be-11ea-a7b2-48f17f8d4d88', '4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', 'Tuftex Fluted Nails (25mm)', '48.2', '3', '', '2020-05-30 23:40:24', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:40:24', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('2c6ab09b-a31d-11ea-8323-48f17f8d4d88', '2c69de2d-a31d-11ea-8323-48f17f8d4d88', 'c6d0a57e-a0ed-11ea-9dc0-48f17f8d4d88', 'Wooded board', '120', '3', 'M', '2020-05-31 11:00:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 11:00:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('2c6b2e2b-a31d-11ea-8323-48f17f8d4d88', '2c69de2d-a31d-11ea-8323-48f17f8d4d88', '4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', 'Tuftex Fluted Nails (25mm)', '48.2', '3', '', '2020-05-31 11:00:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 11:00:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('3fa25fb4-a2bd-11ea-a7b2-48f17f8d4d88', '3fa126dc-a2bd-11ea-a7b2-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '3', 'each', '2020-05-30 23:33:48', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:33:48', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('3fa33301-a2bd-11ea-a7b2-48f17f8d4d88', '3fa126dc-a2bd-11ea-a7b2-48f17f8d4d88', '4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', 'Tuftex Fluted Nails (25mm)', '48.2', '3', '', '2020-05-30 23:33:48', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:33:48', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('44fe8a88-a317-11ea-9ed4-48f17f8d4d88', '44fdb801-a317-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '3', 'each', '2020-05-31 10:18:12', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 10:18:12', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('44ff2098-a317-11ea-9ed4-48f17f8d4d88', '44fdb801-a317-11ea-9ed4-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'BOSCH Cordless Glue Gun', '850', '3', 'each', '2020-05-31 10:18:12', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 10:18:12', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('499a4fa0-a30b-11ea-9ed4-48f17f8d4d88', '49999360-a30b-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '1', 'each', '2020-05-31 08:52:26', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:52:26', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('6033cf08-a313-11ea-9ed4-48f17f8d4d88', '6033184d-a313-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '3', 'each', '2020-05-31 09:50:20', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 09:50:20', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('60343d5c-a313-11ea-9ed4-48f17f8d4d88', '6033184d-a313-11ea-9ed4-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'BOSCH Cordless Glue Gun', '850', '3', 'each', '2020-05-31 09:50:20', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 09:50:20', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('6034a691-a313-11ea-9ed4-48f17f8d4d88', '6033184d-a313-11ea-9ed4-48f17f8d4d88', '4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', 'Tuftex Fluted Nails (25mm)', '48.2', '3', '', '2020-05-31 09:50:20', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 09:50:20', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('6034fe3c-a313-11ea-9ed4-48f17f8d4d88', '6033184d-a313-11ea-9ed4-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'BOSCH Cordless Glue Gun', '850', '1', 'each', '2020-05-31 09:50:20', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 09:50:20', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('665a0db8-a309-11ea-9ed4-48f17f8d4d88', '665961c7-a309-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '1', 'each', '2020-05-31 08:38:55', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:38:55', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('774be3c2-a30a-11ea-9ed4-48f17f8d4d88', '774b2d51-a30a-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '1', 'each', '2020-05-31 08:46:33', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:46:33', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('894d6747-a30b-11ea-9ed4-48f17f8d4d88', '894cbb8a-a30b-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '3', 'each', '2020-05-31 08:54:13', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:54:13', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('894dc719-a30b-11ea-9ed4-48f17f8d4d88', '894cbb8a-a30b-11ea-9ed4-48f17f8d4d88', '6d1036c3-a167-11ea-8012-48f17f8d4d88', 'Hand Power Driller', '7.5', '3', 'each', '2020-05-31 08:54:13', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:54:13', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('957b7aca-a31a-11ea-8323-48f17f8d4d88', '957b2d9b-a31a-11ea-8323-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '3', 'each', '2020-05-31 10:41:56', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 10:41:56', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('957c0586-a31a-11ea-8323-48f17f8d4d88', '957b2d9b-a31a-11ea-8323-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'BOSCH Cordless Glue Gun', '850', '3', 'each', '2020-05-31 10:41:56', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 10:41:56', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('9a643f77-a30a-11ea-9ed4-48f17f8d4d88', '9a6375bc-a30a-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '2', 'each', '2020-05-31 08:47:32', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:47:32', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('b204f8fe-a314-11ea-9ed4-48f17f8d4d88', 'b204523b-a314-11ea-9ed4-48f17f8d4d88', '4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', 'Tuftex Fluted Nails (25mm)', '48.2', '2', '', '2020-05-31 09:59:46', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 09:59:46', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('b2053979-a314-11ea-9ed4-48f17f8d4d88', 'b204523b-a314-11ea-9ed4-48f17f8d4d88', '4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', 'Tuftex Fluted Nails (25mm)', '48.2', '3', '', '2020-05-31 09:59:46', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 09:59:46', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('b2057eed-a314-11ea-9ed4-48f17f8d4d88', 'b204523b-a314-11ea-9ed4-48f17f8d4d88', '804f69cc-a0d9-11ea-9dc0-48f17f8d4d88', 'Ceillin board', '12.2', '3', 'Metre', '2020-05-31 09:59:46', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 09:59:46', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('b205b8a4-a314-11ea-9ed4-48f17f8d4d88', 'b204523b-a314-11ea-9ed4-48f17f8d4d88', '804f69cc-a0d9-11ea-9dc0-48f17f8d4d88', 'Ceillin board', '12.2', '1', 'Metre', '2020-05-31 09:59:46', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 09:59:46', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('b4b96604-a307-11ea-9ed4-48f17f8d4d88', 'b4b8a13b-a307-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '1', 'each', '2020-05-31 08:26:48', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:26:48', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('b6aebac0-a314-11ea-9ed4-48f17f8d4d88', 'b6ae10d2-a314-11ea-9ed4-48f17f8d4d88', '4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', 'Tuftex Fluted Nails (25mm)', '48.2', '2', '', '2020-05-31 09:59:54', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 09:59:54', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('b6af1df6-a314-11ea-9ed4-48f17f8d4d88', 'b6ae10d2-a314-11ea-9ed4-48f17f8d4d88', '4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', 'Tuftex Fluted Nails (25mm)', '48.2', '3', '', '2020-05-31 09:59:54', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 09:59:54', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('b6af5e2e-a314-11ea-9ed4-48f17f8d4d88', 'b6ae10d2-a314-11ea-9ed4-48f17f8d4d88', '804f69cc-a0d9-11ea-9dc0-48f17f8d4d88', 'Ceillin board', '12.2', '3', 'Metre', '2020-05-31 09:59:54', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 09:59:54', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('b6af9be0-a314-11ea-9ed4-48f17f8d4d88', 'b6ae10d2-a314-11ea-9ed4-48f17f8d4d88', '804f69cc-a0d9-11ea-9dc0-48f17f8d4d88', 'Ceillin board', '12.2', '1', 'Metre', '2020-05-31 09:59:54', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 09:59:54', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('be41562f-a30b-11ea-9ed4-48f17f8d4d88', 'be40b124-a30b-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '2', 'each', '2020-05-31 08:55:42', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:55:42', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('be41beed-a30b-11ea-9ed4-48f17f8d4d88', 'be40b124-a30b-11ea-9ed4-48f17f8d4d88', '4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', 'Tuftex Fluted Nails (25mm)', '48.2', '3', '', '2020-05-31 08:55:42', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:55:42', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('beed58a7-a312-11ea-9ed4-48f17f8d4d88', 'beec9895-a312-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '2', 'each', '2020-05-31 09:45:49', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 09:45:49', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('beedb0d2-a312-11ea-9ed4-48f17f8d4d88', 'beec9895-a312-11ea-9ed4-48f17f8d4d88', '6d1036c3-a167-11ea-8012-48f17f8d4d88', 'Hand Power Driller', '7.5', '2', 'each', '2020-05-31 09:45:49', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 09:45:49', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('d3c50929-a300-11ea-9ed4-48f17f8d4d88', 'd3c4bdfe-a300-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '3', 'each', '2020-05-31 07:37:33', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 07:37:33', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('d3c5773f-a300-11ea-9ed4-48f17f8d4d88', 'd3c4bdfe-a300-11ea-9ed4-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'BOSCH Cordless Glue Gun', '850', '1', 'each', '2020-05-31 07:37:33', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 07:37:33', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('deba2bcd-a308-11ea-9ed4-48f17f8d4d88', 'deb995c3-a308-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '3', 'each', '2020-05-31 08:35:08', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:35:08', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('e150304f-a31d-11ea-8323-48f17f8d4d88', 'e14eeda9-a31d-11ea-8323-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'BOSCH Cordless Glue Gun', '850', '3', 'each', '2020-05-31 11:05:31', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 11:05:31', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('e15143ab-a31d-11ea-8323-48f17f8d4d88', 'e14eeda9-a31d-11ea-8323-48f17f8d4d88', '4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', 'Tuftex Fluted Nails (25mm)', '48.2', '3', '', '2020-05-31 11:05:31', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 11:05:31', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('e1523146-a31d-11ea-8323-48f17f8d4d88', 'e14eeda9-a31d-11ea-8323-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '3', 'each', '2020-05-31 11:05:31', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 11:05:31', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('e4c1ca8e-a31d-11ea-8323-48f17f8d4d88', 'e4c1237c-a31d-11ea-8323-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'BOSCH Cordless Glue Gun', '850', '3', 'each', '2020-05-31 11:05:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 11:05:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('e4c23305-a31d-11ea-8323-48f17f8d4d88', 'e4c1237c-a31d-11ea-8323-48f17f8d4d88', '4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', 'Tuftex Fluted Nails (25mm)', '48.2', '3', '', '2020-05-31 11:05:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 11:05:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('e4c272bc-a31d-11ea-8323-48f17f8d4d88', 'e4c1237c-a31d-11ea-8323-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '3', 'each', '2020-05-31 11:05:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 11:05:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('ec495d76-a30c-11ea-9ed4-48f17f8d4d88', 'ec489c73-a30c-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '1', 'each', '2020-05-31 09:04:08', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 09:04:08', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('ec49b1c1-a30c-11ea-9ed4-48f17f8d4d88', 'ec489c73-a30c-11ea-9ed4-48f17f8d4d88', '6d1036c3-a167-11ea-8012-48f17f8d4d88', 'Hand Power Driller', '7.5', '2', 'each', '2020-05-31 09:04:08', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 09:04:08', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('fabc93a4-a30b-11ea-9ed4-48f17f8d4d88', 'fabbdef9-a30b-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '2', 'each', '2020-05-31 08:57:23', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:57:23', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('fabcea96-a30b-11ea-9ed4-48f17f8d4d88', 'fabbdef9-a30b-11ea-9ed4-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'BOSCH Cordless Glue Gun', '850', '3', 'each', '2020-05-31 08:57:23', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:57:23', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('fe7ba8d3-a306-11ea-9ed4-48f17f8d4d88', 'fe7aed41-a306-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '2', 'each', '2020-05-31 08:21:42', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:21:42', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('fe7c05a3-a306-11ea-9ed4-48f17f8d4d88', 'fe7aed41-a306-11ea-9ed4-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'BOSCH Cordless Glue Gun', '850', '3', 'each', '2020-05-31 08:21:42', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:21:42', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('fe7c643b-a306-11ea-9ed4-48f17f8d4d88', 'fe7aed41-a306-11ea-9ed4-48f17f8d4d88', '4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', 'Tuftex Fluted Nails (25mm)', '48.2', '3', '', '2020-05-31 08:21:42', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:21:42', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1);
 
 -- --------------------------------------------------------
 
@@ -257,6 +317,7 @@ INSERT INTO `orderproduct` (`OrderProductId`, `OrderId`, `ProductId`, `ProductNa
 
 CREATE TABLE `orders` (
   `OrderId` varchar(225) NOT NULL,
+  `OrderNo` int(11) NOT NULL,
   `CustomerId` varchar(225) NOT NULL,
   `SupplierId` varchar(225) NOT NULL,
   `ProjectNumber` varchar(400) DEFAULT NULL,
@@ -276,15 +337,16 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`OrderId`, `CustomerId`, `SupplierId`, `ProjectNumber`, `DeliveryDate`, `DeliveryTime`, `DeliveryAddress`, `SpecialInstructions`, `Total`, `CreateDate`, `CrateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
-('a7177eae-a28a-11ea-a7b2-48f17f8d4d88', '21321321321', '3213213213', 'fdfewrwer', 'ewewq', 'ewe', 'wqewq', 'dasdsad', '32321', '2020-05-30 17:31:38', '23232', '2020-05-30 17:31:38', '321312', 1),
-('c1cfbc94-a28a-11ea-a7b2-48f17f8d4d88', '21321321321', '3213213213', 'fdfewrwer', 'ewewq', 'ewe', 'wqewq', 'dasdsad', '32321', '2020-05-30 17:32:22', '23232', '2020-05-30 17:32:22', '321312', 1),
-('cc62b2ab-a28a-11ea-a7b2-48f17f8d4d88', '21321321321', '3213213213', 'fdfewrwer', 'ewewq', 'ewe', 'wqewq', 'dasdsad', '32321', '2020-05-30 17:32:40', '23232', '2020-05-30 17:32:40', '321312', 1),
-('0cddb74f-a28c-11ea-a7b2-48f17f8d4d88', '21321321321', '3213213213', 'fdfewrwer', 'ewewq', 'ewe', 'wqewq', 'dasdsad', '32321', '2020-05-30 17:41:38', '23232', '2020-05-30 17:41:38', '321312', 1),
-('2e5a6152-a28c-11ea-a7b2-48f17f8d4d88', '21321321321', '3213213213', 'fdfewrwer', 'ewewq', 'ewe', 'wqewq', 'dasdsad', '32321', '2020-05-30 17:42:34', '23232', '2020-05-30 17:42:34', '321312', 1),
-('38524c8a-a28c-11ea-a7b2-48f17f8d4d88', '21321321321', '3213213213', 'fdfewrwer', 'ewewq', 'ewe', 'wqewq', 'dasdsad', '32321', '2020-05-30 17:42:51', '23232', '2020-05-30 17:42:51', '321312', 1),
-('4da56599-a28e-11ea-a7b2-48f17f8d4d88', '21321321321', '3213213213', 'fdfewrwer', 'ewewq', 'ewe', 'wqewq', 'dasdsad', '32321', '2020-05-30 17:57:45', '23232', '2020-05-30 17:57:45', '321312', 1),
-('5095a4de-a28e-11ea-a7b2-48f17f8d4d88', '21321321321', '3213213213', 'fdfewrwer', 'ewewq', 'ewe', 'wqewq', 'dasdsad', '32321', '2020-05-30 17:57:50', '23232', '2020-05-30 17:57:50', '321312', 1);
+INSERT INTO `orders` (`OrderId`, `OrderNo`, `CustomerId`, `SupplierId`, `ProjectNumber`, `DeliveryDate`, `DeliveryTime`, `DeliveryAddress`, `SpecialInstructions`, `Total`, `CreateDate`, `CrateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+('beec9895-a312-11ea-9ed4-48f17f8d4d88', 1, '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'na', '2020-05-05', '13:45', 'Hoff Events', '', '515', '2020-05-31 09:45:49', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 09:45:49', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('6033184d-a313-11ea-9ed4-48f17f8d4d88', 2, '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'na', '2020-05-28', '09:53', 'Hoff Events', '', '4294.6', '2020-05-31 09:50:20', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 09:50:20', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('b204523b-a314-11ea-9ed4-48f17f8d4d88', 3, '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'na', NULL, NULL, NULL, '', '289.8', '2020-05-31 09:59:46', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 09:59:46', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('b6ae10d2-a314-11ea-9ed4-48f17f8d4d88', 4, '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'na', '2020-05-20', '13:04', '2/20/2020', '', '289.8', '2020-05-31 09:59:54', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 09:59:54', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('44fdb801-a317-11ea-9ed4-48f17f8d4d88', 5, '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'na', '2020-05-14', '13:18', 'Strength', '', '3300', '2020-05-31 10:18:12', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 10:18:12', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('957b2d9b-a31a-11ea-8323-48f17f8d4d88', 6, '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'na', '2020-05-05', '15:41', 'Hoff Events', '', '3300', '2020-05-31 10:41:56', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 10:41:56', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('2c69de2d-a31d-11ea-8323-48f17f8d4d88', 7, '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'na', '2020-05-07', '13:00', 'Hoff Events', '', '504.6', '2020-05-31 11:00:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 11:00:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('e14eeda9-a31d-11ea-8323-48f17f8d4d88', 8, '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'na', '2020-05-21', NULL, 'Hoff Events', '', '3444.6', '2020-05-31 11:05:31', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 11:05:31', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('e4c1237c-a31d-11ea-8323-48f17f8d4d88', 9, '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'na', '2020-05-21', '11:09', 'Hoff Events', '', '3444.6', '2020-05-31 11:05:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 11:05:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1);
 
 -- --------------------------------------------------------
 
@@ -333,21 +395,21 @@ CREATE TABLE `product` (
 INSERT INTO `product` (`ProductId`, `UserId`, `ProductName`, `ShortDescription`, `Description`, `ProductCode`, `Price`, `Quantity`, `Units`, `CategoryId`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
 ('012a43a4-a0e5-11ea-9dc0-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Cement 50kg', '', '', 'CN55', '100.50', '500', 'meter', '1', '2020-05-28 15:13:21', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 15:13:21', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
 ('1fe9cfc2-a0d9-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Cemente  50kg', '', '', '', '100', '100', '', '23', '2020-05-28 13:48:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 19:29:07', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
-('4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Nails', '', '', '25520', '48.2', '100', '', '21', '2020-05-28 13:49:33', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 19:35:49', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Tuftex Fluted Nails (25mm)', '', '', '25520', '48.2', '100', '', '21', '2020-05-28 13:49:33', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 21:36:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('50c4d519-a0f4-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Ponal Wood Glue 2 Litre', '', '', '324324', '250', '323', 'each', '2', '2020-05-28 17:02:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 19:36:58', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('50f4054b-a098-11ea-94de-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Ceiling board', '', '', 'CN55', '12.50', '150', 'meter', '1', '2020-05-28 06:04:24', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 06:04:24', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
 ('5e5db9cf-a097-11ea-94de-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Ceiling board', '', '', 'CN55', '12.50', '150', 'meter', '1', '2020-05-28 05:57:37', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 05:57:37', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
 ('63db9d4f-a0b9-11ea-b662-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Cement 50kg', '', '', 'CN55', '100.50', '500', 'meter', '1', '2020-05-28 10:01:09', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 10:01:09', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
-('6d1036c3-a167-11ea-8012-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Blocks E7', '', '', '', '7.5', '100', 'each', '2', '2020-05-29 06:46:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 06:46:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('6d1036c3-a167-11ea-8012-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Hand Power Driller', '', '', '', '7.5', '100', 'each', '2', '2020-05-29 06:46:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:39:52', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('71ba246f-a096-11ea-94de-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Ceiling board', 'Ceiling board', '', 'CN55', '12.50', '150', 'meter', '1', '2020-05-28 05:51:00', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 05:51:00', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
 ('804f69cc-a0d9-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Ceillin board', '', '', '', '12.2', '5000', 'Metre', '', '2020-05-28 13:51:00', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 13:51:00', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('87b44a62-a096-11ea-94de-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Ceiling board', '', '', 'CN55', '12.50', '150', 'meter', '1', '2020-05-28 05:51:37', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 05:51:37', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
 ('b58f9ee2-a095-11ea-94de-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Ceiling board', '', '', 'CN55', '12.50', '150', 'meter', '1', '2020-05-28 05:45:44', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 05:45:44', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
 ('c6d0a57e-a0ed-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Wooded board', '', '', '', '120', '100000', 'M', '', '2020-05-28 16:16:08', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 16:16:08', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
-('cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Isaka0250', '', '', '', '213', '3213', '', '', '2020-05-29 18:45:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 18:45:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Newden Varnish - Light Oak (500ml)', '', '', '', '250', '100', 'each', '21', '2020-05-29 18:45:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 10:44:00', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('d77f199a-a0e7-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'ee', 'ew', '', '', '232', '323', '', '', '2020-05-28 15:33:40', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 15:33:40', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('ea5fd052-a0f0-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'test', '', '', '', '122', '21', '', '', '2020-05-28 16:38:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 16:38:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
-('ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Isaka 50', '', '', '', '213', '3213', '', '', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 19:27:25', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'BOSCH Cordless Glue Gun', '', '', '', '850', '100', 'each', '', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:38:42', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('f532d991-a0e4-11ea-9dc0-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Cement 50kg', '', '', 'CN55', '100.50', '500', 'meter', '1', '2020-05-28 15:13:01', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 15:13:01', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
 ('fc64a281-a0e4-11ea-9dc0-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Cement 50kg', '', '', 'CN55', '100.50', '500', 'meter', '1', '2020-05-28 15:13:13', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 15:13:13', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1);
 
@@ -382,20 +444,21 @@ INSERT INTO `productproperty` (`ProductpropertyId`, `ProductId`, `Name`, `Code`,
 ('50c5cebd-a0f4-11ea-9dc0-48f17f8d4d88', '50c4d519-a0f4-11ea-9dc0-48f17f8d4d88', 'Property 2', '', '', '', '2020-05-28 17:02:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 19:36:58', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('50f45914-a098-11ea-94de-48f17f8d4d88', '50f4054b-a098-11ea-94de-48f17f8d4d88', 'Wood Type', 'WT', 'AA5TT6', '', '2020-05-28 06:04:24', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 06:04:24', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
 ('50f4a768-a098-11ea-94de-48f17f8d4d88', '50f4054b-a098-11ea-94de-48f17f8d4d88', 'Wood Type', 'WT', 'AA5TT6', '', '2020-05-28 06:04:24', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 06:04:24', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
-('6d108842-a167-11ea-8012-48f17f8d4d88', '6d1036c3-a167-11ea-8012-48f17f8d4d88', '', '', '', '', '2020-05-29 06:46:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 06:46:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
-('6d10c5ee-a167-11ea-8012-48f17f8d4d88', '6d1036c3-a167-11ea-8012-48f17f8d4d88', '', '', '', '', '2020-05-29 06:46:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 06:46:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('6d108842-a167-11ea-8012-48f17f8d4d88', '6d1036c3-a167-11ea-8012-48f17f8d4d88', '', '', '', '', '2020-05-29 06:46:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:39:52', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('6d10c5ee-a167-11ea-8012-48f17f8d4d88', '6d1036c3-a167-11ea-8012-48f17f8d4d88', '', '', '', '', '2020-05-29 06:46:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:39:52', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('861204d7-a1d1-11ea-bf54-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'qwq', '', 'eewe', '', '2020-05-29 19:26:25', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 19:26:31', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 3),
 ('86124b76-a1d1-11ea-bf54-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'ewqewqe', '', 'ewqewqe', '', '2020-05-29 19:26:25', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 19:26:32', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 3),
 ('c6d10559-a0ed-11ea-9dc0-48f17f8d4d88', 'c6d0a57e-a0ed-11ea-9dc0-48f17f8d4d88', 'Weigth', 'WT', '200kg', '', '2020-05-28 16:16:09', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 16:16:09', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('c6d15161-a0ed-11ea-9dc0-48f17f8d4d88', 'c6d0a57e-a0ed-11ea-9dc0-48f17f8d4d88', 'Width', 'WT', '1000m', '', '2020-05-28 16:16:09', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 16:16:09', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
-('cd3a740d-a1cb-11ea-bf54-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Mass Uplaod', '', '5510', '', '2020-05-29 18:45:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 18:45:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
-('cd3aae04-a1cb-11ea-bf54-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Property 2', '', '', '', '2020-05-29 18:45:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 18:45:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
-('cfbec0a4-a1d1-11ea-bf54-48f17f8d4d88', '4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', 'Mental', '', 'Steel', '', '2020-05-29 19:28:29', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 19:35:49', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('cd3a740d-a1cb-11ea-bf54-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Mass Uplaod', '', '5510', '', '2020-05-29 18:45:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 10:44:00', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('cd3aae04-a1cb-11ea-bf54-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Strength', '', '100', '', '2020-05-29 18:45:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 10:44:00', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('cfbec0a4-a1d1-11ea-bf54-48f17f8d4d88', '4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', 'Mental', '', 'Steel', '', '2020-05-29 19:28:29', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 21:36:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('d77fca94-a0e7-11ea-9dc0-48f17f8d4d88', 'd77f199a-a0e7-11ea-9dc0-48f17f8d4d88', 'Wood Type', 'WT', 'AA5TT6', '', '2020-05-28 15:33:40', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 15:33:40', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('df8521f2-a31a-11ea-8323-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'T', '', '88', '', '2020-05-31 10:44:00', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 10:44:00', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('ea604a5f-a0f0-11ea-9dc0-48f17f8d4d88', 'ea5fd052-a0f0-11ea-9dc0-48f17f8d4d88', 'Property 1', '', '2094', '', '2020-05-28 16:38:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 16:38:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('ea60beaf-a0f0-11ea-9dc0-48f17f8d4d88', 'ea5fd052-a0f0-11ea-9dc0-48f17f8d4d88', 'Property 2', '', 'Nails', '', '2020-05-28 16:38:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 16:38:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
-('ecb7cb17-a0f4-11ea-9dc0-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'Mass Uplaod', '', '5510556', '', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 19:27:25', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
-('ecb81179-a0f4-11ea-9dc0-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'Strength', '', '50000kpw', '', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 19:27:25', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('ecb7cb17-a0f4-11ea-9dc0-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'Mass Uplaod', '', '5510556', '', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:38:42', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('ecb81179-a0f4-11ea-9dc0-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'Strength', '', '50000kpw', '', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:38:42', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('f5339f80-a0e4-11ea-9dc0-48f17f8d4d88', 'f532d991-a0e4-11ea-9dc0-48f17f8d4d88', 'Strength', 'WT', 'AA5TT6', 'kg', '2020-05-28 15:13:01', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 15:13:01', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
 ('fc65247d-a0e4-11ea-9dc0-48f17f8d4d88', 'fc64a281-a0e4-11ea-9dc0-48f17f8d4d88', 'Strength', 'WT', 'AA5TT6', 'kg', '2020-05-28 15:13:13', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 15:13:13', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1);
 
@@ -555,6 +618,12 @@ ALTER TABLE `orderproduct`
   ADD PRIMARY KEY (`OrderProductId`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`OrderNo`);
+
+--
 -- Indexes for table `orderstatus`
 --
 ALTER TABLE `orderstatus`
@@ -599,6 +668,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `category`
   MODIFY `CategoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `OrderNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `orderstatus`
