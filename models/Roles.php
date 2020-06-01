@@ -45,6 +45,7 @@ class Roles
         }
     }
 
+  
     public function AddRole(
         $RoleName,
         $CreateUserId,

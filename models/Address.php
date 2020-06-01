@@ -20,7 +20,7 @@ class Address
         $stmt->execute(array($UserId));
 
         if ($stmt->rowCount()) {
-            return $stmt->fetch(PDO::FETCH_ASSOC);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
     }
     public function getAddressIdById($AddressId)

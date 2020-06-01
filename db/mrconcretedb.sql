@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2020 at 11:06 AM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- Generation Time: Jun 01, 2020 at 11:39 PM
+-- Server version: 10.1.35-MariaDB
+-- PHP Version: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,14 +31,16 @@ SET time_zone = "+00:00";
 CREATE TABLE `address` (
   `AddressId` varchar(225) NOT NULL,
   `UserId` varchar(225) NOT NULL,
+  `AddressType` varchar(50) DEFAULT NULL,
   `AddressLine1` varchar(50) NOT NULL,
   `AddressLine2` varchar(50) NOT NULL,
   `AddressLine3` varchar(50) NOT NULL,
   `City` varchar(50) NOT NULL,
+  `Province` varchar(50) DEFAULT NULL,
   `PostalCode` varchar(20) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `CrateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -47,8 +49,10 @@ CREATE TABLE `address` (
 -- Dumping data for table `address`
 --
 
-INSERT INTO `address` (`AddressId`, `UserId`, `AddressLine1`, `AddressLine2`, `AddressLine3`, `City`, `PostalCode`, `CreateDate`, `CrateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
-('4df9f570-9cd5-11ea-809b-48f17f8d4d88', 'de662467-9c4a-11ea-84a4-48f17f8d4d88', 'The Willaim', 'Unit 510', 'Black 56', 'Fourways', '1245', '2020-05-23 11:10:53', 'de662467-9c4a-11ea-84a4-48f17f8d4d88', '2020-05-23 12:11:52', 'de662467-9c4a-11ea-84a4-48f17f8d4d88', 1);
+INSERT INTO `address` (`AddressId`, `UserId`, `AddressType`, `AddressLine1`, `AddressLine2`, `AddressLine3`, `City`, `Province`, `PostalCode`, `CreateDate`, `CrateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+('4df9f570-9cd5-11ea-809b-48f17f8d4d29', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Physical Address', 'Randburg', 'Unit 813', 'Black 56', 'Randburg', 'Gauteng', '1245', '2020-05-23 11:10:53', 'de662467-9c4a-11ea-84a4-48f17f8d4d88', '2020-05-23 12:11:52', 'de662467-9c4a-11ea-84a4-48f17f8d4d88', 1),
+('4df9f570-9cd5-11ea-809b-48f17f8d4d77', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Physical Address', 'Braamfontein Gate', 'Unit 813', 'Black 56', 'Braamfontein', 'Gauteng', '1245', '2020-05-23 11:10:53', 'de662467-9c4a-11ea-84a4-48f17f8d4d88', '2020-05-23 12:11:52', 'de662467-9c4a-11ea-84a4-48f17f8d4d88', 1),
+('4df9f570-9cd5-11ea-809b-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Postal Address', 'The Willaim', 'Unit 510', 'Black 56', 'Fourways', 'Gauteng', '1245', '2020-05-23 11:10:53', 'de662467-9c4a-11ea-84a4-48f17f8d4d88', '2020-05-23 12:11:52', 'de662467-9c4a-11ea-84a4-48f17f8d4d88', 1);
 
 -- --------------------------------------------------------
 
@@ -60,9 +64,9 @@ CREATE TABLE `attachments` (
   `Id` int(11) NOT NULL,
   `url` varchar(225) DEFAULT NULL,
   `OtherId` varchar(225) DEFAULT NULL,
-  `CreateDate` datetime DEFAULT current_timestamp(),
+  `CreateDate` datetime DEFAULT CURRENT_TIMESTAMP,
   `CreateUserId` varchar(225) DEFAULT NULL,
-  `ModifyDate` datetime DEFAULT current_timestamp(),
+  `ModifyDate` datetime DEFAULT CURRENT_TIMESTAMP,
   `ModifyUserId` varchar(225) DEFAULT NULL,
   `StatusId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -85,13 +89,13 @@ CREATE TABLE `billing` (
   `TotalAmountPaid` decimal(11,0) NOT NULL,
   `BillingMonth` varchar(10) NOT NULL,
   `NextBillingMonth` varchar(10) NOT NULL,
-  `SubscriptionDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `SubscriptionDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `CancellationDate` date DEFAULT NULL,
   `CancellationReason` varchar(225) DEFAULT NULL,
   `IsProcessed` tinyint(1) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -105,9 +109,9 @@ CREATE TABLE `billing` (
 CREATE TABLE `category` (
   `CategoryId` int(11) NOT NULL,
   `CategoryName` varchar(50) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -136,9 +140,9 @@ CREATE TABLE `comments` (
   `Id` int(11) NOT NULL,
   `Comment` int(11) NOT NULL,
   `OtherId` varchar(225) NOT NULL,
-  `CreateDate` datetime DEFAULT current_timestamp(),
+  `CreateDate` datetime DEFAULT CURRENT_TIMESTAMP,
   `CreateUserId` varchar(225) DEFAULT NULL,
-  `ModifyDate` datetime DEFAULT current_timestamp(),
+  `ModifyDate` datetime DEFAULT CURRENT_TIMESTAMP,
   `ModifyUserId` varchar(225) DEFAULT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -158,10 +162,11 @@ CREATE TABLE `company` (
   `CompanyType` varchar(50) DEFAULT NULL,
   `CompanyAddress` varchar(225) NOT NULL,
   `City` varchar(50) NOT NULL,
+  `Province` varchar(50) DEFAULT NULL,
   `PostalCode` varchar(10) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ModifyUserId` varchar(225) NOT NULL,
   `IsDeleted` tinyint(1) NOT NULL,
   `StatusId` int(10) NOT NULL
@@ -171,9 +176,10 @@ CREATE TABLE `company` (
 -- Dumping data for table `company`
 --
 
-INSERT INTO `company` (`CompanyId`, `CompanyName`, `CompanyPhone`, `CompanyEmail`, `ParentId`, `CompanyType`, `CompanyAddress`, `City`, `PostalCode`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `IsDeleted`, `StatusId`) VALUES
-('09c6bc58-1fe4-486f-ba18-3830592466f5', 'Test Company', '07466585421', 'test@company.co.za', '', 'HeadQuarters', 'Sandton 1 Press Street', 'Sandton', '2190', '2020-05-30 15:03:52', 'sys', '2020-05-30 15:03:52', 'sys', 0, 1),
-('384d1113-a276-11ea-a04d-c8f7501047dc', 'Construction Wise', '07466585421', 'wise@construction.co.za', '', 'HeadQuarters', 'Umbilo Devenport', 'Durban', '2190', '2020-05-30 15:05:22', 'sys', '2020-05-30 15:05:22', 'sys', 0, 1);
+INSERT INTO `company` (`CompanyId`, `CompanyName`, `CompanyPhone`, `CompanyEmail`, `ParentId`, `CompanyType`, `CompanyAddress`, `City`, `Province`, `PostalCode`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `IsDeleted`, `StatusId`) VALUES
+('09c6bc58-1fe4-486f-ba18-3830592466f5', 'Test Company', '07466585421', 'test@company.co.za', '', 'HeadQuarters', 'Sandton 1 Press Street', 'Sandton', 'Gauteng', '2190', '2020-05-30 15:03:52', 'sys', '2020-05-30 15:03:52', 'sys', 0, 1),
+('132a953b-a342-11ea-a04d-c8f7501047dc', 'Siya CO', '745785452121', '', NULL, 'HeadQuarter', 'EC', 'Bhisho', 'Gauteng', '450122', '2020-05-31 15:24:37', 'c0f051f1-a341-11ea-a04d-c8f7501047dc', '2020-05-31 15:24:37', 'c0f051f1-a341-11ea-a04d-c8f7501047dc', 0, 1),
+('384d1113-a276-11ea-a04d-c8f7501047dc', 'Construction Wise', '07466585421', 'wise@construction.co.za', '', 'HeadQuarters', 'Umbilo Devenport', 'Durban', 'Gauteng', '2190', '2020-05-30 15:05:22', 'sys', '2020-05-30 15:05:22', 'sys', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -186,28 +192,12 @@ CREATE TABLE `image` (
   `CompanyId` varchar(225) NOT NULL,
   `OtherId` varchar(225) NOT NULL,
   `Url` text NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `image`
---
-
-INSERT INTO `image` (`ImageId`, `CompanyId`, `OtherId`, `Url`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
-('13e5efcb-a2be-11ea-a7b2-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '6d1036c3-a167-11ea-8012-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590874784iio.jpg', '2020-05-30 23:39:44', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:39:44', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
-('41ae8e42-a2a6-11ea-a7b2-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590864553iio.jpg', '2020-05-30 20:49:13', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 20:49:13', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
-('5bfa97f7-a1c8-11ea-bf54-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'removed-ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590769249iio.jpg', '2020-05-29 18:20:49', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:38:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 2),
-('6d1105ce-a167-11ea-8012-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'removed-6d1036c3-a167-11ea-8012-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590724264mrk.jpg', '2020-05-29 06:46:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:39:41', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 2),
-('d5eff58a-a1d1-11ea-bf54-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590773319iio.jpg', '2020-05-29 19:28:39', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 19:28:39', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
-('ecb84b0c-a0f4-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'removed-removed-ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590678434mrk.jpg', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 18:28:52', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 2),
-('ecb89922-a0f4-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'removed-removed-ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590678437mrk.jpg', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 18:28:49', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 2),
-('ed5efcc5-a31a-11ea-8323-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'removed-cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590914663iio.jpg', '2020-05-31 10:44:23', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 10:44:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 2),
-('ee3140ac-a2bd-11ea-a7b2-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590874721iio.jpg', '2020-05-30 23:38:41', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:38:41', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
-('f1c057d4-a1c8-11ea-bf54-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'removed-ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'http://localhost:8200/mr-concrete-api/api/upload/uploads/1590769500iio.jpg', '2020-05-29 18:25:00', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:38:39', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 2);
 
 -- --------------------------------------------------------
 
@@ -238,9 +228,9 @@ CREATE TABLE `orderproduct` (
   `Price` varchar(50) NOT NULL,
   `Quantity` varchar(50) NOT NULL,
   `Units` varchar(50) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `CrateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -256,6 +246,7 @@ INSERT INTO `orderproduct` (`OrderProductId`, `OrderId`, `ProductId`, `ProductNa
 ('0bebd505-a301-11ea-9ed4-48f17f8d4d88', '0beade1d-a301-11ea-9ed4-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'BOSCH Cordless Glue Gun', '850', '1', 'each', '2020-05-31 07:39:07', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 07:39:07', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('0fbb58a4-a30a-11ea-9ed4-48f17f8d4d88', '0fba9c48-a30a-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '3', 'each', '2020-05-31 08:43:39', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:43:39', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('1d670d54-a30a-11ea-9ed4-48f17f8d4d88', '1d6645f3-a30a-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '2', 'each', '2020-05-31 08:44:02', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:44:02', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('21f8145a-a359-11ea-a04d-c8f7501047dc', '21f74b9b-a359-11ea-a04d-c8f7501047dc', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Truck Rental', '1000', '5', 'day(s)', '2020-05-31 18:09:40', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 18:09:40', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('23d9c693-a2c3-11ea-a7b2-48f17f8d4d88', '23d903b0-a2c3-11ea-a7b2-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'BOSCH Cordless Glue Gun', '850', '3', 'each', '2020-05-31 00:15:59', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 00:15:59', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('23da0d18-a2c3-11ea-a7b2-48f17f8d4d88', '23d903b0-a2c3-11ea-a7b2-48f17f8d4d88', '6d1036c3-a167-11ea-8012-48f17f8d4d88', 'Hand Power Driller', '7.5', '3', 'each', '2020-05-31 00:15:59', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 00:15:59', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('23da50bf-a2c3-11ea-a7b2-48f17f8d4d88', '23d903b0-a2c3-11ea-a7b2-48f17f8d4d88', '4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', 'Tuftex Fluted Nails (25mm)', '48.2', '2', '', '2020-05-31 00:15:59', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 00:15:59', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
@@ -294,6 +285,8 @@ INSERT INTO `orderproduct` (`OrderProductId`, `OrderId`, `ProductId`, `ProductNa
 ('beedb0d2-a312-11ea-9ed4-48f17f8d4d88', 'beec9895-a312-11ea-9ed4-48f17f8d4d88', '6d1036c3-a167-11ea-8012-48f17f8d4d88', 'Hand Power Driller', '7.5', '2', 'each', '2020-05-31 09:45:49', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 09:45:49', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('d3c50929-a300-11ea-9ed4-48f17f8d4d88', 'd3c4bdfe-a300-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '3', 'each', '2020-05-31 07:37:33', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 07:37:33', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('d3c5773f-a300-11ea-9ed4-48f17f8d4d88', 'd3c4bdfe-a300-11ea-9ed4-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'BOSCH Cordless Glue Gun', '850', '1', 'each', '2020-05-31 07:37:33', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 07:37:33', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('ddfdb2af-a359-11ea-a04d-c8f7501047dc', 'ddfccfe8-a359-11ea-a04d-c8f7501047dc', '6d1036c3-a167-11ea-8012-48f17f8d4d88', 'Hand Power Driller', '7.5', '20', 'x', '2020-05-31 18:14:55', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 18:14:55', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('ddfe4bfd-a359-11ea-a04d-c8f7501047dc', 'ddfccfe8-a359-11ea-a04d-c8f7501047dc', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Truck Rental', '1000', '1', 'day(s)', '2020-05-31 18:14:55', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 18:14:55', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('deba2bcd-a308-11ea-9ed4-48f17f8d4d88', 'deb995c3-a308-11ea-9ed4-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Newden Varnish - Light Oak (500ml)', '250', '3', 'each', '2020-05-31 08:35:08', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 08:35:08', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('e150304f-a31d-11ea-8323-48f17f8d4d88', 'e14eeda9-a31d-11ea-8323-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'BOSCH Cordless Glue Gun', '850', '3', 'each', '2020-05-31 11:05:31', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 11:05:31', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('e15143ab-a31d-11ea-8323-48f17f8d4d88', 'e14eeda9-a31d-11ea-8323-48f17f8d4d88', '4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', 'Tuftex Fluted Nails (25mm)', '48.2', '3', '', '2020-05-31 11:05:31', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 11:05:31', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
@@ -323,12 +316,12 @@ CREATE TABLE `orders` (
   `ProjectNumber` varchar(400) DEFAULT NULL,
   `DeliveryDate` varchar(150) DEFAULT NULL,
   `DeliveryTime` varchar(20) DEFAULT NULL,
-  `DeliveryAddress` text DEFAULT NULL,
-  `SpecialInstructions` text DEFAULT NULL,
+  `DeliveryAddress` text,
+  `SpecialInstructions` text,
   `Total` varchar(225) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `CrateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -346,7 +339,9 @@ INSERT INTO `orders` (`OrderId`, `OrderNo`, `CustomerId`, `SupplierId`, `Project
 ('957b2d9b-a31a-11ea-8323-48f17f8d4d88', 6, '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'na', '2020-05-05', '15:41', 'Hoff Events', '', '3300', '2020-05-31 10:41:56', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 10:41:56', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('2c69de2d-a31d-11ea-8323-48f17f8d4d88', 7, '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'na', '2020-05-07', '13:00', 'Hoff Events', '', '504.6', '2020-05-31 11:00:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 11:00:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('e14eeda9-a31d-11ea-8323-48f17f8d4d88', 8, '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'na', '2020-05-21', NULL, 'Hoff Events', '', '3444.6', '2020-05-31 11:05:31', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 11:05:31', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
-('e4c1237c-a31d-11ea-8323-48f17f8d4d88', 9, '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'na', '2020-05-21', '11:09', 'Hoff Events', '', '3444.6', '2020-05-31 11:05:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 11:05:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1);
+('e4c1237c-a31d-11ea-8323-48f17f8d4d88', 9, '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'na', '2020-05-21', '11:09', 'Hoff Events', '', '3444.6', '2020-05-31 11:05:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 11:05:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('21f74b9b-a359-11ea-a04d-c8f7501047dc', 10, '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'na', '2020-06-01', '20:10', '', 'News Deck', '5000', '2020-05-31 18:09:40', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 18:09:40', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('ddfccfe8-a359-11ea-a04d-c8f7501047dc', 11, '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'na', '2020-05-02', '21:14', '', 'News', '1150', '2020-05-31 18:14:55', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 18:14:55', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1);
 
 -- --------------------------------------------------------
 
@@ -357,9 +352,9 @@ INSERT INTO `orders` (`OrderId`, `OrderNo`, `CustomerId`, `SupplierId`, `Project
 CREATE TABLE `orderstatus` (
   `StatusId` int(11) NOT NULL,
   `Description` int(11) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ModifyUserId` varchar(225) NOT NULL,
   `IsActive` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -378,12 +373,12 @@ CREATE TABLE `product` (
   `Description` text NOT NULL,
   `ProductCode` varchar(225) NOT NULL,
   `Price` varchar(10) NOT NULL,
-  `Quantity` decimal(10,0) NOT NULL DEFAULT 0,
+  `Quantity` decimal(10,0) NOT NULL DEFAULT '0',
   `Units` varchar(100) NOT NULL DEFAULT 'each',
   `CategoryId` varchar(225) DEFAULT NULL,
-  `CreateDate` datetime DEFAULT current_timestamp(),
+  `CreateDate` datetime DEFAULT CURRENT_TIMESTAMP,
   `CreateUserId` varchar(225) DEFAULT NULL,
-  `ModifyDate` datetime DEFAULT current_timestamp(),
+  `ModifyDate` datetime DEFAULT CURRENT_TIMESTAMP,
   `ModifyUserId` varchar(225) DEFAULT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -395,18 +390,19 @@ CREATE TABLE `product` (
 INSERT INTO `product` (`ProductId`, `UserId`, `ProductName`, `ShortDescription`, `Description`, `ProductCode`, `Price`, `Quantity`, `Units`, `CategoryId`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
 ('012a43a4-a0e5-11ea-9dc0-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Cement 50kg', '', '', 'CN55', '100.50', '500', 'meter', '1', '2020-05-28 15:13:21', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 15:13:21', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
 ('1fe9cfc2-a0d9-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Cemente  50kg', '', '', '', '100', '100', '', '23', '2020-05-28 13:48:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 19:29:07', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('340c60e0-a342-11ea-a04d-c8f7501047dc', 'c0f051f1-a341-11ea-a04d-c8f7501047dc', 'Randburg', 'PRK5224200', '21Jkajn', '50001', '5000', '2', 'kg', '2', '2020-05-31 15:25:32', 'c0f051f1-a341-11ea-a04d-c8f7501047dc', '2020-05-31 15:25:46', 'c0f051f1-a341-11ea-a04d-c8f7501047dc', 1),
 ('4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Tuftex Fluted Nails (25mm)', '', '', '25520', '48.2', '100', '', '21', '2020-05-28 13:49:33', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 21:36:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('50c4d519-a0f4-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Ponal Wood Glue 2 Litre', '', '', '324324', '250', '323', 'each', '2', '2020-05-28 17:02:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 19:36:58', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('50f4054b-a098-11ea-94de-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Ceiling board', '', '', 'CN55', '12.50', '150', 'meter', '1', '2020-05-28 06:04:24', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 06:04:24', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
 ('5e5db9cf-a097-11ea-94de-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Ceiling board', '', '', 'CN55', '12.50', '150', 'meter', '1', '2020-05-28 05:57:37', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 05:57:37', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
 ('63db9d4f-a0b9-11ea-b662-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Cement 50kg', '', '', 'CN55', '100.50', '500', 'meter', '1', '2020-05-28 10:01:09', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 10:01:09', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
-('6d1036c3-a167-11ea-8012-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Hand Power Driller', '', '', '', '7.5', '100', 'each', '2', '2020-05-29 06:46:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:39:52', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('6d1036c3-a167-11ea-8012-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Hand Power Driller', '', '', '', '7.5', '100', 'x', '2', '2020-05-29 06:46:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 18:13:32', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('71ba246f-a096-11ea-94de-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Ceiling board', 'Ceiling board', '', 'CN55', '12.50', '150', 'meter', '1', '2020-05-28 05:51:00', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 05:51:00', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
 ('804f69cc-a0d9-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Ceillin board', '', '', '', '12.2', '5000', 'Metre', '', '2020-05-28 13:51:00', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 13:51:00', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('87b44a62-a096-11ea-94de-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Ceiling board', '', '', 'CN55', '12.50', '150', 'meter', '1', '2020-05-28 05:51:37', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 05:51:37', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
 ('b58f9ee2-a095-11ea-94de-48f17f8d4d88', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 'Ceiling board', '', '', 'CN55', '12.50', '150', 'meter', '1', '2020-05-28 05:45:44', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 05:45:44', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
 ('c6d0a57e-a0ed-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Wooded board', '', '', '', '120', '100000', 'M', '', '2020-05-28 16:16:08', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 16:16:08', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
-('cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Newden Varnish - Light Oak (500ml)', '', '', '', '250', '100', 'each', '21', '2020-05-29 18:45:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 10:44:00', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'Truck Rental', '', '', '', '1000', '100', 'day(s)', '21', '2020-05-29 18:45:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 18:08:42', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('d77f199a-a0e7-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'ee', 'ew', '', '', '232', '323', '', '', '2020-05-28 15:33:40', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 15:33:40', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('ea5fd052-a0f0-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'test', '', '', '', '122', '21', '', '', '2020-05-28 16:38:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 16:38:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'BOSCH Cordless Glue Gun', '', '', '', '850', '100', 'each', '', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:38:42', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
@@ -426,9 +422,9 @@ CREATE TABLE `productproperty` (
   `Code` varchar(250) NOT NULL,
   `Value` varchar(500) NOT NULL,
   `Units` varchar(100) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `CrateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -439,22 +435,23 @@ CREATE TABLE `productproperty` (
 
 INSERT INTO `productproperty` (`ProductpropertyId`, `ProductId`, `Name`, `Code`, `Value`, `Units`, `CreateDate`, `CrateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
 ('012ad0a1-a0e5-11ea-9dc0-48f17f8d4d88', '012a43a4-a0e5-11ea-9dc0-48f17f8d4d88', 'Strength', 'WT', 'AA5TT6', 'kph', '2020-05-28 15:13:21', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 15:13:21', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
+('340cf1ac-a342-11ea-a04d-c8f7501047dc', '340c60e0-a342-11ea-a04d-c8f7501047dc', '4000', '', '150', '', '2020-05-31 15:25:32', 'c0f051f1-a341-11ea-a04d-c8f7501047dc', '2020-05-31 15:25:46', 'c0f051f1-a341-11ea-a04d-c8f7501047dc', 1),
 ('3e9469b8-a1ce-11ea-bf54-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'sAS', '', 'SAsA', '', '2020-05-29 19:02:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 19:25:07', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 3),
 ('50c57f54-a0f4-11ea-9dc0-48f17f8d4d88', '50c4d519-a0f4-11ea-9dc0-48f17f8d4d88', 'Property 1', '', '', '', '2020-05-28 17:02:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 19:36:58', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('50c5cebd-a0f4-11ea-9dc0-48f17f8d4d88', '50c4d519-a0f4-11ea-9dc0-48f17f8d4d88', 'Property 2', '', '', '', '2020-05-28 17:02:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 19:36:58', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('50f45914-a098-11ea-94de-48f17f8d4d88', '50f4054b-a098-11ea-94de-48f17f8d4d88', 'Wood Type', 'WT', 'AA5TT6', '', '2020-05-28 06:04:24', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 06:04:24', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
 ('50f4a768-a098-11ea-94de-48f17f8d4d88', '50f4054b-a098-11ea-94de-48f17f8d4d88', 'Wood Type', 'WT', 'AA5TT6', '', '2020-05-28 06:04:24', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-05-28 06:04:24', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
-('6d108842-a167-11ea-8012-48f17f8d4d88', '6d1036c3-a167-11ea-8012-48f17f8d4d88', '', '', '', '', '2020-05-29 06:46:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:39:52', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
-('6d10c5ee-a167-11ea-8012-48f17f8d4d88', '6d1036c3-a167-11ea-8012-48f17f8d4d88', '', '', '', '', '2020-05-29 06:46:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:39:52', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('6d108842-a167-11ea-8012-48f17f8d4d88', '6d1036c3-a167-11ea-8012-48f17f8d4d88', '', '', '', '', '2020-05-29 06:46:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 18:13:32', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('6d10c5ee-a167-11ea-8012-48f17f8d4d88', '6d1036c3-a167-11ea-8012-48f17f8d4d88', '', '', '', '', '2020-05-29 06:46:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 18:13:33', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('861204d7-a1d1-11ea-bf54-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'qwq', '', 'eewe', '', '2020-05-29 19:26:25', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 19:26:31', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 3),
 ('86124b76-a1d1-11ea-bf54-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'ewqewqe', '', 'ewqewqe', '', '2020-05-29 19:26:25', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-29 19:26:32', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 3),
 ('c6d10559-a0ed-11ea-9dc0-48f17f8d4d88', 'c6d0a57e-a0ed-11ea-9dc0-48f17f8d4d88', 'Weigth', 'WT', '200kg', '', '2020-05-28 16:16:09', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 16:16:09', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('c6d15161-a0ed-11ea-9dc0-48f17f8d4d88', 'c6d0a57e-a0ed-11ea-9dc0-48f17f8d4d88', 'Width', 'WT', '1000m', '', '2020-05-28 16:16:09', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 16:16:09', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
-('cd3a740d-a1cb-11ea-bf54-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Mass Uplaod', '', '5510', '', '2020-05-29 18:45:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 10:44:00', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
-('cd3aae04-a1cb-11ea-bf54-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Strength', '', '100', '', '2020-05-29 18:45:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 10:44:00', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('cd3a740d-a1cb-11ea-bf54-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Mass Uplaod', '', '5510', '', '2020-05-29 18:45:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 18:08:42', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('cd3aae04-a1cb-11ea-bf54-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'Strength', '', '100', '', '2020-05-29 18:45:28', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 18:08:42', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('cfbec0a4-a1d1-11ea-bf54-48f17f8d4d88', '4c86de27-a0d9-11ea-9dc0-48f17f8d4d88', 'Mental', '', 'Steel', '', '2020-05-29 19:28:29', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 21:36:57', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('d77fca94-a0e7-11ea-9dc0-48f17f8d4d88', 'd77f199a-a0e7-11ea-9dc0-48f17f8d4d88', 'Wood Type', 'WT', 'AA5TT6', '', '2020-05-28 15:33:40', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 15:33:40', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
-('df8521f2-a31a-11ea-8323-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'T', '', '88', '', '2020-05-31 10:44:00', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 10:44:00', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
+('df8521f2-a31a-11ea-8323-48f17f8d4d88', 'cd3a2d7f-a1cb-11ea-bf54-48f17f8d4d88', 'T', '', '88', '', '2020-05-31 10:44:00', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-31 18:08:42', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('ea604a5f-a0f0-11ea-9dc0-48f17f8d4d88', 'ea5fd052-a0f0-11ea-9dc0-48f17f8d4d88', 'Property 1', '', '2094', '', '2020-05-28 16:38:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 16:38:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('ea60beaf-a0f0-11ea-9dc0-48f17f8d4d88', 'ea5fd052-a0f0-11ea-9dc0-48f17f8d4d88', 'Property 2', '', 'Nails', '', '2020-05-28 16:38:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-28 16:38:37', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
 ('ecb7cb17-a0f4-11ea-9dc0-48f17f8d4d88', 'ecb6d1cf-a0f4-11ea-9dc0-48f17f8d4d88', 'Mass Uplaod', '', '5510556', '', '2020-05-28 17:07:19', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', '2020-05-30 23:38:42', '8a4b9921-9eab-11ea-88a2-c8f7501047dc', 1),
@@ -473,9 +470,9 @@ CREATE TABLE `ratings` (
   `value` int(11) NOT NULL,
   `comment` varchar(50) NOT NULL,
   `OtherId` varchar(225) DEFAULT NULL,
-  `CreateDate` datetime DEFAULT current_timestamp(),
+  `CreateDate` datetime DEFAULT CURRENT_TIMESTAMP,
   `CreateUserId` varchar(225) DEFAULT NULL,
-  `ModifyDate` datetime DEFAULT current_timestamp(),
+  `ModifyDate` datetime DEFAULT CURRENT_TIMESTAMP,
   `ModifyUserId` varchar(225) DEFAULT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -489,9 +486,9 @@ CREATE TABLE `ratings` (
 CREATE TABLE `role` (
   `Id` int(5) NOT NULL,
   `RoleName` varchar(50) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -517,9 +514,9 @@ INSERT INTO `role` (`Id`, `RoleName`, `CreateDate`, `CreateUserId`, `ModifyDate`
 CREATE TABLE `statuses` (
   `StatusId` int(11) NOT NULL,
   `Description` varchar(25) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ModifyUserId` varchar(225) NOT NULL,
   `IsActive` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -555,9 +552,9 @@ CREATE TABLE `user` (
   `RoleId` int(11) NOT NULL,
   `CompanyId` varchar(225) DEFAULT NULL,
   `Token` varchar(225) DEFAULT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -574,6 +571,7 @@ INSERT INTO `user` (`UserId`, `FirstName`, `LastName`, `Email`, `Password`, `Cel
 ('7896a757-9eab-11ea-88a2-c8f7501047dc', 'Randol', 'Customer', 'customer@mail.com', '12345', '07455221122', 5, NULL, NULL, '2020-05-25 19:16:28', 'sys', '2020-05-25 19:16:28', 'sys', 9),
 ('8a4b9921-9eab-11ea-88a2-c8f7501047dc', 'John', 'Doe', 'test@mail.com', '12345', '07455221122', 3, '09c6bc58-1fe4-486f-ba18-3830592466f5', '09c6bc58-1fe4-486f-ba18-3830592466f5', '2020-05-25 19:16:58', 'sys', '2020-05-25 19:16:58', 'sys', 1),
 ('98bfc418-a099-11ea-94de-48f17f8d4d88', 'Ndumiso', 'Mthembu', 'mrnnmth3mu@gmail.com', '12345', '842529472', 5, NULL, 'a78af979672532bb4a40f70d5fdd19ac', '2020-05-28 06:13:34', 'sys', '2020-05-28 06:13:34', 'sys', 1),
+('c0f051f1-a341-11ea-a04d-c8f7501047dc', 'Siya', 'Ncwana', 'siya@mail.com', '12345', '74658850154', 5, '132a953b-a342-11ea-a04d-c8f7501047dc', 'aeb05489f8db9450afbc01ab7399bd67', '2020-05-31 15:22:19', 'sys', '2020-05-31 15:24:37', 'sys', 9),
 ('f14d63f5-9eb7-11ea-88a2-c8f7501047dc', 'Bernard', 'Parker', 'bparker@mail.com', '12345', '07455221122', 5, NULL, '8df666792a0e2c5956bc3cff4585813d', '2020-05-25 20:45:45', 'sys', '2020-05-25 20:45:45', 'sys', 1),
 ('f24670e7-9ec6-11ea-88a2-c8f7501047dc', 'Bernard', 'Parker', 'bpark@mail.com', '12345', '07455221122', 5, NULL, '720d11a15dd346dc10deb04cac4854dd', '2020-05-25 22:33:09', 'sys', '2020-05-25 22:33:09', 'sys', 1);
 
@@ -673,7 +671,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `OrderNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `OrderNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `orderstatus`

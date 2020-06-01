@@ -74,12 +74,11 @@ class Users
                 $image = new Image($this->conn);
                 $role = new Roles($this->conn);
                 $company= new Company($this->conn);
-
-                $user["Company"] = $company->GetAllCompaniesForUser($user["UserId"], false, 1);
-                $user["Role"] = $role->getRoleById($user["RoleId"]);
-                $user["Address"] = $address->getUserByUserId($user["UserId"]);
-                $user["Images"] = $image->getParentIdById($user["UserId"]);
-               
+                $userId = $user["UserId"];
+                $user["Company"] = $company->GetAllCompaniesForUser($userId, false, 1);
+                $user["Roles"] = $role->getRoleById($user["RoleId"]);
+                $user["Address"] = $address->getUserByUserId($userId);
+                $user["Images"] = $image->getParentIdById($userId);               
                 return $user;
             }
             return null;
