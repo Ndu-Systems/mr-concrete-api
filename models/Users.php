@@ -26,11 +26,11 @@ class Users
     }
     private function getUsersByStatus($StatusId)
     {
-        $query = "SELECT * FROM user WHERE StatusId =?";
+        $query = "SELECT * FROM user WHERE StatusId =? OR StatusId=?";
 
         $stmt = $this->conn->prepare($query);
 
-        $stmt->execute(array($StatusId));
+        $stmt->execute(array($StatusId, 9));
 
         if ($stmt->rowCount()) {
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
