@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2020 at 11:39 PM
--- Server version: 10.1.35-MariaDB
--- PHP Version: 7.2.9
+-- Generation Time: Jun 04, 2020 at 09:40 AM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -38,9 +38,9 @@ CREATE TABLE `address` (
   `City` varchar(50) NOT NULL,
   `Province` varchar(50) DEFAULT NULL,
   `PostalCode` varchar(20) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CrateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -64,9 +64,9 @@ CREATE TABLE `attachments` (
   `Id` int(11) NOT NULL,
   `url` varchar(225) DEFAULT NULL,
   `OtherId` varchar(225) DEFAULT NULL,
-  `CreateDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) DEFAULT NULL,
-  `ModifyDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) DEFAULT NULL,
   `StatusId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -89,13 +89,13 @@ CREATE TABLE `billing` (
   `TotalAmountPaid` decimal(11,0) NOT NULL,
   `BillingMonth` varchar(10) NOT NULL,
   `NextBillingMonth` varchar(10) NOT NULL,
-  `SubscriptionDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `SubscriptionDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CancellationDate` date DEFAULT NULL,
   `CancellationReason` varchar(225) DEFAULT NULL,
   `IsProcessed` tinyint(1) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -109,9 +109,9 @@ CREATE TABLE `billing` (
 CREATE TABLE `category` (
   `CategoryId` int(11) NOT NULL,
   `CategoryName` varchar(50) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -140,9 +140,9 @@ CREATE TABLE `comments` (
   `Id` int(11) NOT NULL,
   `Comment` int(11) NOT NULL,
   `OtherId` varchar(225) NOT NULL,
-  `CreateDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) DEFAULT NULL,
-  `ModifyDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) DEFAULT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -164,9 +164,9 @@ CREATE TABLE `company` (
   `City` varchar(50) NOT NULL,
   `Province` varchar(50) DEFAULT NULL,
   `PostalCode` varchar(10) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `IsDeleted` tinyint(1) NOT NULL,
   `StatusId` int(10) NOT NULL
@@ -192,9 +192,9 @@ CREATE TABLE `image` (
   `CompanyId` varchar(225) NOT NULL,
   `OtherId` varchar(225) NOT NULL,
   `Url` text NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -228,9 +228,9 @@ CREATE TABLE `orderproduct` (
   `Price` varchar(50) NOT NULL,
   `Quantity` varchar(50) NOT NULL,
   `Units` varchar(50) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CrateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -316,12 +316,12 @@ CREATE TABLE `orders` (
   `ProjectNumber` varchar(400) DEFAULT NULL,
   `DeliveryDate` varchar(150) DEFAULT NULL,
   `DeliveryTime` varchar(20) DEFAULT NULL,
-  `DeliveryAddress` text,
-  `SpecialInstructions` text,
+  `DeliveryAddress` text DEFAULT NULL,
+  `SpecialInstructions` text DEFAULT NULL,
   `Total` varchar(225) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CrateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -352,9 +352,9 @@ INSERT INTO `orders` (`OrderId`, `OrderNo`, `CustomerId`, `SupplierId`, `Project
 CREATE TABLE `orderstatus` (
   `StatusId` int(11) NOT NULL,
   `Description` int(11) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `IsActive` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -373,12 +373,12 @@ CREATE TABLE `product` (
   `Description` text NOT NULL,
   `ProductCode` varchar(225) NOT NULL,
   `Price` varchar(10) NOT NULL,
-  `Quantity` decimal(10,0) NOT NULL DEFAULT '0',
+  `Quantity` decimal(10,0) NOT NULL DEFAULT 0,
   `Units` varchar(100) NOT NULL DEFAULT 'each',
   `CategoryId` varchar(225) DEFAULT NULL,
-  `CreateDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) DEFAULT NULL,
-  `ModifyDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) DEFAULT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -422,9 +422,9 @@ CREATE TABLE `productproperty` (
   `Code` varchar(250) NOT NULL,
   `Value` varchar(500) NOT NULL,
   `Units` varchar(100) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CrateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -470,9 +470,9 @@ CREATE TABLE `ratings` (
   `value` int(11) NOT NULL,
   `comment` varchar(50) NOT NULL,
   `OtherId` varchar(225) DEFAULT NULL,
-  `CreateDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) DEFAULT NULL,
-  `ModifyDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) DEFAULT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -486,9 +486,9 @@ CREATE TABLE `ratings` (
 CREATE TABLE `role` (
   `Id` int(5) NOT NULL,
   `RoleName` varchar(50) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -512,29 +512,27 @@ INSERT INTO `role` (`Id`, `RoleName`, `CreateDate`, `CreateUserId`, `ModifyDate`
 --
 
 CREATE TABLE `statuses` (
-  `StatusId` int(11) NOT NULL,
+  `StatusId` varchar(225) NOT NULL,
+  `StatusCode` int(11) NOT NULL,
   `Description` varchar(25) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
-  `IsActive` int(11) NOT NULL
+  `IsActive` int(11) NOT NULL,
+  `Type` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `statuses`
 --
 
-INSERT INTO `statuses` (`StatusId`, `Description`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `IsActive`) VALUES
-(1, 'Pending', '2020-02-19 20:58:17', 'sys', '2020-02-19 20:58:17', 'sys', 1),
-(2, 'Accepted', '2020-02-19 21:01:27', 'sys', '2020-02-19 21:01:27', 'sys', 1),
-(3, 'In Progress', '2020-02-19 21:01:27', 'sys', '2020-02-19 21:01:27', 'sys', 1),
-(4, 'On its way', '2020-02-19 21:01:27', 'sys', '2020-02-19 21:01:27', 'sys', 1),
-(5, 'Completed', '2020-02-19 21:01:27', 'sys', '2020-02-19 21:01:27', 'sys', 1),
-(6, 'Cancelled', '2020-02-19 21:01:27', 'sys', '2020-02-19 21:01:27', 'sys', 1),
-(7, 'Declined by Customer', '2020-02-19 21:01:27', 'sys', '2020-02-19 21:01:27', 'sys', 1),
-(8, 'Declined by supplier', '2020-02-19 21:01:27', 'sys', '2020-02-19 21:01:27', 'sys', 1),
-(9, 'Awaiting Activation', '2020-05-25 18:36:02', 'system', '2020-05-25 18:36:02', 'system', 1);
+INSERT INTO `statuses` (`StatusId`, `StatusCode`, `Description`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `IsActive`, `Type`) VALUES
+('07042ad3-a631-11ea-912c-48f17f8d4d88', 1, 'Active', '2020-06-04 09:00:08', 'postman', '2020-06-04 09:00:08', 'postman', 1, 'product'),
+('51aa8305-a631-11ea-912c-48f17f8d4d88', 2, 'Disabled', '2020-06-04 09:02:14', 'postman', '2020-06-04 09:02:14', 'postman', 1, 'product'),
+('76e2a06f-a631-11ea-912c-48f17f8d4d88', 3, 'Deleted', '2020-06-04 09:03:16', 'postman', '2020-06-04 09:03:16', 'postman', 1, 'product'),
+('eebf6a3d-a632-11ea-912c-48f17f8d4d88', 3, 'Deleted', '2020-06-04 09:13:47', 'postman', '2020-06-04 09:13:47', 'postman', 1, 'order'),
+('f33ce9e1-a632-11ea-912c-48f17f8d4d88', 1, 'Active', '2020-06-04 09:13:54', 'postman', '2020-06-04 09:13:54', 'postman', 1, 'order');
 
 -- --------------------------------------------------------
 
@@ -552,9 +550,9 @@ CREATE TABLE `user` (
   `RoleId` int(11) NOT NULL,
   `CompanyId` varchar(225) DEFAULT NULL,
   `Token` varchar(225) DEFAULT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
-  `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ModifyUserId` varchar(225) NOT NULL,
   `StatusId` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -684,12 +682,6 @@ ALTER TABLE `orderstatus`
 --
 ALTER TABLE `role`
   MODIFY `Id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `statuses`
---
-ALTER TABLE `statuses`
-  MODIFY `StatusId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
