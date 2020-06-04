@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2020 at 08:46 AM
+-- Generation Time: Jun 04, 2020 at 09:40 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -513,6 +513,7 @@ INSERT INTO `role` (`Id`, `RoleName`, `CreateDate`, `CreateUserId`, `ModifyDate`
 
 CREATE TABLE `statuses` (
   `StatusId` varchar(225) NOT NULL,
+  `StatusCode` int(11) NOT NULL,
   `Description` varchar(25) NOT NULL,
   `CreateDate` datetime NOT NULL DEFAULT current_timestamp(),
   `CreateUserId` varchar(225) NOT NULL,
@@ -521,6 +522,17 @@ CREATE TABLE `statuses` (
   `IsActive` int(11) NOT NULL,
   `Type` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `statuses`
+--
+
+INSERT INTO `statuses` (`StatusId`, `StatusCode`, `Description`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `IsActive`, `Type`) VALUES
+('07042ad3-a631-11ea-912c-48f17f8d4d88', 1, 'Active', '2020-06-04 09:00:08', 'postman', '2020-06-04 09:00:08', 'postman', 1, 'product'),
+('51aa8305-a631-11ea-912c-48f17f8d4d88', 2, 'Disabled', '2020-06-04 09:02:14', 'postman', '2020-06-04 09:02:14', 'postman', 1, 'product'),
+('76e2a06f-a631-11ea-912c-48f17f8d4d88', 3, 'Deleted', '2020-06-04 09:03:16', 'postman', '2020-06-04 09:03:16', 'postman', 1, 'product'),
+('eebf6a3d-a632-11ea-912c-48f17f8d4d88', 3, 'Deleted', '2020-06-04 09:13:47', 'postman', '2020-06-04 09:13:47', 'postman', 1, 'order'),
+('f33ce9e1-a632-11ea-912c-48f17f8d4d88', 1, 'Active', '2020-06-04 09:13:54', 'postman', '2020-06-04 09:13:54', 'postman', 1, 'order');
 
 -- --------------------------------------------------------
 
