@@ -133,7 +133,7 @@ class Users
         $Password,
         $Cellphone,
         $RoleId,
-        $UserType,
+        $CompanyId,
         $CreateUserId,
         $ModifyUserId,
         $StatusId
@@ -151,11 +151,12 @@ class Users
             Email ,  
             Password ,  
             Cellphone ,  
+            CompanyId ,  
             RoleId ,          
             CreateUserId , 
             ModifyUserId ,  
             StatusId ) 
-            VALUES (?,?,?,?,?,?,?,?,?,?)";
+            VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
             $stmt = $this->conn->prepare($query);
@@ -166,6 +167,7 @@ class Users
                 $Email,
                 $Password,
                 $Cellphone,
+                $CompanyId,
                 $RoleId,
                 $CreateUserId,
                 $ModifyUserId,
