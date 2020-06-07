@@ -23,6 +23,15 @@ if ($UserType) {
     $RoleId = $roleResult['Id'];
 }
 
-$result = $users->getAllUsers($RoleId,$StatusId);
+$userList= $users->getAllUsers($RoleId,$StatusId);
+if($userList) {
+    $userModelList = array();
+    foreach ($userList as $user) {
+        # code...
+        $detailedUser = $users->getUserDetailedByUserId($user["UserId"]);
+        $detailedUser['Password'] = null;
+        array_push($userModelList,$detailedUser);
+    }
+    echo json_encode($userModelList);
+}
 
-echo json_encode($result);

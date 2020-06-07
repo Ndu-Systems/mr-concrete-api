@@ -12,7 +12,7 @@ class Account
     // Activates the users new account
     public function ActivateUserAccount($Token)
     {
-        $user  = new Users($this->conn);   
+        $user  = new Users($this->conn);
 
         if ($user->getUserByToken($Token) > 0) {
             $result =  $user->getUserByToken($Token);
@@ -23,7 +23,7 @@ class Account
                 if ($stmt->execute(array(
                     1,
                     $result["Email"]
-                 ))) {
+                ))) {
                     return 1;
                 } else {
                     return "server error, contact system admin.";
@@ -69,12 +69,13 @@ class Account
     {
         $user  = new Users($this->conn);
         if ($user->getUserByEmail($Email) > 0) {
-            $query = "UPDATE user SET Password = ?, Token = ?  where Email = ?";
+            $query = "UPDATE user SET Password = ?, Token = ?, StatusId = ?  where Email = ?";
             try {
                 $stmt = $this->conn->prepare($query);
                 if ($stmt->execute(array(
                     $Password,
                     null,
+                    1,
                     $Email
                 ))) {
                     return 1;

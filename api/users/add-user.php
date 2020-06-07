@@ -6,14 +6,15 @@ include_once '../../models/Roles.php';
 $data = json_decode(file_get_contents("php://input"));
 
 $Email = $data->Email;
-$Password = 12345; // default password (flow required to change on first login)
+$Password = $data->Password; // default password (flow required to change on first login)
 $FirstName = $data->FirstName;
 $LastName = $data->LastName;
 $UserType = $data->TypeOfUser;
+$CompanyId = $data->CompanyId;
 $CreateUserId = $data->CreateUserId;
 $ModifyUserId = $data->ModifyUserId;
 $Cellphone =  $data->Cellphone;
-$StatusId = 9; // Awaiting Activation
+$StatusId =  $data->StatusId; // Awaiting Activation
 
 
 $database = new Database();
@@ -34,7 +35,7 @@ $result = $users->AddUser(
     $Password,
     $Cellphone,
     $RoleId,
-    $UserType,
+    $CompanyId,
     $CreateUserId,
     $ModifyUserId,
     $StatusId
