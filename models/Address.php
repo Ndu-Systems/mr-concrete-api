@@ -12,7 +12,7 @@ class Address
     }
 
 
-    public function getUserByUserId($UserId)
+    public function getAddressByUserId($UserId)
     {
         $query = "SELECT * FROM address WHERE UserId =?";
         $stmt = $this->conn->prepare($query);
@@ -38,10 +38,12 @@ class Address
     public function AddAddress(
         $AddressId,
         $UserId,
+        $AddressType,
         $AddressLine1,
         $AddressLine2,
         $AddressLine3,
         $City,
+        $Province,
         $PostalCode,
         $CrateUserId,
         $ModifyUserId,
@@ -51,26 +53,30 @@ class Address
         $query = "INSERT INTO  address(        
           AddressId,
           UserId,
+          AddressType,
           AddressLine1,
           AddressLine2,
           AddressLine3,
           City,
+          Province,
           PostalCode,
           CrateUserId,
           ModifyUserId,
           StatusId
             ) 
-                        VALUES (?,?,?,?,?,?,?,?,?,?)";
+                        VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
                 $AddressId,
                 $UserId,
+                $AddressType,
                 $AddressLine1,
                 $AddressLine2,
                 $AddressLine3,
                 $City,
+                $Province,
                 $PostalCode,
                 $CrateUserId,
                 $ModifyUserId,
@@ -85,10 +91,12 @@ class Address
     public function UpdateAddress(
         $AddressId,
         $UserId,
+        $AddressType,
         $AddressLine1,
         $AddressLine2,
         $AddressLine3,
         $City,
+        $Province,
         $PostalCode,
         $CrateUserId,
         $ModifyUserId,
@@ -98,10 +106,12 @@ class Address
         $query = "UPDATE  address      
            SET 
            UserId = ?,
+           AddressType = ?,
            AddressLine1 = ?,
            AddressLine2 = ?,
            AddressLine3 = ?,
            City = ?,
+           Province = ?,
            PostalCode = ?,
            CrateUserId = ?,
             ModifyDate = now(),
@@ -115,10 +125,12 @@ class Address
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
                 $UserId,
+                $AddressType,
                 $AddressLine1,
                 $AddressLine2,
                 $AddressLine3,
                 $City,
+                $Province,
                 $PostalCode,
                 $CrateUserId,
                 $ModifyUserId,
