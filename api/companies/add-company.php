@@ -44,20 +44,23 @@ $result = $company->AddCompany(
     $StatusId);
 
 if($result) {
-    $userToUpdate = $users->getUserByUserId($CreateUserId);
-    $userToUpdate["CompanyId"] = $result["CompanyId"];
-    $userResult = $users->UpdateUser(
-        $userToUpdate["UserId"],
-        $userToUpdate["FirstName"],
-        $userToUpdate["LastName"],
-        $userToUpdate["Email"],
-        $userToUpdate["Cellphone"] ,
-        $userToUpdate["CompanyId"],
-        $userToUpdate["RoleId"],
-        $userToUpdate["CreateUserId"],
-        $userToUpdate["ModifyUserId"],
-        $userToUpdate["StatusId"]
-    );
+    if($result["ParentId"] == null) {
+        $userToUpdate = $users->getUserByUserId($CreateUserId);
+        $userToUpdate["CompanyId"] = $result["CompanyId"];
+        $userResult = $users->UpdateUser(
+            $userToUpdate["UserId"],
+            $userToUpdate["FirstName"],
+            $userToUpdate["LastName"],
+            $userToUpdate["Email"],
+            $userToUpdate["Cellphone"] ,
+            $userToUpdate["CompanyId"],
+            $userToUpdate["RoleId"],
+            $userToUpdate["CreateUserId"],
+            $userToUpdate["ModifyUserId"],
+            $userToUpdate["StatusId"]
+        );
+    }
+
 
     echo json_encode($result);   
 }
