@@ -13,6 +13,7 @@ $CompanyEmail = $data->CompanyEmail;
 $ParentId = $data->ParentId;
 $CompanyType = $data->CompanyType;
 $CompanyAddress = $data->CompanyAddress;
+$Province = $data->Province;
 $City = $data->City;
 $PostalCode = $data->PostalCode;
 $CreateUserId = $data->CreateUserId;
@@ -36,6 +37,7 @@ $result = $company->AddCompany(
     $ParentId,
     $CompanyType,
     $CompanyAddress,
+    $Province,
     $City,
     $PostalCode, 
     $CreateUserId, 

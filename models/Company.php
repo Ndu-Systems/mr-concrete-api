@@ -20,6 +20,7 @@ class Company
         $ParentId,
         $CompanyType,
         $CompanyAddress,
+        $Province,
         $City,
         $PostalCode,
         $CreateUserId,
@@ -36,13 +37,14 @@ class Company
             ParentId, 
             CompanyType, 
             CompanyAddress, 
+            Province, 
             City, 
             PostalCode,       
             CreateUserId,       
             ModifyUserId, 
             IsDeleted, 
             StatusId) 
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)
         ";
         try {
             //code...
@@ -55,6 +57,7 @@ class Company
                 $ParentId,
                 $CompanyType,
                 $CompanyAddress,
+                $Province,
                 $City,
                 $PostalCode,
                 $CreateUserId,
