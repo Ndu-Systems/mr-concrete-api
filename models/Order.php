@@ -1,6 +1,8 @@
 <?php
 
 include_once 'Orderproduct.php';
+include_once 'Address.php';
+include_once 'Users.php';
 
 class Order
 {
@@ -149,12 +151,17 @@ class Order
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array($SupplierId));
         $orderproducts = new Orderproduct($this->conn);
+        $address = new Address($this->conn);
+        $users = new Users($this->conn);
         $detailedOrders = array();
 
         if ($stmt->rowCount()) {
             $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($orders as $order) {
                 $order["Orderroducts"] =  $orderproducts->getByOrderId($order["OrderId"]);
+                $order["Customer"] =  $users->getUserByUserId($order["CustomerId"]);
+                $order["Address"] =  $address->getAddressIdById($order["DeliveryAddress"]);
+                $order["Supplier"] =  $users->getUserByUserId($order["SupplierId"]);
                 array_push($detailedOrders, $order);
             }
         }
