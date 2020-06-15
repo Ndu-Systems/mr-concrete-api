@@ -168,6 +168,28 @@ class Order
         return $detailedOrders;
     }
 
+    public function getDetailsOrderById($OrderId)
+    {
+        $query = "SELECT * FROM orders WHERE OrderId =?";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array($OrderId));
+        $orderproducts = new Orderproduct($this->conn);
+        $address = new Address($this->conn);
+        $users = new Users($this->conn);
+        if ($stmt->rowCount()) {
+            $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($orders as $order) {
+                $order["Orderroducts"] =  $orderproducts->getByOrderId($order["OrderId"]);
+                $order["Customer"] =  $users->getUserByUserId($order["CustomerId"]);
+                $order["Address"] =  $address->getAddressIdById($order["DeliveryAddress"]);
+                $order["Supplier"] =  $users->getUserByUserId($order["SupplierId"]);
+                return $order;
+            }
+        }
+        return null;
+    }
+
     public function getByCustomerId($CustomerId)
     {
         $query = "SELECT * FROM orders WHERE CustomerId =?";
