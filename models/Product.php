@@ -15,7 +15,7 @@ class Product
 
     public function add(
         $ProductId,
-        $UserId,
+        $CompanyId,
         $ProductName,
         $ShortDescription,
         $Description,
@@ -33,7 +33,7 @@ class Product
         $query = "
         INSERT INTO product(
             ProductId,
-            UserId,
+            CompanyId,
             ProductName,
             ShortDescription,
             Description,
@@ -54,7 +54,7 @@ class Product
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
                 $ProductId,
-                $UserId,
+                $CompanyId,
                 $ProductName,
                 $ShortDescription,
                 $Description,
@@ -79,7 +79,7 @@ class Product
 
     public function update(
         $ProductId,
-        $UserId,
+        $CompanyId,
         $ProductName,
         $ShortDescription,
         $Description,
@@ -95,7 +95,7 @@ class Product
         $query = "UPDATE
                     product
                         SET
-                        UserId =  ? ,
+                        CompanyId =  ? ,
                         ProductName =  ? ,
                         ShortDescription=?,
                         Description=?,
@@ -115,7 +115,7 @@ class Product
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
-                $UserId,
+                $CompanyId,
                 $ProductName,
                 $ShortDescription,
                 $Description,
@@ -149,12 +149,12 @@ class Product
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }
     }
-    public function getByUserId($UserId)
+    public function getByCompanyId($CompanyId)
     {
-        $query = "SELECT * FROM product WHERE UserId =? ORDER BY CreateDate DESC";
+        $query = "SELECT * FROM product WHERE CompanyId =? ORDER BY CreateDate DESC";
 
         $stmt = $this->conn->prepare($query);
-        $stmt->execute(array($UserId));
+        $stmt->execute(array($CompanyId));
         $detailedProducts = array();
         if ($stmt->rowCount()) {
             $products =  $stmt->fetchAll(PDO::FETCH_ASSOC);

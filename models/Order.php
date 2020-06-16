@@ -3,6 +3,7 @@
 include_once 'Orderproduct.php';
 include_once 'Address.php';
 include_once 'Users.php';
+include_once 'Company.php';
 
 class Order
 {
@@ -177,13 +178,14 @@ class Order
         $orderproducts = new Orderproduct($this->conn);
         $address = new Address($this->conn);
         $users = new Users($this->conn);
+        $company = new Company($this->conn);
         if ($stmt->rowCount()) {
             $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($orders as $order) {
                 $order["Orderroducts"] =  $orderproducts->getByOrderId($order["OrderId"]);
                 $order["Customer"] =  $users->getUserByUserId($order["CustomerId"]);
                 $order["Address"] =  $address->getAddressIdById($order["DeliveryAddress"]);
-                $order["Supplier"] =  $users->getUserByUserId($order["SupplierId"]);
+                $order["Supplier"] =  $company->GetById($order["SupplierId"]);
                 return $order;
             }
         }

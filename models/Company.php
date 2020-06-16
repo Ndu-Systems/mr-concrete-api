@@ -1,6 +1,7 @@
 <?php
 
 include_once 'Users.php';
+include_once 'Product.php';
 
 class Company
 {
@@ -26,7 +27,7 @@ class Company
         $ModifyUserId,
         $IsDeleted,
         $StatusId
-    ) {   
+    ) {
         $query = "
         INSERT INTO company(
             CompanyId, 
@@ -69,27 +70,27 @@ class Company
                     $StatusId
                 );
             }
-        }  catch (Exception $e) {
+        } catch (Exception $e) {
             return array("ERROR", $e);
         }
     }
 
     public function UpdateCompany(
         $CompanyId,
-        $CompanyName, 
-        $CompanyPhone, 
-        $CompanyEmail, 
-        $ParentId, 
-        $CompanyType, 
-        $CompanyAddress, 
-        $City, 
-        $PostalCode,      
-        $ModifyUserId, 
-        $IsDeleted, 
+        $CompanyName,
+        $CompanyPhone,
+        $CompanyEmail,
+        $ParentId,
+        $CompanyType,
+        $CompanyAddress,
+        $City,
+        $PostalCode,
+        $ModifyUserId,
+        $IsDeleted,
         $StatusId
     ) {
-    
-      $query = "  UPDATE
+
+        $query = "  UPDATE
                     Company
                     SET
                     CompanyName = ?, 
@@ -111,16 +112,16 @@ class Company
             //code...
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
-                $CompanyName, 
-                $CompanyPhone, 
-                $CompanyEmail, 
-                $ParentId, 
-                $CompanyType, 
-                $CompanyAddress, 
-                $City, 
-                $PostalCode,      
-                $ModifyUserId, 
-                $IsDeleted, 
+                $CompanyName,
+                $CompanyPhone,
+                $CompanyEmail,
+                $ParentId,
+                $CompanyType,
+                $CompanyAddress,
+                $City,
+                $PostalCode,
+                $ModifyUserId,
+                $IsDeleted,
                 $StatusId,
                 $CompanyId
             ))) {
@@ -174,6 +175,21 @@ class Company
         }
     }
 
+    public function GetById(
+        $CompanyId
+    ) {
+        $query = "SELECT * FROM company WHERE CompanyId = ?";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array(
+            $CompanyId,
+        ));
+
+        if ($stmt->rowCount()) {
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+    }
+
     private function GetAllSubBranches(
         $CompanyId,
         $IsDeleted,
@@ -191,5 +207,29 @@ class Company
         if ($stmt->rowCount()) {
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+    }
+
+    public function GetDetailsCompanies()
+    {
+        $query = "SELECT * FROM company WHERE StatusId = ?";
+
+        $stmt = $this->conn->prepare($query);
+        $product = new Product($this->conn);
+        $stmt->execute(array(
+            1
+        ));
+        $companies = array();
+        if ($stmt->rowCount()) {
+            $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($items as $item) {
+                $products = $product->getByCompanyId($item["CompanyId"]);
+                $item["Products"] =  $product->getByCompanyId($item["CompanyId"]);
+                if (count($products)) {
+                    array_push($companies, $item);
+                }
+            }
+        }
+        return $companies;
     }
 }

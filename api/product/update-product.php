@@ -7,7 +7,7 @@ include_once '../../models/Productproperty.php';
 $data = json_decode(file_get_contents("php://input"));
 
 $ProductId = $data->ProductId;
-$UserId = $data->UserId;
+$CompanyId = $data->CompanyId;
 $ProductName = $data->ProductName;
 $ShortDescription = $data->ShortDescription;
 $Description = $data->Description;
@@ -30,7 +30,7 @@ $productproperty = new Productproperty($db);
 
 $result = $product->update(
     $ProductId,
-    $UserId,
+    $CompanyId,
     $ProductName,
     $ShortDescription,
     $Description,

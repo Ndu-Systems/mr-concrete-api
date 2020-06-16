@@ -7,7 +7,7 @@ include_once '../../models/Image.php';
 
 $data = json_decode(file_get_contents("php://input"));
 
-$UserId = $data->UserId;
+$CompanyId = $data->CompanyId;
 $ProductName = $data->ProductName;
 $ShortDescription = $data->ShortDescription;
 $Description = $data->Description;
@@ -34,7 +34,7 @@ $image = new Image($db);
 
 $result = $product->add(
     $ProductId,
-    $UserId,
+    $CompanyId,
     $ProductName,
     $ShortDescription,
     $Description,

@@ -15,7 +15,7 @@ $db = $database->connect();
 // create user first to get UserId
 $product = new Product($db);
 
-$result = $product->getByUserId(
+$result = $product->getByCompanyId(
     $UserId
 );
  
