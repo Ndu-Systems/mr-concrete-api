@@ -148,10 +148,10 @@ class Company
         $users = new Users($this->conn);
         $userResult = $users->getUserByUserId($UserId);
         $CompanyId = $userResult["CompanyId"];
-        $query = "SELECT * FROM company WHERE CompanyId = ?";
+        $query = "SELECT * FROM company WHERE CompanyId = ? AND StatusId=? AND IsDeleted = ?";
 
         $stmt = $this->conn->prepare($query);
-        $stmt->execute(array($CompanyId));
+        $stmt->execute(array($CompanyId, $StatusId, $IsDeleted));
         if ($stmt->rowCount()) {
             $company = $stmt->fetch(PDO::FETCH_ASSOC);
             $company["SubBranches"] = $this->GetAllSubBranches($CompanyId, $IsDeleted, $StatusId);
