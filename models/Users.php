@@ -115,9 +115,9 @@ class Users
         $Email,
         $Password
     ) {
-        $query = "SELECT  * FROM user WHERE Email =  ? AND BINARY Password = ?";
+        $query = "SELECT  * FROM user WHERE Email =  ? AND BINARY Password = ? AND StatusId = ?";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute(array($Email, $Password));
+        $stmt->execute(array($Email, $Password, 1));
 
         if ($stmt->rowCount()) {
             return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -151,8 +151,8 @@ class Users
             Email ,  
             Password ,  
             Cellphone ,  
-            CompanyId ,  
-            RoleId ,          
+            RoleId ,  
+            CompanyId ,          
             CreateUserId , 
             ModifyUserId ,  
             StatusId ) 
@@ -167,8 +167,8 @@ class Users
                 $Email,
                 $Password,
                 $Cellphone,
-                $CompanyId,
                 $RoleId,
+                $CompanyId,
                 $CreateUserId,
                 $ModifyUserId,
                 $StatusId

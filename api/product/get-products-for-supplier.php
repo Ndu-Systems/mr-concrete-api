@@ -19,7 +19,7 @@ $result = $product->getByCompanyId(
     $UserId
 );
  
-    echo json_encode($result);
+echo json_encode($result);
 
  
  

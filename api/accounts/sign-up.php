@@ -35,7 +35,7 @@ $result = $users->AddUser(
     $Password,
     $Cellphone,
     $RoleId,
-    $UserType,
+    null,
     $CreateUserId,
     $ModifyUserId,
     $StatusId
