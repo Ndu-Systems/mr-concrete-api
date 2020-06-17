@@ -28,9 +28,14 @@ $CompanyId = $database->getGuid($db);
 // instantiate
 $company = new Company($db);
 $users = new Users($db);
+if ($IsDeleted == true) {
+    $IsDeleted = 1;
+} else {
+    $IsDeleted = 0;
+}
 
 $result = $company->AddCompany(
-    $CompanyId ,
+    $CompanyId,
     $CompanyName,
     $CompanyPhone,
     $CompanyEmail,
@@ -39,14 +44,15 @@ $result = $company->AddCompany(
     $CompanyAddress,
     $Province,
     $City,
-    $PostalCode, 
-    $CreateUserId, 
+    $PostalCode,
+    $CreateUserId,
     $ModifyUserId,
     $IsDeleted,
-    $StatusId);
+    $StatusId
+);
 
-if($result) {
-    if($result["ParentId"] == null) {
+if ($result) {
+    if ($result["ParentId"] == null) {
         $userToUpdate = $users->getUserByUserId($CreateUserId);
         $userToUpdate["CompanyId"] = $result["CompanyId"];
         $userResult = $users->UpdateUser(
@@ -54,7 +60,7 @@ if($result) {
             $userToUpdate["FirstName"],
             $userToUpdate["LastName"],
             $userToUpdate["Email"],
-            $userToUpdate["Cellphone"] ,
+            $userToUpdate["Cellphone"],
             $userToUpdate["CompanyId"],
             $userToUpdate["RoleId"],
             $userToUpdate["CreateUserId"],
@@ -64,6 +70,5 @@ if($result) {
     }
 
 
-    echo json_encode($result);   
+    echo json_encode($result);
 }
-
