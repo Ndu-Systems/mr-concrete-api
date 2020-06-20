@@ -4,7 +4,7 @@ include_once '../../common/common.php';
 
 class Database
 {
-    private $isLocal = false;
+    private $isLocal = true;
     public function connect()
     {
         $conn = null;
