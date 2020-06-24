@@ -158,7 +158,7 @@ class Order
         if ($stmt->rowCount()) {
             $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($orders as $order) {
-                $order["Orderroducts"] =  $orderproducts->getByOrderId($order["OrderId"]);
+                $order["OrderProducts"] =  $orderproducts->getByOrderId($order["OrderId"]);
                 $order["Customer"] =  $users->getUserByUserId($order["CustomerId"]);
                 $order["Address"] =  $address->getAddressIdById($order["DeliveryAddress"]);
                 $order["Supplier"] =  $users->getUserByUserId($order["SupplierId"]);
@@ -181,7 +181,7 @@ class Order
         if ($stmt->rowCount()) {
             $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($orders as $order) {
-                $order["Orderroducts"] =  $orderproducts->getByOrderId($order["OrderId"]);
+                $order["OrderProducts"] =  $orderproducts->getByOrderId($order["OrderId"]);
                 $order["Customer"] =  $users->getUserByUserId($order["CustomerId"]);
                 $order["Address"] =  $address->getAddressIdById($order["DeliveryAddress"]);
                 $order["Supplier"] =  $company->GetById($order["SupplierId"]);

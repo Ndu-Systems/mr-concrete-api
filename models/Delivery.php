@@ -25,9 +25,12 @@ class OrderDelivery
                 $IsDeleted,
                 $StatusId
             ));
-    
+            $order = new Order($this->conn);
+
             if ($stmt->rowCount()) {
-                return $stmt->fetch(PDO::FETCH_ASSOC);
+                $delivery = $stmt->fetch(PDO::FETCH_ASSOC);
+                $delivery["Order"] =  $order->getDetailsOrderById($delivery["OrderId"]);
+                return $delivery;
             }
         } catch (Exception $e) {
             return array("ERROR", $e);
