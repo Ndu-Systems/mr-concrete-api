@@ -96,6 +96,45 @@ class OrderDelivery
             return array("ERROR", $e);
         }
     }
+    public function GetOrderDeliveriesByDriverId(
+        $UserId,
+        $IsDeleted,
+        $StatusId
+    ) {
+        $query = "SELECT * FROM orderdeliveries od
+        INNER JOIN orders o ON od.OrderId = o.OrderId
+        where 
+        od.DriverId = ?
+        AND od.IsDeleted = ? 
+        AND od.StatusId = ?";
+
+        $stmt = $this->conn->prepare($query);
+
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute(array(
+                $UserId,
+                $IsDeleted,
+                $StatusId
+            ));
+
+            $order = new Order($this->conn);
+            $detailedOrderDeliveries = array();
+
+            if ($stmt->rowCount()) {
+                $deliveries =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($deliveries as $delivery) {
+                    $delivery["Order"] = $order->getDetailsOrderById($delivery["OrderId"]);
+                    array_push($detailedOrderDeliveries, $delivery);
+                }
+            }
+
+            return $detailedOrderDeliveries;
+            
+        } catch (Exception $e) {
+            return array("ERROR", $e);
+        }
+    }
 
     public function GetOrderDeliveriesByCompanyId(
         $CompanyId,
