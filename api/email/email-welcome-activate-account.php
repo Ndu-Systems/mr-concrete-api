@@ -47,7 +47,7 @@ if (isset($data)) {
     </body>
 ';
 
-    $to = $Email . ", mrnnmthembu@gmail.com ,Freedom.Khanyile1@gmail.com";
+    $to = $Email . ", mrnnmthembu@gmail.com ,ndu.systems@gmail.com";
     $subject =  $Subject;
     $from = 'support@mrconcrete.co.za';
 
