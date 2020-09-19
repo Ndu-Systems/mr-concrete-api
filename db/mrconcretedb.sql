@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 27, 2020 at 08:22 PM
+-- Generation Time: Sep 19, 2020 at 11:13 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -119,8 +119,8 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`CategoryId`, `CategoryName`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
-(4, 'Truck Hire', '2020-06-16 20:22:09', '06b13d08-affe-11ea-a173-c8f7501047dc', '2020-06-16 20:22:09', '06b13d08-affe-11ea-a173-c8f7501047dc', 1),
-(440, 'Heavy Duty', '2020-06-16 20:25:28', '06b13d08-affe-11ea-a173-c8f7501047dc', '2020-06-16 20:25:28', '06b13d08-affe-11ea-a173-c8f7501047dc', 1);
+(1, '98ef60c3-fa98-11ea-80de-c8f7501047dc', '2020-09-19 18:53:09', 'Domestic', '2020-09-19 18:53:09', 'System', 0),
+(2, '9e6dec6c-fa98-11ea-80de-c8f7501047dc', '2020-09-19 18:53:18', 'Commercial', '2020-09-19 18:53:18', 'System', 0);
 
 -- --------------------------------------------------------
 
@@ -345,8 +345,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`ProductId`, `CompanyId`, `ProductName`, `ShortDescription`, `Description`, `ProductCode`, `Price`, `Quantity`, `Units`, `CategoryId`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
-('9e0c8758-affe-11ea-a173-c8f7501047dc', '32071848-affe-11ea-a173-c8f7501047dc', 'Truck Heavy Duty', 'Truck Heavy Duty', 'Truck Heavy Duty Daytime', '12225441', '10000', '100000', 'hour(s)', '4', '2020-06-16 20:24:29', '06b13d08-affe-11ea-a173-c8f7501047dc', '2020-06-16 20:29:04', '06b13d08-affe-11ea-a173-c8f7501047dc', 1),
-('e446b9d6-affe-11ea-a173-c8f7501047dc', '32071848-affe-11ea-a173-c8f7501047dc', 'Escavator', 'Escavator work', 'Escavator work', 'EXD4122100', '150000000', '100', 'day', '440', '2020-06-16 20:26:27', '06b13d08-affe-11ea-a173-c8f7501047dc', '2020-06-16 20:29:41', '06b13d08-affe-11ea-a173-c8f7501047dc', 1);
+('e1c393ca-fa97-11ea-80de-c8f7501047dc', '32071848-affe-11ea-a173-c8f7501047dc', 'Concrete All Purpose', 'Concrete for all types of building purposes both industrial and commercial use.', 'Grades of concrete are defined by the strength and composion of the concrete, and the minimum strength the concrete should have following 28 days of inial construcon. The grade of concrete is understood in measurements of MPa. Concrete mixes are defined in ascending numbers starng at 10Mpa and show the compressive strength of the concrete aer 28 days. For instance, 10Mpa has the strength of 10 Newtons, 15Mpa has the strength of 15 Newtons, 20Mpa has 20 Newtons strength etc.Different mixes come in various mix proporons of the various ingredients of cement,sand and coarse aggregates. For instance, 20Mpa comes in the respecve rao of 1:1:5:3.The rao means 1 bag of cement 1 bag ofsand 5 bags of coarse aggregates and 3 buckets ofsand Choosing the right concrete grade for the construcon job is very vital as it can help in saving me and money potenally prevenng structural failures in he future.', 'CONALLPUR_001', '1500.00', '3', 'meter', '1', '2020-09-19 18:48:02', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-09-19 18:48:02', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1);
 
 -- --------------------------------------------------------
 
@@ -359,8 +358,10 @@ CREATE TABLE `productproperty` (
   `ProductId` varchar(225) NOT NULL,
   `Name` varchar(250) NOT NULL,
   `Code` varchar(250) NOT NULL,
+  `Type` varchar(50) DEFAULT NULL,
   `Value` varchar(500) NOT NULL,
-  `Units` varchar(100) NOT NULL,
+  `Units` int(100) DEFAULT NULL,
+  `Cost` decimal(11,0) DEFAULT NULL,
   `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `CrateUserId` varchar(225) NOT NULL,
   `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -372,11 +373,14 @@ CREATE TABLE `productproperty` (
 -- Dumping data for table `productproperty`
 --
 
-INSERT INTO `productproperty` (`ProductpropertyId`, `ProductId`, `Name`, `Code`, `Value`, `Units`, `CreateDate`, `CrateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
-('9e0dadd7-affe-11ea-a173-c8f7501047dc', '9e0c8758-affe-11ea-a173-c8f7501047dc', '', '', '', '', '2020-06-16 20:24:29', '06b13d08-affe-11ea-a173-c8f7501047dc', '2020-06-16 20:29:04', '06b13d08-affe-11ea-a173-c8f7501047dc', 1),
-('9e0e4795-affe-11ea-a173-c8f7501047dc', '9e0c8758-affe-11ea-a173-c8f7501047dc', '', '', '', '', '2020-06-16 20:24:29', '06b13d08-affe-11ea-a173-c8f7501047dc', '2020-06-16 20:29:04', '06b13d08-affe-11ea-a173-c8f7501047dc', 1),
-('e4477c33-affe-11ea-a173-c8f7501047dc', 'e446b9d6-affe-11ea-a173-c8f7501047dc', '', '', '', '', '2020-06-16 20:26:27', '06b13d08-affe-11ea-a173-c8f7501047dc', '2020-06-16 20:29:41', '06b13d08-affe-11ea-a173-c8f7501047dc', 1),
-('e448593f-affe-11ea-a173-c8f7501047dc', 'e446b9d6-affe-11ea-a173-c8f7501047dc', '', '', '', '', '2020-06-16 20:26:27', '06b13d08-affe-11ea-a173-c8f7501047dc', '2020-06-16 20:29:41', '06b13d08-affe-11ea-a173-c8f7501047dc', 1);
+INSERT INTO `productproperty` (`ProductpropertyId`, `ProductId`, `Name`, `Code`, `Type`, `Value`, `Units`, `Cost`, `CreateDate`, `CrateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+('e1c421e4-fa97-11ea-80de-c8f7501047dc', 'e1c393ca-fa97-11ea-80de-c8f7501047dc', 'Pao slabs, pathways and non-structural work', '10Mpa', 'Domestic & commercial use', 'R25.00/Kg', 25, '25', '2020-09-19 18:48:02', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-09-19 18:48:02', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
+('e1c4a754-fa97-11ea-80de-c8f7501047dc', 'e1c393ca-fa97-11ea-80de-c8f7501047dc', 'Pavement kerbs and floor blinding', '15Mpa', 'Domestic & commercial use', 'R25.00/Kg', 25, '25', '2020-09-19 18:48:02', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-09-19 18:48:02', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
+('e1c53440-fa97-11ea-80de-c8f7501047dc', 'e1c393ca-fa97-11ea-80de-c8f7501047dc', 'Domesc floors and foundaons (where the weight ofstructure will be lighter). Also good for workshop bases, garages, driveways and internal floorslabs.', '20Mpa', 'Domestic & commercial use', 'R25.00/Kg', 25, '25', '2020-09-19 18:48:02', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-09-19 18:48:02', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
+('e1c60b7d-fa97-11ea-80de-c8f7501047dc', 'e1c393ca-fa97-11ea-80de-c8f7501047dc', 'Construction in all areas. Mult-purpose concrete mix usually used for foundaons.', '25Mpa', 'Domestic', 'R25.00/Kg', 25, '25', '2020-09-19 18:48:02', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-09-19 18:48:02', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
+('e1c6df2e-fa97-11ea-80de-c8f7501047dc', 'e1c393ca-fa97-11ea-80de-c8f7501047dc', 'Pathways and roadways (this is the lowest grade concrete mix that can be used for this purpose). More durable than the grades that have come before, and thus is much more weather-resistant and can take heavy road    traffic.', '30Mpa', 'Domestic & commercial use', 'R25.00/Kg', 25, '25', '2020-09-19 18:48:02', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-09-19 18:48:02', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
+('e1c76f80-fa97-11ea-80de-c8f7501047dc', 'e1c393ca-fa97-11ea-80de-c8f7501047dc', 'Used for: Commercial structures. This heavy concrete mix is usually used for creang external walls and slabs, as well as forstructural piling.', '35Mpa', 'Commercial use', 'R25.00/Kg', 25, '25', '2020-09-19 18:48:02', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-09-19 18:48:02', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1),
+('e1c7f894-fa97-11ea-80de-c8f7501047dc', 'e1c393ca-fa97-11ea-80de-c8f7501047dc', 'Pavement kerbs and floor blinding', '10Mpa', 'Domestic & commercial use', 'R25.00/Kg', 25, '25', '2020-09-19 18:48:02', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', '2020-09-19 18:48:02', '45e50a75-9ec6-11ea-88a2-c8f7501047dc', 1);
 
 -- --------------------------------------------------------
 
@@ -465,7 +469,7 @@ CREATE TABLE `user` (
   `LastName` varchar(50) NOT NULL,
   `Email` varchar(50) NOT NULL,
   `Password` varchar(50) NOT NULL,
-  `Cellphone` varchar(15) NOT NULL,
+  `Cellphone` varchar(15) DEFAULT NULL,
   `RoleId` int(11) NOT NULL,
   `CompanyId` varchar(225) DEFAULT NULL,
   `Token` varchar(225) DEFAULT NULL,
@@ -481,8 +485,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`UserId`, `FirstName`, `LastName`, `Email`, `Password`, `Cellphone`, `RoleId`, `CompanyId`, `Token`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
-('06b13d08-affe-11ea-a173-c8f7501047dc', 'Test', 'User', 'test@mail.com', '12345', '277455212001', 3, '32071848-affe-11ea-a173-c8f7501047dc', '9c22a98d159581a7ab95e008769278df', '2020-06-16 20:20:15', 'sys', '2020-06-16 20:21:28', 'sys', 1),
-('83a7313f-b000-11ea-a173-c8f7501047dc', 'Brian', 'Hough', 'supplier@mail.com', '12345', '277854221001', 3, 'a93ebe5e-b000-11ea-a173-c8f7501047dc', '3de34be8c96f56a355a8eaccc38ff266', '2020-06-16 20:38:04', 'sys', '2020-06-16 20:39:07', 'sys', 1),
+('06b13d08-affe-11ea-a173-c8f7501047dc', 'Test', 'User', 'test@mail.com', '12345', '277455212001', 3, '32071848-affe-11ea-a173-c8f7501047dc', '9c22a98d159581a7ab95e008769278df', '2020-06-16 20:20:15', 'sys', '2020-08-27 20:44:58', 'sys', 1),
+('83a7313f-b000-11ea-a173-c8f7501047dc', 'Brian', 'Hough', 'supplier@mail.com', '12345', '277854221001', 3, 'a93ebe5e-b000-11ea-a173-c8f7501047dc', '3de34be8c96f56a355a8eaccc38ff266', '2020-06-16 20:38:04', 'sys', '2020-08-27 20:44:50', 'sys', 2),
 ('bc43d2a2-b09b-11ea-a173-c8f7501047dc', 'Beki', 'Khumalo', 'driver@mail.com', '12345', '277456652215', 6, '32071848-affe-11ea-a173-c8f7501047dc', '04c5440597be2d45809625168fd5e65f', '2020-06-17 15:09:11', '06b13d08-affe-11ea-a173-c8f7501047dc', '2020-06-17 15:09:11', '06b13d08-affe-11ea-a173-c8f7501047dc', 1),
 ('fc193bea-affe-11ea-a173-c8f7501047dc', 'Nelly', 'Rema', 'customer@mail.com', '12345', '27745215442', 5, NULL, '5cbea219d0bfb441560b56a04a875ae7', '2020-06-16 20:27:07', 'sys', '2020-06-16 20:27:07', 'sys', 1);
 
@@ -582,7 +586,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `CategoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=441;
+  MODIFY `CategoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `orders`

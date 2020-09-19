@@ -171,4 +171,6 @@ class Product
         }
         return $detailedProducts;
     }
+
+    
 }

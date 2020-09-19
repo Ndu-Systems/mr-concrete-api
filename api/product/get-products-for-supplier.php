@@ -5,7 +5,7 @@ include_once '../../models/Product.php';
 $data = json_decode(file_get_contents("php://input"));
 
 // create user data only
-$UserId =$_GET['UserId'];
+$CompanyId =$_GET['CompanyId'];
 
 
 //connect to db
@@ -16,7 +16,7 @@ $db = $database->connect();
 $product = new Product($db);
 
 $result = $product->getByCompanyId(
-    $UserId
+    $CompanyId
 );
  
 echo json_encode($result);

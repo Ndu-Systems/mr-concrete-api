@@ -11,30 +11,27 @@ class Category
 
     //Add user
     public function add(
-       $CategoryId,
-       $CategoryName,
-       $CreateUserId,
-       $ModifyUserId,
-       $StatusId
+        $CategoryName,
+        $CreateUserId,
+        $ModifyUserId,
+        $StatusId
 
     ) {
-          
+
         $query = "
         INSERT INTO category(
-            CategoryId,
-            CategoryName,
+             CategoryName,
             CreateUserId,
             ModifyUserId,
             StatusId
         )
         VALUES(
-        ?,?,?,?,?
+        ?,?,?,?
          )
 ";
         try {
             $stmt = $this->conn->prepare($query);
             if ($stmt->execute(array(
-                $CategoryId,
                 $CategoryName,
                 $CreateUserId,
                 $ModifyUserId,
@@ -71,7 +68,7 @@ class Category
 
         try {
             $stmt = $this->conn->prepare($query);
-            if ($stmt->execute(array(               
+            if ($stmt->execute(array(
                 $Name,
                 $CreateUserId,
                 $ModifyUserId,

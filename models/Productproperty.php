@@ -15,7 +15,9 @@ class Productproperty
         $ProductId,
         $Name,
         $Code,
+        $Type,
         $Value,
+        $Cost,
         $Units,
         $CrateUserId,
         $ModifyUserId,
@@ -29,14 +31,16 @@ class Productproperty
             ProductId,
             Name,
             Code,
+            Type,
             Value,
+            Cost,
             Units,
             CrateUserId,
             ModifyUserId,
             StatusId
         )
         VALUES(
-        ?,?,?,?,?,?,?,?,?
+        ?,?,?,?,?,?,?,?,?,?,?
          )
 ";
         try {
@@ -46,7 +50,9 @@ class Productproperty
                 $ProductId,
                 $Name,
                 $Code,
+                $Type,
                 $Value,
+                $Cost,
                 $Units,
                 $CrateUserId,
                 $ModifyUserId,
