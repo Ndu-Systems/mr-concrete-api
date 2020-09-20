@@ -12,12 +12,12 @@ class Address
     }
 
 
-    public function getAddressByUserId($UserId)
+    public function getAddressByOtherId($OtherId)
     {
-        $query = "SELECT * FROM address WHERE UserId =?";
+        $query = "SELECT * FROM address WHERE OtherId =?";
         $stmt = $this->conn->prepare($query);
 
-        $stmt->execute(array($UserId));
+        $stmt->execute(array($OtherId));
 
         if ($stmt->rowCount()) {
             return $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -3,7 +3,7 @@ include_once '../../config/Database.php';
 include_once '../../models/Address.php';
 
 $data = json_decode(file_get_contents("php://input"));
-$UserId= $data->UserId;
+$OtherId= $data->OtherId;
 $AddressType= $data->AddressType;
 $AddressLine1= $data->AddressLine1;
 $AddressLine2= $data->AddressLine2;
@@ -22,7 +22,7 @@ $address = new Address($db);
 $AddressId = $database->getGuid($db);
 $result = $address->AddAddress(
     $AddressId,
-    $UserId,
+    $OtherId,
     $AddressType,
     $AddressLine1,
     $AddressLine2,

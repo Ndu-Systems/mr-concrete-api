@@ -18,34 +18,27 @@ class Company
         $CompanyName,
         $CompanyPhone,
         $CompanyEmail,
+        $CompanyRepresentative,
         $ParentId,
         $CompanyType,
-        $CompanyAddress,
-        $Province,
-        $City,
-        $PostalCode,
         $CreateUserId,
         $ModifyUserId,
         $IsDeleted,
         $StatusId
     ) {
-        $query = "
-        INSERT INTO company(
+        $query = "INSERT INTO company(
             CompanyId, 
             CompanyName, 
             CompanyPhone, 
             CompanyEmail, 
+            CompanyRepresentative, 
             ParentId, 
-            CompanyType, 
-            CompanyAddress, 
-            Province, 
-            City, 
-            PostalCode,       
+            CompanyType,                
             CreateUserId,       
             ModifyUserId, 
             IsDeleted, 
             StatusId) 
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?)
         ";
         try {
             //code...
@@ -55,12 +48,9 @@ class Company
                 $CompanyName,
                 $CompanyPhone,
                 $CompanyEmail,
+                $CompanyRepresentative,
                 $ParentId,
-                $CompanyType,
-                $CompanyAddress,
-                $Province,
-                $City,
-                $PostalCode,
+                $CompanyType,                
                 $CreateUserId,
                 $ModifyUserId,
                 $IsDeleted,
@@ -85,9 +75,6 @@ class Company
         $CompanyEmail,
         $ParentId,
         $CompanyType,
-        $CompanyAddress,
-        $City,
-        $PostalCode,
         $ModifyUserId,
         $IsDeleted,
         $StatusId
@@ -100,10 +87,7 @@ class Company
                     CompanyPhone = ?, 
                     CompanyEmail = ?, 
                     ParentId = ?, 
-                    CompanyType = ?, 
-                    CompanyAddress = ?, 
-                    City = ?, 
-                    PostalCode = ?,       
+                    CompanyType = ?,                       
                     ModifyDate = NOW(),       
                     ModifyUserId = ?, 
                     IsDeleted = ?, 
@@ -119,10 +103,7 @@ class Company
                 $CompanyPhone,
                 $CompanyEmail,
                 $ParentId,
-                $CompanyType,
-                $CompanyAddress,
-                $City,
-                $PostalCode,
+                $CompanyType,                
                 $ModifyUserId,
                 $IsDeleted,
                 $StatusId,

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2020 at 11:13 PM
+-- Generation Time: Sep 20, 2020 at 09:59 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -30,18 +30,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `address` (
   `AddressId` varchar(225) NOT NULL,
-  `UserId` varchar(225) NOT NULL,
+  `OtherId` varchar(225) NOT NULL,
   `AddressType` varchar(50) DEFAULT NULL,
   `AddressLine1` varchar(50) NOT NULL,
-  `AddressLine2` varchar(50) NOT NULL,
-  `AddressLine3` varchar(50) NOT NULL,
+  `AddressLine2` varchar(50) DEFAULT NULL,
+  `AddressLine3` varchar(50) DEFAULT NULL,
   `City` varchar(50) NOT NULL,
   `Province` varchar(50) DEFAULT NULL,
   `PostalCode` varchar(20) NOT NULL,
   `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `CrateUserId` varchar(225) NOT NULL,
+  `CrateUserId` varchar(225) DEFAULT NULL,
   `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ModifyUserId` varchar(225) NOT NULL,
+  `ModifyUserId` varchar(225) DEFAULT NULL,
   `StatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -49,7 +49,7 @@ CREATE TABLE `address` (
 -- Dumping data for table `address`
 --
 
-INSERT INTO `address` (`AddressId`, `UserId`, `AddressType`, `AddressLine1`, `AddressLine2`, `AddressLine3`, `City`, `Province`, `PostalCode`, `CreateDate`, `CrateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
+INSERT INTO `address` (`AddressId`, `OtherId`, `AddressType`, `AddressLine1`, `AddressLine2`, `AddressLine3`, `City`, `Province`, `PostalCode`, `CreateDate`, `CrateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
 ('efcd8d6f-afff-11ea-a173-c8f7501047dc', 'fc193bea-affe-11ea-a173-c8f7501047dc', 'Physical Address', '12 Bother', '12', '', 'Bloemfontein', 'FS', '9660', '2020-06-16 20:33:56', 'fc193bea-affe-11ea-a173-c8f7501047dc', '2020-06-16 20:33:56', 'fc193bea-affe-11ea-a173-c8f7501047dc', 1);
 
 -- --------------------------------------------------------
@@ -149,13 +149,10 @@ CREATE TABLE `company` (
   `CompanyId` varchar(225) NOT NULL,
   `CompanyName` varchar(50) NOT NULL,
   `CompanyPhone` varchar(15) NOT NULL,
-  `CompanyEmail` varchar(50) NOT NULL,
+  `CompanyEmail` varchar(50) DEFAULT NULL,
+  `CompanyRepresentative` varchar(250) DEFAULT NULL,
   `ParentId` varchar(225) DEFAULT NULL,
   `CompanyType` varchar(50) DEFAULT NULL,
-  `CompanyAddress` varchar(225) NOT NULL,
-  `City` varchar(50) NOT NULL,
-  `Province` varchar(50) DEFAULT NULL,
-  `PostalCode` varchar(10) NOT NULL,
   `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `CreateUserId` varchar(225) NOT NULL,
   `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -168,9 +165,11 @@ CREATE TABLE `company` (
 -- Dumping data for table `company`
 --
 
-INSERT INTO `company` (`CompanyId`, `CompanyName`, `CompanyPhone`, `CompanyEmail`, `ParentId`, `CompanyType`, `CompanyAddress`, `City`, `Province`, `PostalCode`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `IsDeleted`, `StatusId`) VALUES
-('32071848-affe-11ea-a173-c8f7501047dc', 'Been Streets Tailors', '2774521101', '', NULL, 'HeadQuarter', '21 Rand', 'Bhisho', 'EC', '123354', '2020-06-16 20:21:28', '06b13d08-affe-11ea-a173-c8f7501047dc', '2020-06-16 20:21:28', '06b13d08-affe-11ea-a173-c8f7501047dc', 0, 1),
-('a93ebe5e-b000-11ea-a173-c8f7501047dc', 'Hough Builders', '2778542110', '', NULL, 'HeadQuarter', '12 Rand', 'Johannesburg', 'GP', '2001', '2020-06-16 20:39:07', '83a7313f-b000-11ea-a173-c8f7501047dc', '2020-06-16 20:39:07', '83a7313f-b000-11ea-a173-c8f7501047dc', 0, 1);
+INSERT INTO `company` (`CompanyId`, `CompanyName`, `CompanyPhone`, `CompanyEmail`, `CompanyRepresentative`, `ParentId`, `CompanyType`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `IsDeleted`, `StatusId`) VALUES
+('29bd84bb-fb16-11ea-8f60-c8f7501047dc', 'Ayabonga Concrete Suppliers', '0133548575', NULL, 'Sbongile Mdlalose', NULL, 'HeadQuarter', '2020-09-20 09:51:59', 'sys', '2020-09-20 09:51:59', 'sys', 0, 9),
+('32071848-affe-11ea-a173-c8f7501047dc', 'Been Streets Tailors', '2774521101', '', NULL, NULL, 'HeadQuarter', '2020-06-16 20:21:28', '06b13d08-affe-11ea-a173-c8f7501047dc', '2020-06-16 20:21:28', '06b13d08-affe-11ea-a173-c8f7501047dc', 0, 1),
+('a93ebe5e-b000-11ea-a173-c8f7501047dc', 'Hough Builders', '2778542110', '', NULL, NULL, 'HeadQuarter', '2020-06-16 20:39:07', '83a7313f-b000-11ea-a173-c8f7501047dc', '2020-06-16 20:39:07', '83a7313f-b000-11ea-a173-c8f7501047dc', 0, 1),
+('fe49d6fe-fb14-11ea-8f60-c8f7501047dc', 'Build It Pinetown', '0314457845', NULL, 'Sfundo Kwakhe', NULL, 'HeadQuarter', '2020-09-20 09:43:37', 'sys', '2020-09-20 09:43:37', 'sys', 0, 9);
 
 -- --------------------------------------------------------
 
@@ -465,8 +464,8 @@ INSERT INTO `statuses` (`StatusId`, `StatusCode`, `Description`, `CreateDate`, `
 
 CREATE TABLE `user` (
   `UserId` varchar(225) NOT NULL,
-  `FirstName` varchar(50) NOT NULL,
-  `LastName` varchar(50) NOT NULL,
+  `FirstName` varchar(50) DEFAULT NULL,
+  `LastName` varchar(50) DEFAULT NULL,
   `Email` varchar(50) NOT NULL,
   `Password` varchar(50) NOT NULL,
   `Cellphone` varchar(15) DEFAULT NULL,
@@ -474,9 +473,9 @@ CREATE TABLE `user` (
   `CompanyId` varchar(225) DEFAULT NULL,
   `Token` varchar(225) DEFAULT NULL,
   `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `CreateUserId` varchar(225) NOT NULL,
+  `CreateUserId` varchar(225) DEFAULT NULL,
   `ModifyDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ModifyUserId` varchar(225) NOT NULL,
+  `ModifyUserId` varchar(225) DEFAULT NULL,
   `StatusId` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -486,9 +485,13 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`UserId`, `FirstName`, `LastName`, `Email`, `Password`, `Cellphone`, `RoleId`, `CompanyId`, `Token`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`, `StatusId`) VALUES
 ('06b13d08-affe-11ea-a173-c8f7501047dc', 'Test', 'User', 'test@mail.com', '12345', '277455212001', 3, '32071848-affe-11ea-a173-c8f7501047dc', '9c22a98d159581a7ab95e008769278df', '2020-06-16 20:20:15', 'sys', '2020-08-27 20:44:58', 'sys', 1),
+('0c781642-fb16-11ea-8f60-c8f7501047dc', 'Jane', 'Mary', 'jane@mail.com', '12345', NULL, 5, NULL, '37f282f6ed42d44a59a870f4456e8d8b', '2020-09-20 09:51:10', 'sys', '2020-09-20 09:51:10', 'sys', 1),
+('29be5de7-fb16-11ea-8f60-c8f7501047dc', NULL, NULL, 'sbongile@ayabonga.com', '12345', NULL, 3, '29bd84bb-fb16-11ea-8f60-c8f7501047dc', '2c27af8098b447eff88c24504f33b49f', '2020-09-20 09:51:59', 'sys', '2020-09-20 09:51:59', 'sys', 1),
+('6de71feb-fb0e-11ea-8f60-c8f7501047dc', 'Freedom', 'Khanyile', 'freedom@mail.com', '12345', NULL, 5, NULL, '185542ea3e39ab2171963e0561c3f75c', '2020-09-20 08:56:38', 'sys', '2020-09-20 08:56:38', 'sys', 1),
 ('83a7313f-b000-11ea-a173-c8f7501047dc', 'Brian', 'Hough', 'supplier@mail.com', '12345', '277854221001', 3, 'a93ebe5e-b000-11ea-a173-c8f7501047dc', '3de34be8c96f56a355a8eaccc38ff266', '2020-06-16 20:38:04', 'sys', '2020-08-27 20:44:50', 'sys', 2),
 ('bc43d2a2-b09b-11ea-a173-c8f7501047dc', 'Beki', 'Khumalo', 'driver@mail.com', '12345', '277456652215', 6, '32071848-affe-11ea-a173-c8f7501047dc', '04c5440597be2d45809625168fd5e65f', '2020-06-17 15:09:11', '06b13d08-affe-11ea-a173-c8f7501047dc', '2020-06-17 15:09:11', '06b13d08-affe-11ea-a173-c8f7501047dc', 1),
-('fc193bea-affe-11ea-a173-c8f7501047dc', 'Nelly', 'Rema', 'customer@mail.com', '12345', '27745215442', 5, NULL, '5cbea219d0bfb441560b56a04a875ae7', '2020-06-16 20:27:07', 'sys', '2020-06-16 20:27:07', 'sys', 1);
+('c4026248-fb14-11ea-8f60-c8f7501047dc', NULL, NULL, 'freedom@builders.com', '12345', NULL, 3, 'c401cbdd-fb14-11ea-8f60-c8f7501047dc', '274797801beba164091ccb544113200b', '2020-09-20 09:41:59', 'sys', '2020-09-20 09:41:59', 'sys', 9),
+('fe4a80f3-fb14-11ea-8f60-c8f7501047dc', NULL, NULL, 'sfundo@buildit.com', '12345', NULL, 3, 'fe49d6fe-fb14-11ea-8f60-c8f7501047dc', 'f52d229636063fb7d0e610fb8f6623f8', '2020-09-20 09:43:37', 'sys', '2020-09-20 09:43:37', 'sys', 1);
 
 --
 -- Indexes for dumped tables

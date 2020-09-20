@@ -11,9 +11,6 @@ $CompanyPhone = $data->CompanyPhone;
 $CompanyEmail = $data->CompanyEmail;
 $ParentId = $data->ParentId;
 $CompanyType = $data->CompanyType;
-$CompanyAddress = $data->CompanyAddress;
-$City = $data->City;
-$PostalCode = $data->PostalCode;
 $CreateUserId = $data->CreateUserId;
 $ModifyUserId = $data->ModifyUserId;
 $IsDeleted = $data->IsDeleted;
@@ -31,10 +28,7 @@ $result = $company->UpdateCompany(
     $CompanyPhone, 
     $CompanyEmail, 
     $ParentId, 
-    $CompanyType, 
-    $CompanyAddress, 
-    $City, 
-    $PostalCode,      
+    $CompanyType,       
     $ModifyUserId, 
     $IsDeleted, 
     $StatusId

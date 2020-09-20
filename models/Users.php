@@ -77,7 +77,7 @@ class Users
                 $userId = $user["UserId"];
                 $user["Company"] = $company->GetAllCompaniesForUser($userId, false, 1);
                 $user["Roles"] = $role->getRoleById($user["RoleId"]);
-                $user["Address"] = $address->getAddressByUserId($userId);
+                $user["Address"] = $address->getAddressByOtherId($userId);
                 $user["Images"] = $image->getParentIdById($userId);               
                 return $user;
             }
